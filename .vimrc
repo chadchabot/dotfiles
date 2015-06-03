@@ -1,6 +1,6 @@
-# requires pathogen to be installed.
-# i don't have any fancy way to do this yet, scripted or otherwise,
-# so this is pretty basic so far.
+" requires pathogen to be installed
+" i don't have any fancy way to do this yet, scripted or otherwise
+" so this is pretty basic so far
 filetype off
 execute pathogen#infect()
 syntax on
@@ -14,6 +14,11 @@ set textwidth=79
 set colorcolumn=85
 set formatoptions=qrn1
 set encoding=utf-8
+
+set mouse=a
+set mousefocus
+set mousemodel=extend
+set selectmode=mouse
 
 set tabstop=2
 set softtabstop=2
@@ -69,9 +74,14 @@ noremap gj j
 noremap gk k
 
 " i'm used to pagination working with the spacebar
-nnoremap <Space> <C-D>
+"nnoremap <Space> <C-D>
 "nnoremap <S-Space> <C-U> " this fails because vim only receives the charcode
 "for the spacebar, ignoring the shift modifier
+
+" Space is the easiest key to reach by both hands, and allows for way more interesting keybindings
+let mapleader = "\<Space>"
+" stop that stupid window from popping up
+map q: :q
 
 " force myself to use the hjkl keys for navigation
 nnoremap <up> <nop>
