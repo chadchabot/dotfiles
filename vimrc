@@ -15,11 +15,23 @@ set colorcolumn=85
 set formatoptions=qrn1
 set encoding=utf-8
 
+set nobackup
+set backupdir=$HOME/.vim/backup
+set backupcopy=yes
+set nolazyredraw
+set ch=2
+set report=0
+
 set mouse=a
 set mousefocus
 set mousemodel=extend
 set selectmode=mouse
+set title
+set shortmess=atI
 
+set ignorecase
+set smartindent
+set formatoptions+=n
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -34,6 +46,7 @@ set showcmd
 set hidden
 set wildmenu
 set wildmode=list:longest
+set laststatus=2
 
 " i think the visual selection mode keys are backwards
 noremap v V
