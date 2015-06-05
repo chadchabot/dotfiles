@@ -83,6 +83,12 @@ let mapleader = "\<Space>"
 " stop that stupid window from popping up
 map q: :q
 
+" quick common actions
+noremap <leader>w :w<Cr>
+noremap <leader>e :e 
+" would be really cool to have this do something smart based on file context
+noremap <leader>q :q<cr>
+
 " force myself to use the hjkl keys for navigation
 nnoremap <up> <nop>
 nnoremap <down> <nop>
