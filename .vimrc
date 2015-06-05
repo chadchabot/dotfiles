@@ -73,21 +73,16 @@ noremap k gk
 noremap gj j
 noremap gk k
 
-" i'm used to pagination working with the spacebar
-"nnoremap <Space> <C-D>
-"nnoremap <S-Space> <C-U> " this fails because vim only receives the charcode
-"for the spacebar, ignoring the shift modifier
-
 " Space is the easiest key to reach by both hands, and allows for way more interesting keybindings
-let mapleader = "\<Space>"
-" stop that stupid window from popping up
-map q: :q
-
+let mapleader="\<Space>"
 " quick common actions
 noremap <leader>w :w<Cr>
 noremap <leader>e :e 
 " would be really cool to have this do something smart based on file context
 noremap <leader>q :q<cr>
+
+" stop that stupid window from popping up
+map q: :q
 
 " force myself to use the hjkl keys for navigation
 nnoremap <up> <nop>
