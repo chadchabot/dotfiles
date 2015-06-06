@@ -68,11 +68,12 @@ vnoremap <S-Tab> <gv
 " pressing enter should be different from navigating up/down; 
 " just add the damn newline on the line that i'm on, shifting things down
 nnoremap <Enter> ^i<Cr><Esc>
-" of course, maybe you mean to put the newline below the current line. I c    an't
+" of course, maybe you mean to put the newline below the current line. I can't
 " read your mind
-" this needs to be fixed, it doesn't maintain the tab indent level of the     line
+" this needs to be fixed, it doesn't maintain the tab indent level of the line
 " below
 nnoremap <S-Enter> :$<Cr><Esc>
+
 " defaults for start and end of a line are stupid and so far from homerow keys
 noremap H ^
 noremap L $
@@ -112,6 +113,7 @@ inoremap <left> <nop>
 inoremap <right> <nop>
 
 " i rarely want to insert right where the cursor is, but do want to add to the end of the current word
+" this is probably the most controversial change i've made; i'm not married to it
 nnoremap i A
 nnoremap A i
 
@@ -124,3 +126,4 @@ noremap W b
 " toggle invisible chars and show them textmate style
 nmap <leader>l :set list!<Cr>
 set listchars=tab:▸\ ,eol:¬
+
