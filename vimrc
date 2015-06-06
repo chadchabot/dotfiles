@@ -15,7 +15,6 @@ set colorcolumn=85
 set formatoptions=qrn1
 set encoding=utf-8
 
-set nobackup
 set backupdir=$HOME/.vim/backup
 set backupcopy=yes
 set nolazyredraw
@@ -45,7 +44,7 @@ set showmode
 set showcmd
 set hidden
 set wildmenu
-set wildmode=list:longest
+set wildmode=longest,list,full
 set laststatus=2
 
 " i think the visual selection mode keys are backwards
