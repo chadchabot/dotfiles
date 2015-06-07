@@ -98,6 +98,7 @@ noremap <leader>e :e
 " would be really cool to have this do something smart based on file context
 noremap <leader>q :q<cr>
 
+noremap <leader>z <C-z>
 " stop that stupid window from popping up
 map q: :q
 
