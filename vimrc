@@ -115,8 +115,8 @@ inoremap <right> <nop>
 
 " i rarely want to insert right where the cursor is, but do want to add to the end of the current word
 " this is probably the most controversial change i've made; i'm not married to it
-nnoremap i A
-nnoremap A i
+"nnoremap i A
+"nnoremap A i
 
 " while in insert mode, jk is a quick way to back out 
 inoremap jk <Esc>
