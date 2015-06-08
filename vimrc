@@ -100,8 +100,9 @@ noremap <leader>q :q<cr>
 
 noremap <leader>z <C-z>
 
-noremap <leader>u <C-b>
-noremap <leader>d <C-d>
+" page up/down is obnoxious with standard keys; may use the leader?
+noremap <leader>k <C-b>
+noremap <leader>j <C-d>
 
 " stop that stupid window from popping up
 map q: :q
