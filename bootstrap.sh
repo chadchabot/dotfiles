@@ -29,3 +29,5 @@ then
   mv ~/.inputrc ~/.inputrc-old
 fi
 ln -Fs ${BASEDIR}/inputrc ~/.inputrc
+
+#sublime text prefs

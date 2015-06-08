@@ -99,6 +99,10 @@ noremap <leader>e :e
 noremap <leader>q :q<cr>
 
 noremap <leader>z <C-z>
+
+noremap <leader>u <C-b>
+noremap <leader>d <C-d>
+
 " stop that stupid window from popping up
 map q: :q
 
