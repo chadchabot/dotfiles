@@ -97,12 +97,13 @@ noremap <leader>w :w<Cr>
 noremap <leader>e :e 
 " would be really cool to have this do something smart based on file context
 noremap <leader>q :q<cr>
-
 noremap <leader>z <C-z>
 
 " page up/down is obnoxious with standard keys; may use the leader?
 noremap <leader>k <C-b>
 noremap <leader>j <C-d>
+" easier redo, though I was thinking about making it shift-u, like with tabbing
+noremap <leader>r <C-r> 
 
 " stop that stupid window from popping up
 map q: :q
@@ -118,10 +119,8 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
-" i rarely want to insert right where the cursor is, but do want to add to the end of the current word
-" this is probably the most controversial change i've made; i'm not married to it
-"nnoremap i A
-"nnoremap A i
+nnoremap i A 
+nnoremap A i  
 
 " while in insert mode, jk is a quick way to back out 
 inoremap jk <Esc>
