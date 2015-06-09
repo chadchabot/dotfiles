@@ -119,8 +119,8 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
-nnoremap i A 
-nnoremap A i  
+nnoremap i A
+nnoremap A i
 
 " while in insert mode, jk is a quick way to back out 
 inoremap jk <Esc>
