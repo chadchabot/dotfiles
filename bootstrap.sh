@@ -1,9 +1,10 @@
 #!/bin/bash
+# inspired by everyone else who's ever done such a thing, but mostly Paul Vilchez
+# who turned me on to this whole dotfiles thing, unbeknownst to him
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 #todo
-# - backup existing .vimrc and the rest of the install
 # - ensure that pathogen and any other dependencies are installed
 # - add bash_profile/bashrc
 # - add gitconfig
@@ -31,3 +32,10 @@ fi
 ln -Fs ${BASEDIR}/inputrc ~/.inputrc
 
 #sublime text prefs
+
+#install homebrew
+if [ "$(uname -s)" == "Darwin" ]
+then
+  # do stuff that i'm not sure about just yet
+  echo "this thing is running, right?"
+fi
