@@ -39,3 +39,10 @@ then
   # do stuff that i'm not sure about just yet
   echo "this thing is running, right?"
 fi
+
+#if homebrew installed properly, time to grab packages
+# tmux
+# screen
+# tree
+# rvm?
+# more
