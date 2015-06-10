@@ -2,6 +2,8 @@
 # inspired by everyone else who's ever done such a thing, but mostly Paul Vilchez
 # who turned me on to this whole dotfiles thing, unbeknownst to him
 
+set -e
+
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 #todo
