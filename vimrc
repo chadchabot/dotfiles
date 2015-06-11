@@ -119,6 +119,10 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
+" move the line below the current line down, but return to the current position
+" on the current line
+"inoremap <S-Enter> :$<Cr>
+
 nnoremap i A
 nnoremap A i
 
