@@ -119,12 +119,6 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
-" split navigation
-nmap <silent> <A-k> :wincmd k<Cr>
-nmap <silent> <A-j> :wincmd j<Cr>
-nmap <silent> <A-l> :wincmd l<Cr>
-nmap <silent> <A-h> :wincmd h<Cr>
-
 " move the line below the current line down, but return to the current position
 " on the current line
 "inoremap <S-Enter> :$<Cr>
