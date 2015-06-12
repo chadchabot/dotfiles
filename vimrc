@@ -83,6 +83,8 @@ noremap L $
 noremap dw daw
 noremap daw dw
 
+" look into https://github.com/haya14busa/incsearch.vim for improved searching
+
 " if i'm working with long lines (don't do it!) this moves based on displayed lines,
 " not 'physical' lines
 noremap j gj
@@ -104,6 +106,10 @@ noremap <leader>k <C-b>
 noremap <leader>j <C-d>
 " easier redo, though I was thinking about making it shift-u, like with tabbing
 noremap <leader>r <C-r> 
+
+" faster search and replace
+noremap <leader>f :s/
+noremap <leader>F :%s/
 
 " stop that stupid window from popping up
 map q: :q
