@@ -123,10 +123,10 @@ set splitbelow
 set splitright
 
 " faster nav between splits
-nnoremap <C-h> <C-W><C-H>
-nnoremap <C-j> <C-W><C-J>
-nnoremap <C-k> <C-W><C-K>
-nnoremap <C-l> <C-W><C-L>
+nnoremap <leader><leader>h <C-W><C-H>
+nnoremap <leader><leader>j <C-W><C-J>
+nnoremap <leader><leader>k <C-W><C-K>
+nnoremap <leader><leader>l <C-W><C-L>
 
 " move the line below the current line down, but return to the current position
 " on the current line
