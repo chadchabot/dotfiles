@@ -23,18 +23,20 @@ MY_NAME="$(whoami)"
 #     considering
 
 #vim dir setup
-if [ -f ~/.vim ]; then
+if [ -L ~/.vim ]; then
+  rm ~/.vim
+elif [ -d ~/.vim ]; then
   mv ~/.vim ~/.vim-old
 fi
-echo "Setting up directories"
-[ -d $BACKUP_DIR ] || mkdir -p $BACKUP_DIR
-[ -d $BUNDLE_DIR ] || mkdir -p $BUNDLE_DIR
-[ -d $AUTOLOAD_DIR ] || mkdir -p $AUTOLOAD_DIR
 
 ln -Fs ${BASE_DIR}/vimrc ~/.vimrc #this is hella basic, but should suffice for now
 # I don't want to symlink this dir, I want to create and do the installation of stuff on this machine, not carry around the config... right?
-# clear out /.vim/folder
 ln -Fs ${BASE_DIR}/vim/ ~/.vim
+
+echo "Setting up vim directories"
+[ -d $BACKUP_DIR ] || mkdir -p $BACKUP_DIR
+[ -d $BUNDLE_DIR ] || mkdir -p $BUNDLE_DIR
+[ -d $AUTOLOAD_DIR ] || mkdir -p $AUTOLOAD_DIR
 
 #install pathogen
 echo "Downloading pathogen..."
@@ -42,7 +44,23 @@ PATHOGEN_DEST="${AUTOLOAD_DIR}/pathogen.vim"
 curl -LSso $PATHOGEN_DEST https://tpo.pe/pathogen.vim #I should totally be checking for completion of this
 echo "Pathogen download complete"
 
-#now time to install any other fancy submodules, like nerdtree
+#install nerdtree
+if [ -d ${BUNDLE_DIR}/nerdtree ]; then
+  echo "nerdtree already installed. rad."
+else
+  pushd $BUNDLE_DIR
+  git clone https://github.com/scrooloose/nerdtree.git
+  SUCCESS=$?
+  if [[ $SUCCESS -eq 0 ]];then
+    echo "added nerdtree, just fine"
+  else
+    echo "error downloading nerdtree"
+  fi
+  popd
+fi
+echo "Don't forget to run :Helptags when you first run vim!"
+
+#now time to install any other fancy plugins or submodules
 pushd ${BASE_DIR}
 echo "$(pwd)"
 popd
