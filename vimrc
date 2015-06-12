@@ -15,11 +15,13 @@ set colorcolumn=85
 set formatoptions=qrn1
 set encoding=utf-8
 
-set backupdir=$HOME/.vim/backup
-set backupcopy=yes
+set backupdir=$HOME/.vim/backup "could get rid of this I guess
+set nobackup
+set noswapfile
 set nolazyredraw
 set ch=2
 set report=0
+set autoread
 
 set mouse=a
 set mousefocus
@@ -28,7 +30,11 @@ set selectmode=mouse
 set title
 set shortmess=atI
 
-set ignorecase
+set backspace=indent,eol,start
+set incsearch
+set ignorecase "case insensitive searching
+set smartcase "however, if I *do* include a capital letter, search is case sensitive
+
 set smartindent
 set formatoptions+=n
 set tabstop=2
@@ -39,7 +45,9 @@ set relativenumber
 set scrolloff=10
 set cursorline
 set autoindent
+set copyindent
 set visualbell
+set noerrorbells
 set showmode
 set showcmd
 set hidden
@@ -91,6 +99,9 @@ noremap j gj
 noremap k gk
 noremap gj j
 noremap gk k
+
+" no need for awkward shift key pressing to enter commands
+nnoremap ; :
 
 " Space is the easiest key to reach by both hands, and allows for way more interesting keybindings
 let mapleader="\<Space>"
