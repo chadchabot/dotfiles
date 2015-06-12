@@ -4,7 +4,10 @@
 
 set -e
 
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BUNDLE_DIR="${BASE_DIR}/.vim/bundle"
+BACKUP_DIR="${BASE_DIR}/.vim/backup"
+MY_NAME="$(whoami)"
 
 #todo
 # - ensure that pathogen and any other dependencies are installed
@@ -18,29 +21,41 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 #     considering
 
 #vim
-# need to make sure the backup directory exists
-mkdir -p $HOME/.vim/backup
-ln -Fs ${BASEDIR}/vimrc ~/.vimrc #this is hella basic, but should suffice for now
-#ln -s ${BASEDIR}/vim/ ~/.vim #need to make sure I have this set up properly. will have to try in a VM
+[ -d $BACKUP_DIR ] || mkdir -p $BACKUP_DIR
+[ -d $BUNDLE_DIR ] || mkdir -p $BUNDLE_DIR
+
+ln -Fs ${BASE_DIR}/vimrc ~/.vimrc #this is hella basic, but should suffice for now
+# I don't want to symlink this dir, I want to create and do the installation of stuff on this machine, not carry around the config... right?
+#ln -Fs ${BASE_DIR}/vim/ ~/.vim #need to make sure I have this set up properly. will have to try in a VM
+
+#now time to install the submodules on to the new host
+pushd ${BASE_DIR}
+echo "$(pwd)"
+popd
 
 #git
-#ln -s ${BASEDIR}/gitconfig ~/.gitconfig #guess this means I'm adding my gitconfig next
+#ln -s ${BASE_DIR}/gitconfig ~/.gitconfig #guess this means I'm adding my gitconfig next
 
-#terminal
+#terminal prefs (what's the difference between input and bash_profile prefs?)
 if [ -f ~/.inputrc ]
 then
   mv ~/.inputrc ~/.inputrc-old
 fi
-ln -Fs ${BASEDIR}/inputrc ~/.inputrc
+ln -Fs ${BASE_DIR}/inputrc ~/.inputrc
 
-#sublime text prefs
+PLATFORM="$(uname -s)"
 
-#install homebrew
-if [ "$(uname -s)" == "Darwin" ]
-then
-  # do stuff that i'm not sure about just yet
-  echo "this thing is running, right?"
-fi
+# determine the platform you're using, which will determine whether we use
+# homebrew or apt-get (in a far off universe where I may possibly choose a Ubuntu machine again)
+case $PLATFORM in
+  "Darwin")
+    echo "You're running OS X. This is good."
+    echo "Soon this will install homebrew for you"
+    ;;
+  "Linux")
+    echo "…good for you I guess?"
+    ;;
+esac
 
 #if homebrew installed properly, time to grab packages
 # tmux
@@ -48,3 +63,6 @@ fi
 # tree
 # rvm?
 # more
+
+
+#sublime text prefs
