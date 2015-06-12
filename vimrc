@@ -119,6 +119,15 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
+set splitbelow
+set splitright
+
+" faster nav between splits
+nnoremap <C-h> <C-W><C-H>
+nnoremap <C-j> <C-W><C-J>
+nnoremap <C-k> <C-W><C-K>
+nnoremap <C-l> <C-W><C-L>
+
 " move the line below the current line down, but return to the current position
 " on the current line
 "inoremap <S-Enter> :$<Cr>
