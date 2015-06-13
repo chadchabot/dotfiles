@@ -35,3 +35,11 @@ function warn() {
 function error() {
   echo -e "$COL_RED[error]$COL_RESET "$1
 }
+
+function is_success() {
+  if [[ $1 -eq 0 ]]; then
+    ok "$2"
+  else
+    warn "$3"
+  fi
+}

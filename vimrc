@@ -3,7 +3,7 @@
 " so this is pretty basic so far
 filetype off
 execute pathogen#infect()
-syntax on
+syntax enable
 filetype plugin indent on
 
 set nocompatible
@@ -14,6 +14,10 @@ set textwidth=79
 set colorcolumn=85
 set formatoptions=qrn1
 set encoding=utf-8
+
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
 
 set backupdir=$HOME/.vim/backup "could get rid of this I guess
 set nobackup
@@ -29,6 +33,8 @@ set mousemodel=extend
 set selectmode=mouse
 set title
 set shortmess=atI
+set showmatch
+set clipboard=unnamed
 
 set backspace=indent,eol,start
 set incsearch

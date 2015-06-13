@@ -57,11 +57,7 @@ else
   pushd $BUNDLE_DIR
   git clone https://github.com/scrooloose/nerdtree.git
   SUCCESS=$?
-  if [[ $SUCCESS -eq 0 ]];then
-    ok "added nerdtree, just fine"
-  else
-    warn "error downloading nerdtree"
-  fi
+  is_success $SUCCESS "added nerdtree, just fine" "error downloading nerdtree"
   popd
 fi
 warn "Don't forget to run :Helptags when you first run vim!"
@@ -70,6 +66,12 @@ warn "Don't forget to run :Helptags when you first run vim!"
 #pushd ${BASE_DIR}
 #echo "$(pwd)"
 #popd
+action "Installing Solarized colour scheme"
+pushd $BUNDLE_DIR
+git clone git://github.com/altercation/vim-colors-solarized.git
+SUCCESS=$?
+is_success $SUCCESS "installed Solarized" "error downloading nerdtree"
+popd
 
 #git
 bot "Setting up Git preferences"
@@ -110,4 +112,4 @@ ok "Finished with Homebrew"
 
 #sublime text prefs
 
-ok "Everything is done! Congrats"
+bot "Everything is done! Congrats"
