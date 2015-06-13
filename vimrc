@@ -168,3 +168,5 @@ noremap W b
 nmap <leader>l :set list!<Cr>
 set listchars=tab:▸\ ,eol:¬
 
+" quickly toggle between two files in a split
+nnoremap <leader><leader>e <c-^>
