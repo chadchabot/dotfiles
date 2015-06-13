@@ -50,6 +50,7 @@ PATHOGEN_DEST="${AUTOLOAD_DIR}/pathogen.vim"
 curl -LSso $PATHOGEN_DEST https://tpo.pe/pathogen.vim #I should totally be checking for completion of this
 ok "Pathogen download complete"
 
+action "Installing NERDTree"
 #install nerdtree
 if [ -d ${BUNDLE_DIR}/nerdtree ]; then
   ok "nerdtree already installed. rad."
@@ -66,12 +67,17 @@ warn "Don't forget to run :Helptags when you first run vim!"
 #pushd ${BASE_DIR}
 #echo "$(pwd)"
 #popd
-action "Installing Solarized colour scheme"
-pushd $BUNDLE_DIR
-git clone git://github.com/altercation/vim-colors-solarized.git
-SUCCESS=$?
-is_success $SUCCESS "installed Solarized" "error downloading nerdtree"
-popd
+# TODO: fix this up because it's failing
+action "Installing Solarized theme"
+if [ -d ${BUNDLE_DIR}/vim-colors-solarized ]; then
+  ok "Solarized theme already installed"
+else
+  pushd $BUNDLE_DIR
+  git clone git://github.com/altercation/vim-colors-solarized.git
+  SUCCESS=$?
+  is_success $SUCCESS "installed Solarized" "error downloading nerdtree"
+  popd
+fi
 
 #git
 bot "Setting up Git preferences"
