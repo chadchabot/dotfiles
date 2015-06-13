@@ -2,7 +2,11 @@
 # inspired by everyone else who's ever done such a thing, but mostly Paul Vilchez
 # who turned me on to this whole dotfiles thing, unbeknownst to him
 
+source ./lib.sh
+
 set -e
+
+bot "Setting up your dotfiles for you, you handsome bastard."
 
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BUNDLE_DIR="${BASE_DIR}/vim/bundle"
@@ -22,6 +26,8 @@ MY_NAME="$(whoami)"
 #     a mac in the near term, though using VMs is a big part of my work, so worth
 #     considering
 
+bot "Starting with Vim bits"
+action "cleaning up vim directives"
 #vim dir setup
 if [ -L ~/.vim ]; then
   rm ~/.vim
@@ -33,51 +39,55 @@ ln -Fs ${BASE_DIR}/vimrc ~/.vimrc #this is hella basic, but should suffice for n
 # I don't want to symlink this dir, I want to create and do the installation of stuff on this machine, not carry around the config... right?
 ln -Fs ${BASE_DIR}/vim/ ~/.vim
 
-echo "Setting up vim directories"
+action "Setting up vim directories"
 [ -d $BACKUP_DIR ] || mkdir -p $BACKUP_DIR
 [ -d $BUNDLE_DIR ] || mkdir -p $BUNDLE_DIR
 [ -d $AUTOLOAD_DIR ] || mkdir -p $AUTOLOAD_DIR
 
 #install pathogen
-echo "Downloading pathogen..."
+action "Downloading pathogen..."
 PATHOGEN_DEST="${AUTOLOAD_DIR}/pathogen.vim"
 curl -LSso $PATHOGEN_DEST https://tpo.pe/pathogen.vim #I should totally be checking for completion of this
-echo "Pathogen download complete"
+ok "Pathogen download complete"
 
 #install nerdtree
 if [ -d ${BUNDLE_DIR}/nerdtree ]; then
-  echo "nerdtree already installed. rad."
+  ok "nerdtree already installed. rad."
 else
   pushd $BUNDLE_DIR
   git clone https://github.com/scrooloose/nerdtree.git
   SUCCESS=$?
   if [[ $SUCCESS -eq 0 ]];then
-    echo "added nerdtree, just fine"
+    ok "added nerdtree, just fine"
   else
-    echo "error downloading nerdtree"
+    warn "error downloading nerdtree"
   fi
   popd
 fi
-echo "Don't forget to run :Helptags when you first run vim!"
+warn "Don't forget to run :Helptags when you first run vim!"
 
 #now time to install any other fancy plugins or submodules
-pushd ${BASE_DIR}
-echo "$(pwd)"
-popd
+#pushd ${BASE_DIR}
+#echo "$(pwd)"
+#popd
 
 #git
+bot "Setting up Git preferences"
 #ln -s ${BASE_DIR}/gitconfig ~/.gitconfig #guess this means I'm adding my gitconfig next
 
+
+
 #terminal prefs (what's the difference between input and bash_profile prefs?)
+bot "Setting up terminal prefs"
 if [ -f ~/.inputrc ]; then
   mv ~/.inputrc ~/.inputrc-old
 fi
 ln -Fs ${BASE_DIR}/inputrc ~/.inputrc
-
+ok "Finished with terminal prefs"
 
 # determine the platform you're using, which will determine whether we use
 # homebrew or apt-get (in a far off universe where I may possibly choose a Ubuntu machine again)
-
+bot "Setting up Homebrew and those bits"
 PLATFORM="$(uname -s)"
 case "$(uname -s)" in
   "Darwin")
@@ -85,9 +95,10 @@ case "$(uname -s)" in
     echo "Soon this will install homebrew for you"
     ;;
   "Linux")
-    echo "…good for you I guess?"
+    echo "You're running linux… good for you I guess?"
     ;;
 esac
+ok "Finished with Homebrew"
 
 #if homebrew installed properly, time to grab packages
 # tmux
@@ -98,3 +109,5 @@ esac
 
 
 #sublime text prefs
+
+ok "Everything is done! Congrats"
