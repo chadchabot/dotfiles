@@ -48,8 +48,9 @@ function get_vim_bundle() {
   if [ -d ${1}/${2} ]; then
     ok "${3} already installed"
   else
+    running "${2} not installed. Installing now"
     pushd $1
-    git clone ${4}.git
+    git clone ${4}
     SUCCESS=$?
     is_success $SUCCESS "installed ${3}" "error downloading ${3}"
     popd

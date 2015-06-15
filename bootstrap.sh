@@ -57,10 +57,9 @@ warn "Don't forget to run :Helptags when you first run vim!"
 action "Installing Solarized theme"
 BUNDLE_REPO_NAME="vim-colors-solarized"
 BUNDLE_NAME="Solarized theme"
-BUNDLE_REPO_URL="git://github.com/altercation/vim-colors-solarized.git"
-get_vim_bundle $BUNDLE_DIR $BUNDLE_REPO_NAME $BUNDLE_NAME $BUNDLE_REPO_URL
+BUNDLE_REPO_URL="https://github.com/altercation/vim-colors-solarized.git"
+get_vim_bundle $BUNDLE_DIR $BUNDLE_REPO_NAME "${BUNDLE_NAME}" $BUNDLE_REPO_URL
 
-#git
 bot "Setting up Git preferences"
 #ln -s ${BASE_DIR}/gitconfig ~/.gitconfig #guess this means I'm adding my gitconfig next
 
