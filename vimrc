@@ -97,6 +97,9 @@ noremap L $
 noremap dw daw
 noremap daw dw
 
+" get 'normal' outcome from pressing the backspace key in normal mode
+noremap <BS> x
+
 " look into https://github.com/haya14busa/incsearch.vim for improved searching
 
 " if i'm working with long lines (don't do it!) this moves based on displayed lines,
