@@ -43,3 +43,15 @@ function is_success() {
     warn "$3"
   fi
 }
+
+function get_vim_bundle() {
+  if [ -d ${1}/${2} ]; then
+    ok "${3} already installed"
+  else
+    pushd $1
+    git clone ${4}.git
+    SUCCESS=$?
+    is_success $SUCCESS "installed ${3}" "error downloading ${3}"
+    popd
+  fi
+}

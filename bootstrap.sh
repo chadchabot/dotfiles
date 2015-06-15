@@ -48,39 +48,21 @@ curl -LSso $PATHOGEN_DEST https://tpo.pe/pathogen.vim #I should totally be check
 ok "Pathogen download complete"
 
 action "Installing NERDTree"
-#install nerdtree
-if [ -d ${BUNDLE_DIR}/nerdtree ]; then
-  ok "nerdtree already installed. rad."
-else
-  pushd $BUNDLE_DIR
-  git clone https://github.com/scrooloose/nerdtree.git
-  SUCCESS=$?
-  is_success $SUCCESS "added nerdtree, just fine" "error downloading nerdtree"
-  popd
-fi
+BUNDLE_REPO_NAME="nerdtree"
+BUNDLE_NAME="NERDTree file navigation"
+BUNDLE_REPO_URL="https://github.com/scrooloose/nerdtree.git"
+get_vim_bundle $BUNDLE_DIR $BUNDLE_REPO_NAME $BUNDLE_NAME $BUNDLE_REPO_URL
 warn "Don't forget to run :Helptags when you first run vim!"
 
-#now time to install any other fancy plugins or submodules
-#pushd ${BASE_DIR}
-#echo "$(pwd)"
-#popd
-# TODO: fix this up because it's failing
 action "Installing Solarized theme"
-if [ -d ${BUNDLE_DIR}/vim-colors-solarized ]; then
-  ok "Solarized theme already installed"
-else
-  pushd $BUNDLE_DIR
-  git clone git://github.com/altercation/vim-colors-solarized.git
-  SUCCESS=$?
-  is_success $SUCCESS "installed Solarized" "error downloading nerdtree"
-  popd
-fi
+BUNDLE_REPO_NAME="vim-colors-solarized"
+BUNDLE_NAME="Solarized theme"
+BUNDLE_REPO_URL="git://github.com/altercation/vim-colors-solarized.git"
+get_vim_bundle $BUNDLE_DIR $BUNDLE_REPO_NAME $BUNDLE_NAME $BUNDLE_REPO_URL
 
 #git
 bot "Setting up Git preferences"
 #ln -s ${BASE_DIR}/gitconfig ~/.gitconfig #guess this means I'm adding my gitconfig next
-
-
 
 #terminal prefs (what's the difference between input and bash_profile prefs?)
 bot "Setting up terminal prefs"
