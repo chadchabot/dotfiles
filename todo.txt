@@ -10,3 +10,4 @@
   set foldmethod=indent "fold based on indents
   set foldnestmax=10 "only fold up to 10 levels
   set foldlevel
+- delete a word, or up to the closest capital letter (to cover faster camel case deletion?)
