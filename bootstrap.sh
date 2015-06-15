@@ -16,15 +16,12 @@ AUTOLOAD_DIR="${BASE_DIR}/vim/autoload"
 MY_NAME="$(whoami)"
 
 #todo
-# - ensure that pathogen and any other dependencies are installed
 # - add bash_profile/bashrc
 # - add gitconfig
 # - optionally download dev stuff like homebrew, tmux, screen, etc..
-#   - this one is a bit more complicated, but not unrealistic
-#     may have to do some system detection stuff to make use homebrew or apt-get
-#     depending on the system software, though it's unlikely I'll move away from
-#     a mac in the near term, though using VMs is a big part of my work, so worth
-#     considering
+#   - this one actually isn't that big of a deal, even with the potential of
+#     multiple system architectures/sources for applications. I'm putting this on
+#     hold for now, though, and fleshing out the other bits that are more useful
 
 bot "Starting with Vim bits"
 action "cleaning up vim directives"
