@@ -15,14 +15,6 @@ AUTOLOAD_DIR="${BASE_DIR}/vim/autoload"
 
 MY_NAME="$(whoami)"
 
-#todo
-# - add bash_profile/bashrc
-# - add gitconfig
-# - optionally download dev stuff like homebrew, tmux, screen, etc..
-#   - this one actually isn't that big of a deal, even with the potential of
-#     multiple system architectures/sources for applications. I'm putting this on
-#     hold for now, though, and fleshing out the other bits that are more useful
-
 bot "Starting with Vim bits"
 action "cleaning up vim directives"
 #vim dir setup
@@ -87,12 +79,6 @@ esac
 ok "Finished with Homebrew"
 
 #if homebrew installed properly, time to grab packages
-# tmux
-# screen
-# tree
-# rvm?
-# more
-
 
 #sublime text prefs
 

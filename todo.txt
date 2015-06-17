@@ -1,7 +1,21 @@
+- add bash_profile
+- git config
+- fix the page up mapping to go to the top of the page, because right now it doesn't
 - figure out a snappy and smart way to auto load dotfiles on new machines (look at http://dotfiles.github.io/ for more ideas)
 - also make it so I don't have a duplicate of .vimrc in both ~/ and my repo folder. that's just silly
 - maybe even do some auto-install magic so that I will have tmux, screen, git, and whatever other fanciness I expect to need on future machines
   - that would probably also include mysql, postgress, ruby, rails, python, etc... so maybe that's going to far; at that point I might as well just build a custom vagrant box and use that for all of my dev stuff, and OS X for everything else
+    tmux
+    screen?
+    tree
+    rvm
+    pow?
+    postgres
+    mysql
+    update ruby?
+    rails?
+
+
 - ctags are a thing that was talked about way back in 1st & 2nd year, but i had no exposure or information about it. seems like it's a way to make your codebase searchable for autocompletion and what not. would be very handy. [https://github.com/gorkunov/smartgf.vim]
 - is it possibly to move a selection in visual mode? not expand it, just move the selection line - not the part that was selected. does that make sense?
 - grab sublime text settings (because as much as I'm learning more about how to use vim every day, ST is still a big part of my workflow
