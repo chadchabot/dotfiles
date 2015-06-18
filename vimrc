@@ -65,9 +65,9 @@ set laststatus=2
 noremap v V
 noremap V v
 
-" a little fancy thing to maintain selection in visual mode after indent action
-noremap < <gv
-noremap > >gv
+" split resizing is a pain, let's try this out
+noremap < <C-w><
+noremap > <C-w>>
 
 " sane tab behaviour when in normal mode
 nnoremap < v<<Esc>
