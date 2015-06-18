@@ -173,3 +173,6 @@ set listchars=tab:▸\ ,eol:¬
 
 " quickly toggle between two files in a split
 nnoremap <leader><leader>e <c-^>
+
+" check syntax of coffeescript
+nnoremap <leader><leader>C :!coffee %<Cr>

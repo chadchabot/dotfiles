@@ -5,6 +5,7 @@
 - also make it so I don't have a duplicate of .vimrc in both ~/ and my repo folder. that's just silly
 - maybe even do some auto-install magic so that I will have tmux, screen, git, and whatever other fanciness I expect to need on future machines
   - that would probably also include mysql, postgress, ruby, rails, python, etc... so maybe that's going to far; at that point I might as well just build a custom vagrant box and use that for all of my dev stuff, and OS X for everything else
+    npm
     tmux
     screen?
     tree
@@ -39,3 +40,5 @@
   rails
   aasm
 - show vertical position (to make sure you're lining up in whitespace significant languages, like coffeescript and ruby) with a subtle line
+- word traversal moves moves to the start of the next word, not the end of the current one. I don't think I like that any more. change it (back?)
+- coffeescript syntax check will require npm and coffeescript stuff installed.
