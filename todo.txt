@@ -38,3 +38,4 @@
   rspec
   rails
   aasm
+- show vertical position (to make sure you're lining up in whitespace significant languages, like coffeescript and ruby) with a subtle line
