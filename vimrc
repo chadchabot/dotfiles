@@ -98,7 +98,7 @@ noremap dw daw
 noremap daw dw
 
 " get 'normal' outcome from pressing the backspace key in normal mode
-noremap <BS> x
+noremap <BS> hx
 
 " look into https://github.com/haya14busa/incsearch.vim for improved searching
 
