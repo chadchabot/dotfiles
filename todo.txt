@@ -14,7 +14,7 @@
     mysql
     update ruby?
     rails?
-
+    the silver searcher
 
 - ctags are a thing that was talked about way back in 1st & 2nd year, but i had no exposure or information about it. seems like it's a way to make your codebase searchable for autocompletion and what not. would be very handy. [https://github.com/gorkunov/smartgf.vim]
 - is it possibly to move a selection in visual mode? not expand it, just move the selection line - not the part that was selected. does that make sense?
@@ -26,7 +26,15 @@
   set foldlevel
 - delete a word, or up to the closest capital letter (to cover faster camel case deletion?)
 - split navigation is working, but some tweaks would be nice:
-	- more easily increase size of split [leader leader H/J/K/L] to mirror the navigation direction? I know that breaks the mental modal based on visual layout, because if a split is on the right of the screen, you expect pressed H would make it wider, not narrower.
-	- make it easy to multiply this action: 30[KEYMAPPING]
-	- key mapping to optionally open a file in a new split
+  - more easily increase size of split [leader leader H/J/K/L] to mirror the navigation direction? I know that breaks the mental modal based on visual layout, because if a split is on the right of the screen, you expect pressed H would make it wider, not narrower.
+  - make it easy to multiply this action: 30[KEYMAPPING]
+  - key mapping to optionally open a file in a new split
 - when searching, highlight matches, but maintain highlight until explicitly dismissed (or another search is performed)
+- default gem set to install (make this optional? nah, ruby and rails is amust)
+  awesome_print
+  bundler
+  capistrano
+  devise
+  rspec
+  rails
+  aasm
