@@ -70,8 +70,6 @@ noremap < <C-w><
 noremap > <C-w>>
 
 " sane tab behaviour when in normal mode
-nnoremap < v<<Esc>
-nnoremap > v><Esc>
 nnoremap <S-Tab> v<<Esc>
 nnoremap <Tab> v><Esc>
 
