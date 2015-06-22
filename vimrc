@@ -174,3 +174,7 @@ nnoremap <leader><leader>e <c-^>
 
 " check syntax of coffeescript
 nnoremap <leader><leader>C :!coffee %<Cr>
+
+" easy open/close of NERDTree
+nnoremap <leader>n :NERDTree<Cr>
+nnoremap <leader><leader>n :NERDTreeClose<Cr>
