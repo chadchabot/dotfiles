@@ -1,0 +1,37 @@
+[user]
+	name = Chad Chabot
+	email = chadchabot@gmail.com
+[core]
+	quotepath = false
+	excludesfile = ~/.gitignore
+	editor = /usr/bin/vim
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	hist = log --pretty-format:\"%h %ad | %s%d [%an]\" --graph --date-short
+	type = cat-file -t
+	dump = cat-file -p
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+
+[color "branch"]
+	current = yellow reverse
+	remote = green bold
+	local = blue bold
+
+[color "diff"]
+	meta = blue bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true

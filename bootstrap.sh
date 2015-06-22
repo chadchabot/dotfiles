@@ -53,7 +53,11 @@ BUNDLE_REPO_URL="https://github.com/altercation/vim-colors-solarized.git"
 get_vim_bundle $BUNDLE_DIR $BUNDLE_REPO_NAME "${BUNDLE_NAME}" $BUNDLE_REPO_URL
 
 bot "Setting up Git preferences"
-#ln -s ${BASE_DIR}/gitconfig ~/.gitconfig #guess this means I'm adding my gitconfig next
+if [ -f ~/.gitconfig ]; then
+  mv ~/.gitconfig ~/.gitconfig-old
+fi
+ln -s ${BASE_DIR}/gitconfig ~/.gitconfig 
+ok "Finished setting up git prefs"
 
 #terminal prefs (what's the difference between input and bash_profile prefs?)
 bot "Setting up terminal prefs"
