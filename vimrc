@@ -183,6 +183,7 @@ nnoremap <leader><leader>n :NERDTreeClose<Cr>
 nnoremap <leader><leader>ga :!git add -p<Cr>
 nnoremap <leader><leader>gc :!git commit<Cr>
 nnoremap <leader><leader>gd :!git diff<Cr>
+nnoremap <leader><leader>gdh :!git diff HEAD<Cr>
 nnoremap <leader><leader>gl :!git l<Cr>
 nnoremap <leader><leader>glp :!git log -p<Cr>
 nnoremap <leader><leader>gpp :!git push<Cr>
