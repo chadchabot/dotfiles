@@ -43,3 +43,4 @@
 - word traversal moves moves to the start of the next word, not the end of the current one. I don't think I like that any more. change it (back?)
 - coffeescript syntax check will require npm and coffeescript stuff installed.
 - search dir/project/entire tree for a string (like the "find all in folder" option that sublime text has) maybe this is what AG is going to be helpful with?
+- prettify JSON output, and syntax highlighting

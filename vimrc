@@ -178,3 +178,6 @@ nnoremap <leader><leader>C :!coffee %<Cr>
 " easy open/close of NERDTree
 nnoremap <leader>n :NERDTree<Cr>
 nnoremap <leader><leader>n :NERDTreeClose<Cr>
+
+" easy add to git
+nnoremap <leader><leader>ga :!git add -p<Cr>
