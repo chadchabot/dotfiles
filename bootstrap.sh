@@ -83,6 +83,7 @@ esac
 ok "Finished with Homebrew"
 
 #if homebrew installed properly, time to grab packages
+brew install the_silver_searcher
 
 #sublime text prefs
 
