@@ -46,3 +46,4 @@
 - prettify JSON output, and syntax highlighting
 - how can I capture repeated keystrokes? As in, when I want to move between splits, having to press <L><L>h/j/k/l is a pain. I'd rather press <L><L>hhh to move three splits to the left. Would I do that with a macro? function? or is there a proper method to capture it as a standard key mapping?
 - better/more obvious highlight of the active split? (add colour to the status bar maybe)
+- some sort of quick toggle for the active split to be larger than others?
