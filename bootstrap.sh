@@ -52,6 +52,12 @@ BUNDLE_NAME="Solarized theme"
 BUNDLE_REPO_URL="https://github.com/altercation/vim-colors-solarized.git"
 get_vim_bundle $BUNDLE_DIR $BUNDLE_REPO_NAME "${BUNDLE_NAME}" $BUNDLE_REPO_URL
 
+action "Installing syntax packages"
+BUNDLE_REPO_NAME="vim-coffee-script"
+BUNDLE_NAME="Vim CoffeeScript"
+BUNDLE_REPO_URL="https://github.com/kchmck/vim-coffee-script.git"
+get_vim_bundle $BUNDLE_DIR $BUNDLE_REPO_NAME "${BUNDLE_NAME}" $BUNDLE_REPO_URL
+
 bot "Setting up Git preferences"
 if [ -f ~/.gitconfig ]; then
   mv ~/.gitconfig ~/.gitconfig-old
