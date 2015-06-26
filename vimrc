@@ -50,6 +50,11 @@ set expandtab
 set relativenumber
 set scrolloff=10
 set cursorline
+set cursorcolumn
+"auto commands? That is interesting. Could use those for window resizing?
+"au WinLeave * set nocursorline nocursorcolumn
+"au WinEnter * set cursorline cursorcolumn
+
 set autoindent
 set copyindent
 set visualbell
