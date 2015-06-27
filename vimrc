@@ -196,3 +196,11 @@ nnoremap <leader><leader>gpp :!git push<Cr>
 "copy to shared clipboard; maybe remap the default y/p?
 vnoremap <leader>y "*y
 vnoremap <leader>p "*p
+
+"an example of how autocommands can work
+"use it to set tabstop and other whitespace prefs on a per language basis
+"or to set up a linting/compiling shortcut key that will be language specific
+"au Filetype ruby call SetRubyOptions()
+"function SetRubyOptions()
+"  echo "You're working on a Ruby file!"
+"endfunction

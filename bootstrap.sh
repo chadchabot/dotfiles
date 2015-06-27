@@ -58,6 +58,12 @@ BUNDLE_NAME="Vim CoffeeScript"
 BUNDLE_REPO_URL="https://github.com/kchmck/vim-coffee-script.git"
 get_vim_bundle $BUNDLE_DIR $BUNDLE_REPO_NAME "${BUNDLE_NAME}" $BUNDLE_REPO_URL
 
+action "Installing vim-airline status bar tool"
+BUNDLE_REPO_NAME="vim-airline"
+BUNDLE_NAME="Vim Airline"
+BUNDLE_REPO_URL="https://github.com/bling/vim-airline.git"
+get_vim_bundle $BUNDLE_DIR $BUNDLE_REPO_NAME "${BUNDLE_NAME}" $BUNDLE_REPO_URL
+
 bot "Setting up Git preferences"
 if [ -f ~/.gitconfig ]; then
   mv ~/.gitconfig ~/.gitconfig-old
