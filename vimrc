@@ -178,6 +178,9 @@ set listchars=tab:▸\ ,eol:¬
 nnoremap <leader><leader>e <c-^>
 
 " check syntax of coffeescript
+" maybe change this to make it a more general purpose syntax aware linter?
+" so when a file is opened an autocommand runs and sets up a key mapping for
+" the linter/compiler/whatever tool is appropriate for that lang?
 nnoremap <leader><leader>C :!coffee %<Cr>
 
 " easy open/close of NERDTree
@@ -194,6 +197,8 @@ nnoremap <leader><leader>glp :!git log -p<Cr>
 nnoremap <leader><leader>gpp :!git push<Cr>
 
 "copy to shared clipboard; maybe remap the default y/p?
+nnoremap <leader>y "*y
+nnoremap <leader>p "*y
 vnoremap <leader>y "*y
 vnoremap <leader>p "*p
 
