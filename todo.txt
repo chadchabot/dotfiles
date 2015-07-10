@@ -50,3 +50,4 @@
 - better/more obvious highlight of the active split? (add colour to the status bar maybe)
 - some sort of quick toggle for the active split to be larger than others?
 - deleting things and overwriting the contents of the active register is a huge pain in the ass. Disable that, or set up a keymapping, or something.
+- why can't I see the git branch I'm currently on in Vim? Maybe I haven't updated my dotfiles in a while and need to do that still.
