@@ -138,11 +138,10 @@ noremap <leader>F :%s/
 map q: :q
 
 " force myself to use the hjkl keys for navigation
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-
-nnoremap <left> <nop>
-nnoremap <right> <nop>
+nnoremap <up> <C-w>+
+nnoremap <down> <C-W>-
+nnoremap <left> <C-w><
+nnoremap <right> <C-w>>
 inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
