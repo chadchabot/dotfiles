@@ -64,6 +64,13 @@ BUNDLE_NAME="Vim Airline"
 BUNDLE_REPO_URL="https://github.com/bling/vim-airline.git"
 get_vim_bundle $BUNDLE_DIR $BUNDLE_REPO_NAME "${BUNDLE_NAME}" $BUNDLE_REPO_URL
 
+
+action "Installing vim indent guide tool"
+BUNDLE_REPO_NAME="vim-indent-guides"
+BUNDLE_NAME="Vim Indent Guides"
+BUNDLE_REPO_URL="https://github.com/nathanaelkane/vim-indent-guides.git"
+get_vim_bundle $BUNDLE_DIR $BUNDLE_REPO_NAME "${BUNDLE_NAME}" $BUNDLE_REPO_URL
+
 bot "Setting up Git preferences"
 if [ -f ~/.gitconfig ]; then
   mv ~/.gitconfig ~/.gitconfig-old
