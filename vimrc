@@ -42,6 +42,7 @@ set showmatch
 set clipboard=unnamed
 
 set backspace=indent,eol,start
+set hlsearch
 set incsearch
 set ignorecase "case insensitive searching
 set smartcase "however, if I *do* include a capital letter, search is case sensitive
