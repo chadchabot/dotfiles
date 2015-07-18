@@ -166,6 +166,7 @@ nnoremap A i
 " while in insert mode, jk is a quick way to back out 
 inoremap jk <Esc>
 inoremap jj <Esc>
+inoremap kj <Esc>
 " I like how shift+tab does the opposite of tab, so it makes sense to do the same for moving between words
 noremap W b
 
