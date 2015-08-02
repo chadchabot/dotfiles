@@ -36,6 +36,10 @@ function error() {
   echo -e "$COL_RED[error]$COL_RESET "$1
 }
 
+# expects 3 arguements
+#  $1 - function being called
+#  $2 - success message
+#  $3 - error message
 function is_success() {
   if [[ $1 -eq 0 ]]; then
     ok "$2"
