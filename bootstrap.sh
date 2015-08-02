@@ -103,6 +103,7 @@ ok "Finished with Homebrew"
 
 #if homebrew installed properly, time to grab packages
 brew install the_silver_searcher
+brew install tree
 
 #sublime text prefs
 

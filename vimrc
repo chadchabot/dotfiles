@@ -56,6 +56,8 @@ set expandtab
 set relativenumber
 set scrolloff=10
 set cursorline
+au WinLeave * setlocal nocursorline "maybe I like this, maybe I don't
+au WinEnter * setlocal cursorline
 set cursorcolumn
 "auto commands? That is interesting. Could use those for window resizing?
 "au WinLeave * set nocursorline nocursorcolumn
@@ -215,3 +217,8 @@ vnoremap <leader>p "*p
 "function SetRubyOptions()
 "  echo "You're working on a Ruby file!"
 "endfunction
+
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
+  set grepformat=%f:%l:%c:%m
+endif
