@@ -83,6 +83,13 @@ if [ -f ~/.inputrc ]; then
   mv ~/.inputrc ~/.inputrc-old
 fi
 ln -Fs ${BASE_DIR}/inputrc ~/.inputrc
+
+bot "Setting up terminal extras"
+if [ -f ~/.functions ]; then
+  mv ~/.functions ~/.functions-old
+fi
+ln -Fs ${BASE_DIR}/functions ~/.functions
+source "./functions"
 ok "Finished with terminal prefs"
 
 # determine the platform you're using, which will determine whether we use
@@ -102,6 +109,7 @@ ok "Finished with Homebrew"
 
 #if homebrew installed properly, time to grab packages
 brew install the_silver_searcher
+brew install tree
 
 #sublime text prefs
 

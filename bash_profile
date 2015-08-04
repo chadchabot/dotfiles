@@ -1,4 +1,7 @@
 #just getting started. will pull in prefs from other machines soon
 
-alias p='pushd'
-alias o='popd'
+#autocorrect minor typos when using 'cd'
+shopt -s cdspell;
+
+export EDITOR=vim
+export VISUAL-vim
