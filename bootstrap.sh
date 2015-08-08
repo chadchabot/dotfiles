@@ -29,8 +29,9 @@ ln -Fs ${BASE_DIR}/vimrc ~/.vimrc #this is hella basic, but should suffice for n
 ln -Fs ${BASE_DIR}/vim/ ~/.vim
 
 action "Setting up vim directories"
-[ -d $BACKUP_DIR ] || mkdir -p $BACKUP_DIR
-[ -d $BUNDLE_DIR ] || mkdir -p $BUNDLE_DIR
+#does the DIR exist? if not, create it
+[ -d $BACKUP_DIR ]   || mkdir -p $BACKUP_DIR
+[ -d $BUNDLE_DIR ]   || mkdir -p $BUNDLE_DIR
 [ -d $AUTOLOAD_DIR ] || mkdir -p $AUTOLOAD_DIR
 
 #install pathogen
@@ -41,25 +42,25 @@ ok "Pathogen download complete"
 
 #install vim bundles
 action "Installing NERDTree"
-declare -a nerd_tree=("nerdtree" "NERDTree file navigation" "https://github.com/scrooloose/nerdtree.git")
-get_vim_bundle $BUNDLE_DIR "${nerd_tree[0]}" "${nerd_tree[1]}" "${nerd_tree[2]}"
+declare -a nerd_tree=("NERDTree file navigation" "https://github.com/scrooloose/nerdtree.git")
+get_vim_bundle $BUNDLE_DIR "${nerd_tree[0]}" "${nerd_tree[1]}"
 warn "Don't forget to run :Helptags when you first run vim!"
 
 action "Installing Solarized theme"
-declare -a solarized_theme=("vim-colors-solarized" "Solarized theme" "https://github.com/altercation/vim-colors-solarized.git")
-get_vim_bundle $BUNDLE_DIR "${solarized_theme[0]}" "${solarized_theme[1]}" "${solarized_theme[2]}"
+declare -a solarized_theme=("Solarized theme" "https://github.com/altercation/vim-colors-solarized.git")
+get_vim_bundle $BUNDLE_DIR "${solarized_theme[0]}" "${solarized_theme[1]}"
 
 action "Installing syntax packages"
-declare -a coffeescript_syntax=("vim-coffee-script" "Vim Coffeescript syntax package" "https://github.com/kchmck/vim-coffee-script.git")
-get_vim_bundle $BUNDLE_DIR "${coffeescript_syntax[0]}" "${coffeescript_syntax[1]}" "${coffeescript_syntax[2]}"
+declare -a coffeescript_syntax=("Vim Coffeescript syntax package" "https://github.com/kchmck/vim-coffee-script.git")
+get_vim_bundle $BUNDLE_DIR "${coffeescript_syntax[0]}" "${coffeescript_syntax[1]}"
 
 action "Installing vim-airline status bar tool"
-declare -a airline_tool=("vim-airline" "Vim Airline status bar tool" "https://github.com/bling/vim-airline.git")
-get_vim_bundle $BUNDLE_DIR "${airline_tool[0]}" "${airline_tool[1]}" "${airline_tool[2]}"
+declare -a airline_tool=("Vim Airline status bar tool" "https://github.com/bling/vim-airline.git")
+get_vim_bundle $BUNDLE_DIR "${airline_tool[0]}" "${airline_tool[1]}"
 
 action "Installing vim indent guide tool"
-declare -a indent_guide=("vim-indent-guides" "Vim Indent Guides" "https://github.com/nathanaelkane/vim-indent-guides.git")
-get_vim_bundle $BUNDLE_DIR "${indent_guide[0]}" "${indent_guide[1]}" "${indent_guide[2]}"
+declare -a indent_guide=("Vim Indent Guides" "https://github.com/nathanaelkane/vim-indent-guides.git")
+get_vim_bundle $BUNDLE_DIR "${indent_guide[0]}" "${indent_guide[1]}"
 
 bot "Setting up Git preferences"
 if [ -f ~/.gitconfig ]; then

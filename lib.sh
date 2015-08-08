@@ -51,17 +51,19 @@ function is_success() {
 # expects 4 args
 #  $1 path to bundle dir
 #  $2 bundle repo name
-#  $3 bundle name
-#  $4 bundle repo url
+#  $3 bundle repo url
 function get_vim_bundle() {
-  if [ -d ${1}/${2} ]; then
-    ok "${3} already installed"
+  #pull out bundle name from bundle repo url
+  FILE_NAME=${3##*/}
+  BUNDLE_NAME=`echo "$FILE_NAME" | cut -f 1 -d '.'`
+  if [ -d ${1}/${BUNDLE_NAME} ]; then
+    ok "${BUNDLE_NAME} already installed"
   else
     running "${2} not installed. Installing now"
     pushd $1
-    git clone ${4}
+    git clone ${3}
     SUCCESS=$?
-    is_success $SUCCESS "installed ${3}" "error downloading ${3}"
+    is_success $SUCCESS "installed ${BUNDLE_NAME}" "error downloading ${BUNDLE_NAME}"
     popd
   fi
 }
