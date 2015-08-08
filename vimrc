@@ -90,7 +90,7 @@ nnoremap <Tab> v><Esc>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
-" pressing enter should be different from navigating up/down; 
+" pressing enter should be different from navigating up/down;
 " just add the damn newline on the line that i'm on, shifting things down
 nnoremap <Enter> ^i<Cr><Esc>
 " of course, maybe you mean to put the newline below the current line. I can't
@@ -103,7 +103,7 @@ nnoremap <S-Enter> :$<Cr><Esc>
 noremap H ^
 noremap L $
 
-" it's way more common that I'm deleting an entire word 
+" it's way more common that I'm deleting an entire word
 " than deleting from my current cursor position to the end of the word
 noremap dw daw
 noremap daw dw
@@ -127,16 +127,18 @@ nnoremap ; :
 let mapleader="\<Space>"
 " quick common actions
 noremap <leader>w :w<Cr>
-noremap <leader>e :e 
+noremap <leader>e :e
+
 " would be really cool to have this do something smart based on file context
 noremap <leader>q :q<cr>
+noremap <leader>Q :q!<cr>
 noremap <leader>z <C-z>
 
 " page up/down is obnoxious with standard keys; may use the leader?
 noremap <leader>k <C-b>
 noremap <leader>j <C-d>
 " easier redo, though I was thinking about making it shift-u, like with tabbing
-noremap <leader>r <C-r> 
+noremap <leader>r <C-r>
 
 " faster search and replace
 noremap <leader>f :s/
@@ -171,7 +173,7 @@ nnoremap <leader><leader>l <C-W><C-L>
 nnoremap i A
 nnoremap A i
 
-" while in insert mode, jk is a quick way to back out 
+" while in insert mode, jk is a quick way to back out
 inoremap jk <Esc>
 inoremap jj <Esc>
 inoremap kj <Esc>
