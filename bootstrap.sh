@@ -39,37 +39,29 @@ PATHOGEN_DEST="${AUTOLOAD_DIR}/pathogen.vim"
 curl -LSso $PATHOGEN_DEST https://tpo.pe/pathogen.vim #I should totally be checking for completion of this
 ok "Pathogen download complete"
 
+#install vim bundles
+
+
 action "Installing NERDTree"
-BUNDLE_REPO_NAME="nerdtree"
-BUNDLE_NAME="NERDTree file navigation"
-BUNDLE_REPO_URL="https://github.com/scrooloose/nerdtree.git"
-get_vim_bundle $BUNDLE_DIR $BUNDLE_REPO_NAME $BUNDLE_NAME $BUNDLE_REPO_URL
+declare -a nerd_tree=("nerdtree" "NERDTree file navigation" "https://github.com/scrooloose/nerdtree.git")
+get_vim_bundle $BUNDLE_DIR "{$nerd_tree[0]}" "$nerd_tree[1]}" "${nerd_tree[2]}" 
 warn "Don't forget to run :Helptags when you first run vim!"
 
 action "Installing Solarized theme"
-BUNDLE_REPO_NAME="vim-colors-solarized"
-BUNDLE_NAME="Solarized theme"
-BUNDLE_REPO_URL="https://github.com/altercation/vim-colors-solarized.git"
-get_vim_bundle $BUNDLE_DIR $BUNDLE_REPO_NAME "${BUNDLE_NAME}" $BUNDLE_REPO_URL
+declare -a solarized_theme=("vim-colors-solarized" "Solarized theme" "https://github.com/altercation/vim-colors-solarized.git")
+get_vim_bundle $BUNDLE_DIR "{$solarized_theme[0]}" "$solarized_theme[1]}" "${solarized_theme[2]}" 
 
 action "Installing syntax packages"
-BUNDLE_REPO_NAME="vim-coffee-script"
-BUNDLE_NAME="Vim CoffeeScript"
-BUNDLE_REPO_URL="https://github.com/kchmck/vim-coffee-script.git"
-get_vim_bundle $BUNDLE_DIR $BUNDLE_REPO_NAME "${BUNDLE_NAME}" $BUNDLE_REPO_URL
+declare -a coffeescript_syntax=("vim-coffee-script" "Vim Coffeescript syntax package" "https://github.com/kchmck/vim-coffee-script.git")
+get_vim_bundle $BUNDLE_DIR "{$coffeescript_syntax[0]}" "$coffeescript_syntax[1]}" "${coffeescript_syntax[2]}" 
 
 action "Installing vim-airline status bar tool"
-BUNDLE_REPO_NAME="vim-airline"
-BUNDLE_NAME="Vim Airline"
-BUNDLE_REPO_URL="https://github.com/bling/vim-airline.git"
-get_vim_bundle $BUNDLE_DIR $BUNDLE_REPO_NAME "${BUNDLE_NAME}" $BUNDLE_REPO_URL
-
+declare -a airline_tool=("vim-airline" "Vim Airline status bar tool" "https://github.com/bling/vim-airline.git")
+get_vim_bundle $BUNDLE_DIR "{$airline_tool[0]}" "$airline_tool[1]}" "${airline_tool[2]}" 
 
 action "Installing vim indent guide tool"
-BUNDLE_REPO_NAME="vim-indent-guides"
-BUNDLE_NAME="Vim Indent Guides"
-BUNDLE_REPO_URL="https://github.com/nathanaelkane/vim-indent-guides.git"
-get_vim_bundle $BUNDLE_DIR $BUNDLE_REPO_NAME "${BUNDLE_NAME}" $BUNDLE_REPO_URL
+declare -a indent_guide=("vim-indent-guides" "Vim Indent Guides" "https://github.com/nathanaelkane/vim-indent-guides.git")
+get_vim_bundle $BUNDLE_DIR "{$indent_guide[0]}" "$indent_guide[1]}" "${indent_guide[2]}"
 
 bot "Setting up Git preferences"
 if [ -f ~/.gitconfig ]; then

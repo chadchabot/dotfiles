@@ -48,6 +48,11 @@ function is_success() {
   fi
 }
 
+# expects 4 args
+#  $1 path to bundle dir
+#  $2 bundle repo name
+#  $3 bundle name
+#  $4 bundle repo url
 function get_vim_bundle() {
   if [ -d ${1}/${2} ]; then
     ok "${3} already installed"
