@@ -103,9 +103,11 @@ esac
 ok "Finished with Homebrew"
 
 #if homebrew installed properly, time to grab packages
-brew install the_silver_searcher
-brew install tree
-
+declare -a brew_packages=("the_silver_searcher" "tree" "httpie")
+for package in "${brew_packages[@]}"
+do
+  brew install "${package}"
+done
 #sublime text prefs
 
 bot "Everything is done! Congrats"
