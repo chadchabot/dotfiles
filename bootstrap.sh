@@ -54,6 +54,9 @@ action "Installing syntax packages"
 declare -a coffeescript_syntax=("Vim Coffeescript syntax package" "https://github.com/kchmck/vim-coffee-script.git")
 get_vim_bundle $BUNDLE_DIR "${coffeescript_syntax[0]}" "${coffeescript_syntax[1]}"
 
+declare -a arduino_syntax=("Arduino syntax package" "https://github.com/sudar/vim-arduino-syntax.git")
+get_vim_bundle $BUNDLE_DIR "${arduino_syntax[0]}" "${arduino_syntax[1]}"
+
 action "Installing vim-airline status bar tool"
 declare -a airline_tool=("Vim Airline status bar tool" "https://github.com/bling/vim-airline.git")
 get_vim_bundle $BUNDLE_DIR "${airline_tool[0]}" "${airline_tool[1]}"
