@@ -5,6 +5,10 @@
   quotepath = false
   excludesfile = ~/.gitignore
   editor = /usr/bin/vim
+
+[commit]
+  template = ~/.gitmessage
+
 [alias]
   co = checkout
   ci = commit

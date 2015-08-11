@@ -70,6 +70,7 @@ if [ -f ~/.gitconfig ]; then
   mv ~/.gitconfig ~/.gitconfig-old
 fi
 ln -s ${BASE_DIR}/gitconfig ~/.gitconfig
+ln -s ${BASE_DIR}/gitmessage ~/.gitmessage
 ok "Finished setting up git prefs"
 
 #terminal prefs (what's the difference between input and bash_profile prefs?)
