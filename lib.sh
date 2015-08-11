@@ -67,3 +67,11 @@ function get_vim_bundle() {
     popd
   fi
 }
+
+function install_brew_package() {
+  if brew list -l | grep -q ${1}; then
+    ok "${1} already installed"
+  else
+    brew install "${1}"
+  fi
+}

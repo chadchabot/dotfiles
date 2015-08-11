@@ -106,7 +106,7 @@ ok "Finished with Homebrew"
 declare -a brew_packages=("the_silver_searcher" "tree" "httpie")
 for package in "${brew_packages[@]}"
 do
-  brew install "${package}"
+  install_brew_package $package
 done
 #sublime text prefs
 
