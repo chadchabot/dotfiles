@@ -2,3 +2,13 @@
 function md() {
   mkdir -p "$@" && cd "$@"
 }
+
+#using arcanist? Then you may end up with a bunch of branches named
+#Arcpath-XXX-N littering your repos
+#delete them from your local repo with this
+function clean_arcpatch(){
+  for ref in $(git for-each-ref --format='%(refname)' refs/heads/arcpatch*); do
+    branch_name=`echo $ref | cut -f 3 -d '/'`
+    $(git branch -D $branch_name)
+  done
+}
