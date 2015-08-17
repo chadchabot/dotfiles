@@ -127,7 +127,7 @@ nnoremap ; :
 let mapleader="\<Space>"
 " quick common actions
 noremap <leader>w :w<Cr>
-noremap <leader>e :e
+noremap <leader>e :e 
 
 " would be really cool to have this do something smart based on file context
 noremap <leader>q :q<cr>
