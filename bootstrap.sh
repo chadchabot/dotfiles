@@ -90,25 +90,33 @@ ok "Finished with terminal prefs"
 
 # determine the platform you're using, which will determine whether we use
 # homebrew or apt-get (in a far off universe where I may possibly choose a Ubuntu machine again)
-bot "Setting up Homebrew and those bits"
 PLATFORM="$(uname -s)"
 case "$(uname -s)" in
   "Darwin")
     echo "You're running OS X. This is good."
     echo "Soon this will install homebrew for you"
+    bot "Setting up Homebrew and those bits"
+    # I know, I know. installing arbitrary stuff pulled via curl is bad news bears
+    #check if homebrew is installed?
+    if brew help | grep -q "Example usage:"; then
+      #installed, rad
+      ok "Homebrew already installed"
+    else
+      action "Installing Homebrew now"
+      #install_homebrew
+    fi
+    install_brews
+    #install_casks #once I'm sure that this is a good thing, I'll turn it on, but it needs to do things like check whether those applications are already installed and other checks.
+    #maybe move that stuff over to a "first run" type script, because so far bootstrap.sh can be used almost any time, anywhere, with little to no bad news
+    ok "Finished with Homebrew and brews"
     ;;
   "Linux")
     echo "You're running linux… good for you I guess?"
+    # this should use apt-get instead, but we'll worry about that later, if ever
     ;;
 esac
-ok "Finished with Homebrew"
 
-#if homebrew installed properly, time to grab packages
-declare -a brew_packages=("the_silver_searcher" "tree" "httpie")
-for package in "${brew_packages[@]}"
-do
-  install_brew_package $package
-done
+
 #sublime text prefs
 
 bot "Everything is done! Congrats"

@@ -36,6 +36,11 @@ function error() {
   echo -e "$COL_RED[error]$COL_RESET "$1
 }
 
+function get_confirmation() {
+  #have something here to allow for a yes/no dialog
+  echo ''
+}
+
 # expects 3 arguements
 #  $1 - function being called
 #  $2 - success message
@@ -66,6 +71,24 @@ function get_vim_bundle() {
     is_success $SUCCESS "installed ${BUNDLE_NAME}" "error downloading ${BUNDLE_NAME}"
     popd
   fi
+}
+
+function install_homebrew() {
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+}
+
+function install_brews() {
+  #if homebrew installed properly, time to grab packages
+  declare -a brew_packages=("caskroom/cask/brew-cask" "the_silver_searcher" "tree" "httpie")
+  for package in "${brew_packages[@]}"
+  do
+    install_brew_package $package
+  done
+}
+
+function install_casks() {
+  #install things like VLC, google chrome, firefox, iterm2
+  declare -a cask_packages=("vlc" "google-chrome" "firefox" "iterm2" "carbon-copy-cloner")
 }
 
 function install_brew_package() {
