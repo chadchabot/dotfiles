@@ -1,0 +1,36 @@
+alias p='pushd'
+alias o='popd'
+
+alias ..="cd .."
+alias cd..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+#pretty ls output
+alias l.="ls -dG .*"
+alias ll="ls -lG"
+alias ls="ls -G"
+
+alias grep="grep --color"
+
+#shortcuts
+alias g="git"
+alias v="vim"
+
+alias fs="stat -f \"%z bytes\"" #get the size of a file
+
+#grab just the headers from curl
+alias icurl="curl -I"
+
+#list only directories
+alias lsd='ls -l | grep "^d"'
+
+#typos
+alias gti=git
+alias brwe=brew
+
+#IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en1"
+alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
