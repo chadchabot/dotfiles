@@ -9,6 +9,16 @@ function md() {
 function clean_arcpatch(){
   for ref in $(git for-each-ref --format='%(refname)' refs/heads/arcpatch*); do
     branch_name=`echo $ref | cut -f 3 -d '/'`
-    $(git branch -D $branch_name)
+    echo $(git branch -D $branch_name)
   done
 }
+
+function clean_hotfixes(){
+  #TODO: count number of refs that match, and how many are deleted
+  #TODO: if there are no branches matching the name/pattern, say so
+	for ref in $(git for-each-ref --format='%(refname)' refs/heads/hotfix*); do
+		branch_name=`echo $ref | cut -f 3 -d '/'`
+    echo $(git branch -D $branch_name)
+  done
+}
+
