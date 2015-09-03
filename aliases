@@ -14,6 +14,12 @@ alias ls="ls -G"
 
 alias grep="grep --color"
 
+#run last command again
+#I know, it's dumb and more typing, but it's friendly
+alias again='!!'
+#run last command as sudo
+alias plz='sudo !!'
+
 #shortcuts
 alias g="git"
 alias v="vim"
@@ -25,6 +31,9 @@ alias icurl="curl -I"
 
 #list only directories
 alias lsd='ls -l | grep "^d"'
+
+#use quicklook from the command line
+alias ql='qlmanage -p'
 
 #typos
 alias gti=git
