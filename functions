@@ -26,3 +26,25 @@ function clean_hotfixes(){
   done
 }
 
+#should operate very similar to pushd
+#allow you to switch between git branches quickly
+function pushbr(){
+  #TODO: where/how does pushd/popd store the directory stack?
+  #Cheat by putting it in an environment variable for now?
+  #
+  # verify that destination branch exists
+    # lookup in local branches
+  # stash current changes
+  # store the id/ref of the stash
+  # get current branch name
+  # switch to branch specified by arg
+  #
+  #http://stackoverflow.com/questions/9916551/pushd-popd-global-directory-stac
+}
+
+#should operate very similar to pushd
+#allow you to switch between git branches quickly
+function popbr(){
+  # reverse of pushbr
+}
+
