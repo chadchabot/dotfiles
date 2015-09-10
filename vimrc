@@ -192,7 +192,7 @@ nnoremap <leader><leader>e <c-^>
 " maybe change this to make it a more general purpose syntax aware linter?
 " so when a file is opened an autocommand runs and sets up a key mapping for
 " the linter/compiler/whatever tool is appropriate for that lang?
-nnoremap <leader><leader>C :!coffee %<Cr>
+autocmd FileType coffee nnoremap <leader><leader>C :!coffee %<Cr>
 
 " easy open/close of NERDTree
 nnoremap <leader>n :NERDTree<Cr>
