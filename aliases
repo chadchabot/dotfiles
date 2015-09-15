@@ -22,6 +22,9 @@ alias plz='sudo !!'
 
 #shortcuts
 alias g="git"
+alias gcb="git checkout -b"
+alias gco="git checkout"
+
 alias v="vim"
 
 alias fs="stat -f \"%z bytes\"" #get the size of a file

@@ -48,3 +48,11 @@ function popbr(){
   # reverse of pushbr
 }
 
+# far too clever way to do what should be a simple task
+# TODO: make sure this works!
+function open_files_matching(){
+	SEARCH_REGEX = $1
+	PATH = $2
+  ag -l $SEARCH_REGEX $PATH | xargs -o vim -p
+}
+
