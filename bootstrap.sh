@@ -86,6 +86,14 @@ if [ -f ~/.functions ]; then
 fi
 ln -Fs ${BASE_DIR}/functions ~/.functions
 source "./functions"
+
+#TODO: add aliases to terminal prefs
+#if [ -f ~/.aliases ]; then
+  #mv ~/.aliases ~/.aliases-old
+#fi
+#ln -Fs ${BASE_DIR}/aliases ~/.aliases
+#source "./aliases"
+
 ok "Finished with terminal prefs"
 
 # determine the platform you're using, which will determine whether we use

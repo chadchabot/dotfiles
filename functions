@@ -40,19 +40,25 @@ function pushbr(){
   # switch to branch specified by arg
   #
   #http://stackoverflow.com/questions/9916551/pushd-popd-global-directory-stac
+  echo hi
 }
 
 #should operate very similar to pushd
 #allow you to switch between git branches quickly
 function popbr(){
   # reverse of pushbr
+  echo hi
 }
 
 # far too clever way to do what should be a simple task
 # TODO: make sure this works!
 function open_files_matching(){
-	SEARCH_REGEX = $1
-	PATH = $2
-  ag -l $SEARCH_REGEX $PATH | xargs -o vim -p
+  SEARCH_REGEX=$1
+  PATH=$2
+  #TODO: only open if there are matches, else give an error message
+  #TODO: why is this failing on a "ag: command not found" error?
+  FILE_LIST=$(ag -l $SEARCH_REGEX $PATH)
+  echo $FILE_LIST
+  #| xargs -o vim -p
 }
 
