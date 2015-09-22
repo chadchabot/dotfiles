@@ -4,4 +4,4 @@
 shopt -s cdspell;
 
 export EDITOR=vim
-export VISUAL-vim
+export VISUAL=vim
