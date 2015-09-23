@@ -87,7 +87,7 @@ function install_brews() {
 }
 
 function install_casks() {
-  declare -a cask_packages=("vlc" "google-chrome" "firefox" "iterm2" "carbon-copy-cloner")
+  declare -a cask_packages=("vlc" "google-chrome" "firefox" "iterm2" "carbon-copy-cloner spectacle")
 }
 
 function install_brew_package() {
