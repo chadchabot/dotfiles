@@ -3,6 +3,9 @@ function md() {
   mkdir -p "$@" && cd "$@"
 }
 
+#typing pbpaste & pbcopy is a pain.
+#I think what this does is checks if there's anything in the clipboard, and
+#paste it if it is, else copy what follows
 function clip() {
   [ -t 0 ] && pbpaste || pbcopy;
 }
@@ -11,6 +14,7 @@ function clip() {
 #Arcpath-XXX-N littering your repos
 #delete them from your local repo with this
 function clean_arcpatch(){
+  #TODO: check if arcanist is installed
   for ref in $(git for-each-ref --format='%(refname)' refs/heads/arcpatch*); do
     branch_name=`echo $ref | cut -f 3 -d '/'`
     echo $(git branch -D $branch_name)
@@ -40,14 +44,14 @@ function pushbr(){
   # switch to branch specified by arg
   #
   #http://stackoverflow.com/questions/9916551/pushd-popd-global-directory-stac
-  echo hi
+  echo "pushbr()"
 }
 
 #should operate very similar to pushd
 #allow you to switch between git branches quickly
 function popbr(){
   # reverse of pushbr
-  echo hi
+  echo "popbr()"
 }
 
 # far too clever way to do what should be a simple task

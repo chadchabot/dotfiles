@@ -87,12 +87,14 @@ function install_brews() {
 }
 
 function install_casks() {
-  declare -a cask_packages=("vlc" "google-chrome" "firefox" "iterm2" "carbon-copy-cloner spectacle")
+  declare -a cask_packages=("vlc" "google-chrome" "firefox" "iterm2" "carbon-copy-cloner" "spectacle")
 }
 
 function install_brew_package() {
-  if brew list -l | grep -q ${1}; then
-    ok "${1} already installed"
+  #TODO: this is hacky. find a better way
+  BREW_NAME=`echo "${1}" | cut -f 3 -d '/'`
+  if brew list -l | grep -q ${BREW_NAME}; then
+    ok "${BREW_NAME} already installed"
   else
     brew install "${1}"
   fi

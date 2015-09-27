@@ -18,9 +18,9 @@ MY_NAME="$(whoami)"
 bot "Starting with Vim bits"
 action "cleaning up vim directives"
 #vim dir setup
-if [ -L ~/.vim ]; then
+if [ -L ~/.vim ]; then #is ~/.vim a symlink
   rm ~/.vim
-elif [ -d ~/.vim ]; then
+elif [ -d ~/.vim ]; then #is ~/.vim a directory
   mv ~/.vim ~/.vim-old
 fi
 
@@ -34,8 +34,9 @@ action "Setting up vim directories"
 [ -d $BUNDLE_DIR ]   || mkdir -p $BUNDLE_DIR
 [ -d $AUTOLOAD_DIR ] || mkdir -p $AUTOLOAD_DIR
 
-#install pathogen
+install pathogen
 action "Downloading pathogen..."
+#TODO: only download if pathogen is not already installed
 PATHOGEN_DEST="${AUTOLOAD_DIR}/pathogen.vim"
 curl -LSso $PATHOGEN_DEST https://tpo.pe/pathogen.vim #I should totally be checking for completion of this
 ok "Pathogen download complete"
@@ -83,19 +84,21 @@ if [ -f ~/.inputrc ]; then
 fi
 ln -Fs ${BASE_DIR}/inputrc ~/.inputrc
 
+if [ -f ~/.bashrc ]; then
+  mv ~/.bashrc ~/.bashrc-old
+fi
+ln -Fs ${BASE_DIR}/bashrc ~/.bashrc
+
 bot "Setting up terminal extras"
 if [ -f ~/.functions ]; then
   mv ~/.functions ~/.functions-old
 fi
 ln -Fs ${BASE_DIR}/functions ~/.functions
-source "./functions"
 
-#TODO: add aliases to terminal prefs
-#if [ -f ~/.aliases ]; then
-  #mv ~/.aliases ~/.aliases-old
-#fi
-#ln -Fs ${BASE_DIR}/aliases ~/.aliases
-#source "./aliases"
+if [ -f ~/.aliases ]; then
+  mv ~/.aliases ~/.aliases-old
+fi
+ln -Fs ${BASE_DIR}/aliases ~/.aliases
 
 ok "Finished with terminal prefs"
 
@@ -116,6 +119,7 @@ case "$(uname -s)" in
       action "Installing Homebrew now"
       #install_homebrew
     fi
+    action "Installing homebrew packages"
     install_brews
     #install_casks #once I'm sure that this is a good thing, I'll turn it on, but it needs to do things like check whether those applications are already installed and other checks.
     #maybe move that stuff over to a "first run" type script, because so far bootstrap.sh can be used almost any time, anywhere, with little to no bad news
@@ -127,6 +131,7 @@ case "$(uname -s)" in
     ;;
 esac
 
+#TODO: install good ruby gems/tools like rvm or rbenv (I forget which one is en vouge and the current golden child.
 #sublime text prefs
 
 bot "Everything is done! Congrats"
