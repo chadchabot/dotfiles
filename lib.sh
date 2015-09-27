@@ -41,6 +41,17 @@ function get_confirmation() {
   echo ''
 }
 
+# expects 2 arguments
+#  $1 - file (with path) you're "archiving" and overwriting
+#  $2 - file (with path) that is the source of the symlink
+function move_and_symlink() {
+  if [ -f ${1} ]; then
+    mv ${1} ${1}-old
+  fi
+  #TODO: allow for option between -Fs and -s so gitconfig file will wor
+  echo "ln -Fs ${2} ${1}"
+}
+
 # expects 3 arguements
 #  $1 - function being called
 #  $2 - success message

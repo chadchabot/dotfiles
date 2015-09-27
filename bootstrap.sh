@@ -70,6 +70,7 @@ declare -a indent_guide=("Vim Indent Guides" "https://github.com/nathanaelkane/v
 get_vim_bundle $BUNDLE_DIR "${indent_guide[0]}" "${indent_guide[1]}"
 
 bot "Setting up Git preferences"
+move_and_symlink ~/.gitconfig ${BASE_DIR}/gitconfig
 if [ -f ~/.gitconfig ]; then
   mv ~/.gitconfig ~/.gitconfig-old
 fi
@@ -79,26 +80,13 @@ ok "Finished setting up git prefs"
 
 #terminal prefs (what's the difference between input and bash_profile prefs?)
 bot "Setting up terminal prefs"
-if [ -f ~/.inputrc ]; then
-  mv ~/.inputrc ~/.inputrc-old
-fi
-ln -Fs ${BASE_DIR}/inputrc ~/.inputrc
+move_and_symlink ~/.inputrc ${BASE_DIR}/inputrc
 
-if [ -f ~/.bashrc ]; then
-  mv ~/.bashrc ~/.bashrc-old
-fi
-ln -Fs ${BASE_DIR}/bashrc ~/.bashrc
+move_and_symlink ~/.bashrc ${BASE_DIR}/bashrc
 
 bot "Setting up terminal extras"
-if [ -f ~/.functions ]; then
-  mv ~/.functions ~/.functions-old
-fi
-ln -Fs ${BASE_DIR}/functions ~/.functions
-
-if [ -f ~/.aliases ]; then
-  mv ~/.aliases ~/.aliases-old
-fi
-ln -Fs ${BASE_DIR}/aliases ~/.aliases
+move_and_symlink ~/.functions ${BASE_DIR}/functions
+move_and_symlink ~/.aliases ${BASE_DIR}/aliases
 
 ok "Finished with terminal prefs"
 
