@@ -34,12 +34,16 @@ action "Setting up vim directories"
 [ -d $BUNDLE_DIR ]   || mkdir -p $BUNDLE_DIR
 [ -d $AUTOLOAD_DIR ] || mkdir -p $AUTOLOAD_DIR
 
-install pathogen
-action "Downloading pathogen..."
-#TODO: only download if pathogen is not already installed
-PATHOGEN_DEST="${AUTOLOAD_DIR}/pathogen.vim"
-curl -LSso $PATHOGEN_DEST https://tpo.pe/pathogen.vim #I should totally be checking for completion of this
-ok "Pathogen download complete"
+if [ -f ~/.vim/autoload/pathogen.vim ]; then
+  ok "Pathogen already installed"
+else
+  install pathogen
+  action "Downloading pathogen..."
+  PATHOGEN_DEST="${AUTOLOAD_DIR}/pathogen.vim"
+  #TODO: I should totally be checking for completion of this
+  curl -LSso $PATHOGEN_DEST https://tpo.pe/pathogen.vim
+  ok "Pathogen download complete"
+fi
 
 #install vim bundles
 action "Installing NERDTree"
