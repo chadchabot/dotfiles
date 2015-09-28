@@ -49,7 +49,7 @@ function move_and_symlink() {
     mv ${1} ${1}-old
   fi
   #TODO: allow for option between -Fs and -s so gitconfig file will wor
-  echo "ln -Fs ${2} ${1}"
+  ln -Fs ${2} ${1}
 }
 
 # expects 3 arguements
@@ -57,7 +57,7 @@ function move_and_symlink() {
 #  $2 - success message
 #  $3 - error message
 function is_success() {
-  if [[ $1 -eq 0 ]]; then
+  if [[ $1 -eq 0 ]]; then #TODO: why os this wrapped twice?
     ok "$2"
   else
     warn "$3"

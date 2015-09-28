@@ -85,7 +85,6 @@ ok "Finished setting up git prefs"
 #terminal prefs (what's the difference between input and bash_profile prefs?)
 bot "Setting up terminal prefs"
 move_and_symlink ~/.inputrc ${BASE_DIR}/inputrc
-
 move_and_symlink ~/.bashrc ${BASE_DIR}/bashrc
 
 bot "Setting up terminal extras"
@@ -100,15 +99,15 @@ PLATFORM="$(uname -s)"
 case "$(uname -s)" in
   "Darwin")
     echo "You're running OS X. This is good."
-    echo "Soon this will install homebrew for you"
     bot "Setting up Homebrew and those bits"
     # I know, I know. installing arbitrary stuff pulled via curl is bad news bears
-    #check if homebrew is installed?
+    # check if homebrew is installed? There's got to be a better way!
     if brew help | grep -q "Example usage:"; then
       #installed, rad
       ok "Homebrew already installed"
     else
       action "Installing Homebrew now"
+      echo "Soon this will install homebrew for you"
       #install_homebrew
     fi
     action "Installing homebrew packages"
