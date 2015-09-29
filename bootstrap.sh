@@ -45,11 +45,16 @@ else
   ok "Pathogen download complete"
 fi
 
+#TODO: break this out into its own file
 #install vim bundles
 action "Installing NERDTree"
 declare -a nerd_tree=("NERDTree file navigation" "https://github.com/scrooloose/nerdtree.git")
 get_vim_bundle $BUNDLE_DIR "${nerd_tree[0]}" "${nerd_tree[1]}"
 warn "Don't forget to run :Helptags when you first run vim!"
+
+action "Installing Fugitive"
+declare -a fugitive=("Fugitive Git plugin" "git://github.com/tpope/vim-fugitive.git")
+get_vim_bundle $BUNDLE_DIR "${fugitive[0]}" "${fugitive[1]}"
 
 action "Installing Solarized theme"
 declare -a solarized_theme=("Solarized theme" "https://github.com/altercation/vim-colors-solarized.git")

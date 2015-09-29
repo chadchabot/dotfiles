@@ -1,21 +1,15 @@
-- add bash_profile
-- git config
 - fix the page up mapping to go to the top of the page, because right now it doesn't
 - figure out a snappy and smart way to auto load dotfiles on new machines (look at http://dotfiles.github.io/ for more ideas)
 - also make it so I don't have a duplicate of .vimrc in both ~/ and my repo folder. that's just silly
 - maybe even do some auto-install magic so that I will have tmux, screen, git, and whatever other fanciness I expect to need on future machines
   - that would probably also include mysql, postgress, ruby, rails, python, etc... so maybe that's going to far; at that point I might as well just build a custom vagrant box and use that for all of my dev stuff, and OS X for everything else
     npm
-    tmux
-    screen?
-    tree
     rvm
     pow?
     postgres
     mysql
     update ruby?
     rails?
-    the silver searcher
 
 - ctags are a thing that was talked about way back in 1st & 2nd year, but i had no exposure or information about it. seems like it's a way to make your codebase searchable for autocompletion and what not. would be very handy. [https://github.com/gorkunov/smartgf.vim]
 - is it possibly to move a selection in visual mode? not expand it, just move the selection line - not the part that was selected. does that make sense?
@@ -32,8 +26,7 @@
     - shift + up/down/left/right to change split size?
   - make it easy to multiply this action: 30[KEYMAPPING]
   - key mapping to optionally open a file in a new split
-- when searching, highlight matches, but maintain highlight until explicitly dismissed (or another search is performed)
-- default gem set to install (make this optional? nah, ruby and rails is amust)
+- default gem set to install (make this optional? nah, ruby and rails is a must)
   awesome_print
   bundler
   capistrano
@@ -41,10 +34,8 @@
   rspec
   rails
   aasm
-- show vertical position (to make sure you're lining up in whitespace significant languages, like coffeescript and ruby) with a subtle line
 - word traversal moves moves to the start of the next word, not the end of the current one. I don't think I like that any more. change it (back?)
 - coffeescript syntax check will require npm and coffeescript stuff installed.
-- search dir/project/entire tree for a string (like the "find all in folder" option that sublime text has) maybe this is what AG is going to be helpful with?
 - prettify JSON output, and syntax highlighting
 - how can I capture repeated keystrokes? As in, when I want to move between splits, having to press <L><L>h/j/k/l is a pain. I'd rather press <L><L>hhh to move three splits to the left. Would I do that with a macro? function? or is there a proper method to capture it as a standard key mapping?
 - better/more obvious highlight of the active split? (add colour to the status bar maybe)

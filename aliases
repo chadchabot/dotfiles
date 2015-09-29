@@ -22,6 +22,7 @@ alias plz='sudo !!'
 
 #shortcuts
 alias g="git"
+alias gb="git branch"
 alias gcb="git checkout -b"
 alias gco="git checkout"
 
