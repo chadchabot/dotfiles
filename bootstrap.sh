@@ -106,8 +106,7 @@ case "$(uname -s)" in
     echo "You're running OS X. This is good."
     bot "Setting up Homebrew and those bits"
     # I know, I know. installing arbitrary stuff pulled via curl is bad news bears
-    # check if homebrew is installed? There's got to be a better way!
-    if brew help | grep -q "Example usage:"; then
+    if test ! $(which brew)
       #installed, rad
       ok "Homebrew already installed"
     else
@@ -128,6 +127,8 @@ case "$(uname -s)" in
 esac
 
 #TODO: install good ruby gems/tools like rvm or rbenv (I forget which one is en vouge and the current golden child.
+# look at: http://zanshin.net/2012/08/03/adding-sublime-text-2-settings-themes-plugins-to-dotfiles/
 #sublime text prefs
+#bot "Setting up Sublime Text prefs, if you're in to that kind of thing"
 
 bot "Everything is done! Congrats"

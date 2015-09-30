@@ -89,7 +89,6 @@ function install_homebrew() {
 }
 
 function install_brews() {
-  #if homebrew installed properly, time to grab packages
   declare -a brew_packages=("caskroom/cask/brew-cask" "the_silver_searcher" "tree" "httpie")
   #screen, tmux
   for package in "${brew_packages[@]}"
