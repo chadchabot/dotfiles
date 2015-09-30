@@ -229,3 +229,11 @@ if executable('ag')
 endif
 
 autocmd Filetype gitcommit setlocal spell textwidth=72
+
+" here is where I make poor decisions and hardcode my less/css lint preferences
+" into shortcuts, which is probably the exact opposite of what I should be
+" doing
+
+" Find all class selectors that have attributes on a single line
+"   Will also match on multiple attributes on one line
+autocmd Filetype less nnoremap <leader><leader>M :%s/{\n\?[0-9a-zA-Z:. -@]\+;\n\?}//gn<Cr>
