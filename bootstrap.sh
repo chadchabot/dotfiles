@@ -93,8 +93,8 @@ move_and_symlink ~/.inputrc ${BASE_DIR}/inputrc
 move_and_symlink ~/.bashrc ${BASE_DIR}/bashrc
 
 bot "Setting up terminal extras"
-move_and_symlink ~/.functions ${BASE_DIR}/functions
-move_and_symlink ~/.aliases ${BASE_DIR}/aliases
+move_and_symlink ~/.functions ${BASE_DIR}/functions.sh
+move_and_symlink ~/.aliases ${BASE_DIR}/aliases.sh
 
 ok "Finished with terminal prefs"
 
