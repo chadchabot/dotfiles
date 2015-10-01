@@ -107,7 +107,7 @@ case "$(uname -s)" in
     bot "Setting up Homebrew and those bits"
     # I know, I know. installing arbitrary stuff pulled via curl is bad news bears
     if test ! $(which brew)
-      #installed, rad
+    then
       ok "Homebrew already installed"
     else
       action "Installing Homebrew now"
@@ -130,5 +130,7 @@ esac
 # look at: http://zanshin.net/2012/08/03/adding-sublime-text-2-settings-themes-plugins-to-dotfiles/
 #sublime text prefs
 #bot "Setting up Sublime Text prefs, if you're in to that kind of thing"
+
+warn "You have one job to do manually.\nAdd \"[[ -r ~/.bashrc ]] && . ~/.bashrc\" to your ~/.bash_profile file in order to get all the alias and function goodies."
 
 bot "Everything is done! Congrats"
