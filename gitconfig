@@ -16,6 +16,7 @@
   st = status
   br = branch
   d  = branch -D
+  p  = pull
   #TODO: this is broken. Figure out what the correct format string is.
   hist = log --pretty-format:\"%h %ad | %s%d [%an]\" --graph --date-short
   type = cat-file -t

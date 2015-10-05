@@ -1,5 +1,5 @@
-alias p='pushd'
-alias o='popd'
+alias p="pushd"
+alias o="popd"
 
 alias ..="cd .."
 alias cd..="cd .."
@@ -16,9 +16,9 @@ alias grep="grep --color"
 
 #run last command again
 #I know, it's dumb and more typing, but it's friendly
-alias again='!!'
+alias again="!!"
 #run last command as sudo
-alias plz='sudo !!'
+alias plz="sudo !!"
 
 #shortcuts
 alias g="git"
@@ -27,6 +27,10 @@ alias gcb="git checkout -b"
 alias gco="git checkout"
 
 alias v="vim"
+alias j="jobs"
+alias f="fg"
+#what about a function where I type in a number and that job is brought to the foreground?
+# so typing `$ 2` would be equivalent to `$ fg 2`, but only if that job existed
 
 alias fs="stat -f \"%z bytes\"" #get the size of a file
 
@@ -34,10 +38,10 @@ alias fs="stat -f \"%z bytes\"" #get the size of a file
 alias icurl="curl -I"
 
 #list only directories
-alias lsd='ls -l | grep "^d"'
+alias lsd="ls -l | grep "^d""
 
 #use quicklook from the command line
-alias ql='qlmanage -p'
+alias ql="qlmanage -p"
 
 #typos
 alias gti=git
