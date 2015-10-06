@@ -18,6 +18,7 @@ set encoding=utf-8
 set background=dark
 let g:solarized_termcolors=256
 colorscheme solarized
+highlight LineNr ctermfg=red
 
 " vim-indent-guides setup
 let g:indent_guides_auto_colors = 0

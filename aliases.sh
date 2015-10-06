@@ -32,6 +32,8 @@ alias f="fg"
 #what about a function where I type in a number and that job is brought to the foreground?
 # so typing `$ 2` would be equivalent to `$ fg 2`, but only if that job existed
 
+alias ios="/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/MacOS/Simulator"
+
 alias fs="stat -f \"%z bytes\"" #get the size of a file
 
 #grab just the headers from curl
