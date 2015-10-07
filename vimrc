@@ -170,6 +170,10 @@ nnoremap <leader><leader>j <C-W><C-J>
 nnoremap <leader><leader>k <C-W><C-K>
 nnoremap <leader><leader>l <C-W><C-L>
 
+" faster movement between tabs
+nnoremap tt gt
+nnoremap TT gT
+
 " move the line below the current line down, but return to the current position
 " on the current line
 "inoremap <S-Enter> :$<Cr>
