@@ -6,6 +6,10 @@ source ./lib.sh
 
 set -e
 
+
+#TODO: check if this is an 'update' or 'complete' install
+#      which will let us skip a lot of the application downloading and OS X system
+#      pref steps.
 bot "Setting up your dotfiles for you, you handsome bastard."
 
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

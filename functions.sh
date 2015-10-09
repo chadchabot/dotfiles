@@ -46,6 +46,14 @@ function clean_hotfixes(){
   done
 }
 
+#TODO: a function to go through, branch by branch, and delete, skip, or quit
+#      which would make it easier to delete multiple git branches with one command.
+#      Very similar to how `git add -p` works, allowing you to choose which changes
+#      will be staged for commit
+function clean_branches() {
+  exit 0
+}
+
 #should operate very similar to pushd
 #allow you to switch between git branches quickly
 function pushbr(){
