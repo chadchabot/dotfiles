@@ -14,7 +14,11 @@ function clip() {
 #Arcpath-XXX-N littering your repos
 #delete them from your local repo with this
 function clean_arcpatch(){
-  #TODO: check if arcanist is installed
+  if test ! $(which git)
+  then
+    echo "Git is not installed. What is wrong with you?"
+    exit
+  fi
   for ref in $(git for-each-ref --format='%(refname)' refs/heads/arcpatch*); do
     branch_name=`echo $ref | cut -f 3 -d '/'`
     echo $(git branch -D $branch_name)
@@ -22,9 +26,21 @@ function clean_arcpatch(){
 }
 
 function clean_hotfixes(){
+  if test ! $(which git)
+  then
+    echo "Git is not installed. What is wrong with you?"
+    exit
+  fi
+  branches=$(git for-each-ref --format='%(refname)' refs/heads/hotfix*)
+  branch_count=${#branches[@]}
+  echo "There were ${branch_count} branches found."
+  echo ${branches[@]}
+  #why is this returning an array of length 1, but the first entry is an empty string?
+  echo "|${branches[0]}|"
+  exit 1
   #TODO: count number of refs that match, and how many are deleted
   #TODO: if there are no branches matching the name/pattern, say so
-  for ref in $(git for-each-ref --format='%(refname)' refs/heads/hotfix*); do
+  for ref in $branches; do
     branch_name=`echo $ref | cut -f 3 -d '/'`
     echo $(git branch -D $branch_name)
   done

@@ -11,6 +11,8 @@ alias .....="cd ../../../.."
 alias l.="ls -dG .*"
 alias ll="ls -lG"
 alias ls="ls -G"
+#list only directories
+alias lsd="ls -l | grep "^d""
 
 alias grep="grep --color"
 
@@ -39,15 +41,13 @@ alias fs="stat -f \"%z bytes\"" #get the size of a file
 #grab just the headers from curl
 alias icurl="curl -I"
 
-#list only directories
-alias lsd="ls -l | grep "^d""
-
 #use quicklook from the command line
 alias ql="qlmanage -p"
 
 #typos
 alias gti=git
 alias brwe=brew
+alias where=which
 
 #IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
