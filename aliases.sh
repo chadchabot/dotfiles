@@ -22,6 +22,10 @@ alias again="!!"
 #run last command as sudo
 alias plz="sudo !!"
 
+
+#TODO: add something to help list git aliases?
+#http://stackoverflow.com/questions/7066325/list-git-aliases#11613251
+
 #shortcuts
 alias g="git"
 alias gb="git branch"
@@ -40,6 +44,8 @@ alias fs="stat -f \"%z bytes\"" #get the size of a file
 
 #grab just the headers from curl
 alias icurl="curl -I"
+
+alias hosts="vim /etc/hosts"
 
 #use quicklook from the command line
 alias ql="qlmanage -p"
