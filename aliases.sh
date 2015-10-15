@@ -22,7 +22,6 @@ alias again="!!"
 #run last command as sudo
 alias plz="sudo !!"
 
-
 #TODO: add something to help list git aliases?
 #http://stackoverflow.com/questions/7066325/list-git-aliases#11613251
 
@@ -31,10 +30,13 @@ alias g="git"
 alias gb="git branch"
 alias gcb="git checkout -b"
 alias gco="git checkout"
+alias glg="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit"
 
 alias v="vim"
-alias j="jobs"
+alias n="nvim" #maybe I want to always redirect to nvim from vim?
+alias j="jobs -l"
 alias f="fg"
+alias h="history"
 #what about a function where I type in a number and that job is brought to the foreground?
 # so typing `$ 2` would be equivalent to `$ fg 2`, but only if that job existed
 
@@ -49,6 +51,10 @@ alias hosts="vim /etc/hosts"
 
 #use quicklook from the command line
 alias ql="qlmanage -p"
+
+#human readable sizes
+alias df="df -H"
+alias du="du -ch"
 
 #typos
 alias gti=git
