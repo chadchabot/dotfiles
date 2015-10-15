@@ -31,6 +31,9 @@ fi
 ln -Fs ${BASE_DIR}/vimrc ~/.vimrc #this is hella basic, but should suffice for now
 # I don't want to symlink this dir, I want to create and do the installation of stuff on this machine, not carry around the config... right?
 ln -Fs ${BASE_DIR}/vim/ ~/.vim
+#don't forget about neovim!
+ln -Fs ${BASE_DIR}/vimrc ~/.nvimrc
+ln -Fs ${BASE_DIR}/vim/ ~/.nvim
 
 action "Setting up vim directories"
 #does the DIR exist? if not, create it
