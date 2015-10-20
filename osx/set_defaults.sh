@@ -13,6 +13,11 @@ sudo nvram SystemAudioVolume=" "
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
+#Security stuff
+
+# Always require password after screensaver is activated
+defaults write com.apple.screensaver askForPasswordDelay 0
+
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
