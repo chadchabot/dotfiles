@@ -38,7 +38,17 @@ function error() {
 
 function get_confirmation() {
   #have something here to allow for a yes/no dialog
-  echo ''
+  #TODO: finish this tonight
+  read -p $1 -n 1 -r
+  echo
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    echo "yes"
+    return 0
+  else
+    echo "no"
+    return 1
+  fi
 }
 
 # expects 2 arguments
