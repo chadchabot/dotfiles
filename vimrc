@@ -136,6 +136,8 @@ noremap <leader>e :e<Space>
 " would be really cool to have this do something smart based on file context
 noremap <leader>q :q<cr>
 noremap <leader>Q :q!<cr>
+noremap qq :q<cr>
+noremap Q :q!<cr>
 noremap <leader>z <C-z>
 
 " page up/down is obnoxious with standard keys; may use the leader?
