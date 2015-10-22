@@ -58,7 +58,7 @@ function move_and_symlink() {
   if [ -f ${1} ]; then
     mv ${1} ${1}-old
   fi
-  #TODO: allow for option between -Fs and -s so gitconfig file will wor
+  #TODO: allow for option between -Fs and -s so gitconfig file will work
   ln -Fs ${2} ${1}
 }
 
@@ -108,7 +108,7 @@ function install_brews() {
 }
 
 function install_casks() {
-  declare -a cask_packages=("vlc" "google-chrome" "firefox" "iterm2" "carbon-copy-cloner" "spectacle")
+  declare -a cask_packages=("vlc" "google-chrome" "firefox" "iterm2" "carbon-copy-cloner" "spectacle" "neovim/neovim")
 }
 
 function install_brew_package() {

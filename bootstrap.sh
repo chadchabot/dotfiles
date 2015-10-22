@@ -124,8 +124,8 @@ case "$(uname -s)" in
     action "Installing homebrew packages"
     install_brews
     #TODO: put neovim install in it's proper place
-    brew tap neovim/neovim
-    brew reinstall --HEAD neovim
+    #brew tap neovim/neovim
+    #brew reinstall --HEAD neovim
     #install_casks #once I'm sure that this is a good thing, I'll turn it on, but it needs to do things like check whether those applications are already installed and other checks.
     #maybe move that stuff over to a "first run" type script, because so far bootstrap.sh can be used almost any time, anywhere, with little to no bad news
     ok "Finished with Homebrew and brews"

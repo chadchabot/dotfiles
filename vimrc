@@ -202,6 +202,14 @@ nnoremap <leader><leader>e <c-^>
 " so when a file is opened an autocommand runs and sets up a key mapping for
 " the linter/compiler/whatever tool is appropriate for that lang?
 autocmd FileType coffee nnoremap <leader><leader>C :!coffee %<Cr>
+" find all lines that have been marked debugger and comment them out
+" it would be nice to have a way to toggle debugger calls with a single command
+"autocmd FileType coffee nnoremap <leader><leader>dd :%s/debugger/#debugger/gi<cr>
+autocmd FileType coffee nnoremap <leader><leader>dd :call ToggleJSDebugging()<cr>
+
+function ToggleJSDebugging()
+  echo "Called ToggleJSDebugging()"
+endfunction
 
 " easy open/close of NERDTree
 nnoremap <leader>n :NERDTree<Cr>
