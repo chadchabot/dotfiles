@@ -48,6 +48,9 @@ set backspace=indent,eol,start
 set hlsearch
 set incsearch
 set ignorecase "case insensitive searching
+
+set magic "TODO: I'm not sure what this does, but it sounds like a good thing
+
 set smartcase "however, if I *do* include a capital letter, search is case sensitive
 
 set smartindent
@@ -149,6 +152,7 @@ noremap <leader>r <C-r>
 " faster search and replace
 noremap <leader>f :s/
 noremap <leader>F :%s/
+nmap <silent> <leader>/ :nohlsearch<cr>
 
 " stop that stupid window from popping up
 map q: :q
