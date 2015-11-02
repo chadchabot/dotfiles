@@ -46,6 +46,13 @@ function clean_hotfixes(){
   done
 }
 
+#TODO: allow
+function grb() {
+  #commit_range = [[ -n $2 ]] 
+  # conditionally assign value to commit_range if one is supplied via function args
+  #echo `git rebase --interactive HEAD~${commit_range}`
+}
+
 #TODO: a function to go through, branch by branch, and delete, skip, or quit
 #      which would make it easier to delete multiple git branches with one command.
 #      Very similar to how `git add -p` works, allowing you to choose which changes

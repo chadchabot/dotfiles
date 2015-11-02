@@ -114,6 +114,8 @@ noremap L $
 noremap dw daw
 noremap daw dw
 
+"TODO: allow for command delete, like mac os x
+
 " get 'normal' outcome from pressing the backspace key in normal mode
 noremap <BS> hx
 
@@ -211,8 +213,11 @@ autocmd FileType coffee nnoremap <leader><leader>C :!coffee %<Cr>
 "autocmd FileType coffee nnoremap <leader><leader>dd :%s/debugger/#debugger/gi<cr>
 autocmd FileType coffee nnoremap <leader><leader>dd :call ToggleJSDebugging()<cr>
 
+"TODO: fill this in so it works!
 function ToggleJSDebugging()
   echo "Called ToggleJSDebugging()"
+  "find all instances of "debugger" and set to "#debugger"
+  "find all instances of "#debugger" and set to "debugger"
 endfunction
 
 " easy open/close of NERDTree
