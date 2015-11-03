@@ -48,9 +48,10 @@ function clean_hotfixes(){
 
 #TODO: allow
 function grb() {
-  #commit_range = [[ -n $2 ]] 
+  #commit_range = [[ -n $2 ]]
   # conditionally assign value to commit_range if one is supplied via function args
   #echo `git rebase --interactive HEAD~${commit_range}`
+  exit 0
 }
 
 #TODO: a function to go through, branch by branch, and delete, skip, or quit
