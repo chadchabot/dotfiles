@@ -44,7 +44,6 @@ action "Setting up vim directories"
 if [ -f ~/.vim/autoload/pathogen.vim ]; then
   ok "Pathogen already installed"
 else
-  install pathogen
   action "Downloading pathogen..."
   PATHOGEN_DEST="${AUTOLOAD_DIR}/pathogen.vim"
   #TODO: I should totally be checking for completion of this
@@ -113,13 +112,13 @@ case "$(uname -s)" in
     echo "You're running OS X. This is good."
     bot "Setting up Homebrew and those bits"
     # I know, I know. installing arbitrary stuff pulled via curl is bad news bears
-    if test ! $(which brew)
+    if test $(which brew)
     then
       ok "Homebrew already installed"
     else
       action "Installing Homebrew now"
       echo "Soon this will install homebrew for you"
-      #install_homebrew
+      install_homebrew
     fi
     action "Installing homebrew packages"
     install_brews
