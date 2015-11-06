@@ -15,5 +15,10 @@ shopt -s cdspell;
 export EDITOR=vim
 export VISUAL=vim
 
+
+#specify your defaults in this environment variable
+#I want apps installed via cash to be available to all users, don't I?
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
 source ~/.functions
 source ~/.aliases

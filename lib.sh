@@ -108,7 +108,11 @@ function install_brews() {
 }
 
 function install_casks() {
-  declare -a cask_packages=("vlc" "google-chrome" "firefox" "iterm2" "carbon-copy-cloner" "spectacle" "neovim/neovim")
+  declare -a cask_packages=("vlc" "google-chrome" "firefox" "iterm2" "carbon-copy-cloner" "spectacle" "neovim/neovim" "spotify")
+  for package in "${cask_packages[@]}"
+  do
+    brew cask install "${package}" --appdir=/Applications
+  done
 }
 
 function install_brew_package() {
