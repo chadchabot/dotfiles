@@ -1,11 +1,10 @@
-# Chad Chabot Dotfiles
+# Chad Chabot's Dotfiles
 
-New beginnings are exciting, but they're difficult, fragile times.
-This package is intended to make those times go much, much easier than they
-otherwise might.
+New beginnings are exciting, but difficult & fragile times.
+This set of scrips is intended to make those times go much easier than they otherwise might.
 
-The intended target system is Mac OS X, but most of this will work on Linux
-without modifcation.
+The intended target system is Mac OS X, but though much  of this will work on Linux
+without modifcation (Terms and conditions apply).
 
 ## Installation
 
