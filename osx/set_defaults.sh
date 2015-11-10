@@ -1,7 +1,12 @@
+#!/usr/bin/env bash
+
 #If you've sudo'd within your system's timeframe, this will extend the
 #sudo timeout by 5 minutes or whatever is set in sudoers
 #If you haven't sudo'd recently, then it will prompt you for it up front
 sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.osx` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Disable press-and-hold for keys in favour of key repeat.
 defaults write -g ApplePressAndHoldEnabled -bool false

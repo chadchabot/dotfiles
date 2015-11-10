@@ -126,7 +126,9 @@ case "$(uname -s)" in
     #maybe move that stuff over to a "first run" type script, because so far bootstrap.sh can be used almost any time, anywhere, with little to no bad news
     ok "Finished with Homebrew and brews"
     bot "Setting up sensible OS X defaults"
-    sh ./osx/set_defaults.sh
+    pushd osx >/dev/null 2>&1
+    sudo ./set_defaults.sh
+    popd >/dev/null 2>&1
     ;;
   "Linux")
     echo "You're running linux… good for you I guess?"
