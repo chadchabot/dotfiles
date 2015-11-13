@@ -1,5 +1,6 @@
-alias p="pushd"
-alias o="popd"
+#relies on functions.sh being sourced
+alias p="pushd_quiet"
+alias o="popd_quiet"
 
 alias ..="cd .."
 alias cd..="cd .."

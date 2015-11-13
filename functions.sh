@@ -3,6 +3,14 @@ function md() {
   mkdir -p "$@" && cd "$@"
 }
 
+function pushd_quiet() {
+  pushd $1 >/dev/null 2>&1
+}
+
+function popd_quiet() {
+  popd >/dev/null 2>&1
+}
+
 #typing pbpaste & pbcopy is a pain.
 #I think what this does is checks if there's anything in the clipboard, and
 #paste it if it is, else copy what follows
