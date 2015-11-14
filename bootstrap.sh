@@ -3,9 +3,9 @@
 # who turned me on to this whole dotfiles thing, unbeknownst to him
 
 source ./lib.sh
+source ./osx/homebrew.sh
 
 set -e
-
 
 #TODO: check if this is an 'update' or 'complete' install
 #      which will let us skip a lot of the application downloading and OS X system
