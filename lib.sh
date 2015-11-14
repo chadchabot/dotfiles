@@ -36,6 +36,15 @@ function error() {
   echo -e "$COL_RED[error]$COL_RESET "$1
 }
 
+function is_osx(){
+  PLATFORM="$(uname -s)"
+  if [ "$PLATFORM" = "Darwin" ]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
 function get_confirmation() {
   #have something here to allow for a yes/no dialog
   #TODO: finish this tonight

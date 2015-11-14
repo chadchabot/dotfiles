@@ -10,6 +10,42 @@ set -e
 #TODO: check if this is an 'update' or 'complete' install
 #      which will let us skip a lot of the application downloading and OS X system
 #      pref steps.
+
+bot "So what are we doing today?"
+echo "1) New system setup - install everything!"
+echo "2) Update dotfiles (vim, bash, etc)"
+echo "3) Update OS X system prefs"
+echo "4) Update OS X applications (via Homebrew)"
+echo "5) Exit"
+
+read option
+
+# TODO: set up a named array for each installation step and
+# have each trigger the associated dotfile update setp
+case $option in
+  1)
+    echo "you chose new system setup"
+    ;;
+  2)
+    echo "dotfiles only"
+    ;;
+  3)
+    echo "OS X system prefs"
+    ;;
+  4)
+    echo "OS X applications"
+    ;;
+  5)
+    echo "Exit"
+    ;;
+  *)
+    echo "Unrecognized option"
+    ;;
+esac
+
+exit 0
+
+
 bot "Setting up your dotfiles for you, you handsome bastard."
 
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
