@@ -14,6 +14,11 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 #turn off sound on boot
 sudo nvram SystemAudioVolume=" "
 
+# Set the clock settings
+defaults write com.apple.menuextra.clock DateFormat -string "MMM d  HH:mm"
+defaults write com.apple.menuextra.clock FlashDateSeparators -bool false
+defaults write com.apple.menuextra.clock IsAnalog -bool false
+
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
