@@ -115,6 +115,9 @@ noremap dw daw
 noremap daw dw
 
 "TODO: allow for command delete, like mac os x
+"      which would delete an entire line
+"      and option-delete which would delete up to the beginning of the current
+"      word, including spaces between the cursor and the word
 
 " get 'normal' outcome from pressing the backspace key in normal mode
 noremap <BS> hx

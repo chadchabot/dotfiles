@@ -106,3 +106,5 @@ function open_files_matching(){
   #| xargs -o vim -p
 }
 
+#TODO quick conversion from hex to decimal for colours, and vice-versa
+#     though this is probably more fun to write in ruby or python
