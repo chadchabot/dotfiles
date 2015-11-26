@@ -1,6 +1,4 @@
-" requires pathogen to be installed
-" i don't have any fancy way to do this yet, scripted or otherwise
-" so this is pretty basic so far
+" requires pathogen to be installed, which is taken care of by vim-setup.sh
 filetype off
 execute pathogen#infect()
 syntax enable
