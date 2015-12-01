@@ -235,7 +235,7 @@ nnoremap <leader><leader>glp :!git log -p<Cr>
 nnoremap <leader><leader>gpp :!git push<Cr>
 
 "copy to shared clipboard; maybe remap the default y/p?
-nnoremap <leader>y "*y
+nnoremap <leader>y +y
 nnoremap <leader>p "*y
 vnoremap <leader>y "*y
 vnoremap <leader>p "*p
