@@ -14,7 +14,7 @@ function install_brews() {
 }
 
 function install_casks() {
-  declare -a cask_packages=("vlc" "sublime-text" "google-chrome" "firefox" "iterm2" "carbon-copy-cloner" "spectacle" "spotify" "caffeine" "flux" "little-snitch" "xscope" "transmit" "slack")
+  declare -a cask_packages=("vlc" "sublime-text" "google-chrome" "firefox" "iterm2" "carbon-copy-cloner" "spectacle" "spotify" "caffeine" "flux" "little-snitch" "xscope" "transmit" "slack" "evernote" "skype" "handbrake")
   for package in "${cask_packages[@]}"
   do
     install_brew_cask "${package}"
