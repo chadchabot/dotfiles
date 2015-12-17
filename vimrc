@@ -51,6 +51,7 @@ set magic "TODO: I'm not sure what this does, but it sounds like a good thing
 
 set smartcase "however, if I *do* include a capital letter, search is case sensitive
 
+set nojoinspaces " use one space, not two, after punctuation
 set smartindent
 set formatoptions+=n
 set tabstop=2
@@ -214,6 +215,16 @@ autocmd FileType coffee nnoremap <leader><leader>C :!coffee %<Cr>
 "autocmd FileType coffee nnoremap <leader><leader>dd :%s/debugger/#debugger/gi<cr>
 autocmd FileType coffee nnoremap <leader><leader>dd :call ToggleJSDebugging()<cr>
 
+"TODO: broken
+autocmd FileType coffee nnoremap <leader><leader># :call CommentLines()<cr>
+function CommentLines()
+  echo "Called CommentLines()"
+  normal gv"xy
+  let result = getreg("x")
+  echo result
+endfunction
+
+
 "TODO: fill this in so it works!
 function ToggleJSDebugging()
   echo "Called ToggleJSDebugging()"
@@ -253,7 +264,14 @@ if executable('ag')
   set grepformat=%f:%l:%c:%m
 endif
 
+"nmap <silent> <leader><leader>s :set spell!<CR>"not sure if I want spellcheck
+"on always, or toggled, so leave this here to decide on later
+
+set spelllang=en_ca
 autocmd Filetype gitcommit setlocal spell textwidth=72
+
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd Filetype markdown setlocal spell
 
 " here is where I make poor decisions and hardcode my less/css lint preferences
 " into shortcuts, which is probably the exact opposite of what I should be
