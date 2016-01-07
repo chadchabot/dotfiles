@@ -5,7 +5,7 @@ function install_homebrew() {
 }
 
 function install_brews() {
-  declare -a brew_packages=("caskroom/cask/brew-cask" "the_silver_searcher" "tree" "httpie")
+  declare -a brew_packages=("caskroom/cask/brew-cask" "the_silver_searcher" "tree" "httpie" "ffmpeg")
   #screen, tmux
   for package in "${brew_packages[@]}"
   do
@@ -14,7 +14,7 @@ function install_brews() {
 }
 
 function install_casks() {
-  declare -a cask_packages=("vlc" "sublime-text" "google-chrome" "firefox" "iterm2" "carbon-copy-cloner" "spectacle" "spotify" "caffeine" "flux" "little-snitch" "xscope" "transmit" "slack" "evernote" "skype" "handbrake" "mou" "steam")
+  declare -a cask_packages=("superduper" "vlc" "sublime-text" "google-chrome" "firefox" "iterm2" "carbon-copy-cloner" "spectacle" "spotify" "caffeine" "flux" "little-snitch" "xscope" "transmit" "slack" "evernote" "skype" "handbrake" "mou" "steam")
   for package in "${cask_packages[@]}"
   do
     install_brew_cask "${package}"
