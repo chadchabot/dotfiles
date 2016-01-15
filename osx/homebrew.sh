@@ -23,8 +23,6 @@ function install_casks() {
 
 function install_brew_cask() {
   CASK_NAME=`echo "${1}"`
-  #TODO: look in both the installed brew casks as well as in
-  #      the /Applications folder
 
   if cask_is_installed ${CASK_NAME}; then
     ok "${CASK_NAME} is already installed"
@@ -34,6 +32,10 @@ function install_brew_cask() {
 }
 
 function cask_is_installed() {
+  #TODO: look in both the installed brew casks as well as in
+  #      the /Applications folder
+  #      $ system_profiler SPApplicationsDataType | ag sequel
+  #      ^^ works, but will not find the exact match because of the hyphen in the cask name.
   if brew cask list | grep -q ${1}; then
     return 0
   else

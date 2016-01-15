@@ -12,7 +12,8 @@ echo "1) New system setup - install everything!"
 echo "2) Update dotfiles (vim, bash, etc)"
 echo "3) Update OS X system prefs"
 echo "4) Update OS X applications (via Homebrew)"
-echo "5) Exit"
+echo "5) Nuke it all from orbit"
+echo "6) Exit"
 
 read option
 
@@ -45,6 +46,11 @@ case $option in
     tasks[2]=1
     ;;
   5)
+    echo "Nuke it from orbit"
+    echo "This hasn't been implemented yet."
+    exit 0
+    ;;
+  6)
     echo "Exit"
     exit 0
     ;;
@@ -82,6 +88,10 @@ if [ ${tasks[2]} = 1 ]; then
         install_homebrew
       fi
       action "Installing homebrew packages"
+      #TODO: Ask if this is a full install (include personal apps) or a "work"
+      #      install, and I only want to install the essentials
+      #      Would be nice to save this as a preference (envvar?) and rely on that
+      #      as a default for runs of this command at a later time.
       install_brews
       install_casks
       ok "Finished with Homebrew and brews"
