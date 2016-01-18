@@ -62,6 +62,7 @@ esac
 
 if [ ${tasks[0]} = 1 ]; then
   ./vim-setup.sh
+  ./term-setup.sh
 fi
 
 if [ ${tasks[1]} = 1 ]; then
