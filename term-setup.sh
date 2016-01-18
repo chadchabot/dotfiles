@@ -1,6 +1,8 @@
 #!/bin/bash
 source ./lib.sh
 
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 bot "Setting up Git preferences"
 move_and_symlink ~/.gitconfig ${BASE_DIR}/gitconfig
 if [ -f ~/.gitconfig ]; then
