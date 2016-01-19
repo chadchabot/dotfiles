@@ -35,10 +35,13 @@
   rails
   aasm
 - word traversal moves moves to the start of the next word, not the end of the current one. I don't think I like that any more. change it (back?)
-- coffeescript syntax check will require npm and coffeescript stuff installed.
 - prettify JSON output, and syntax highlighting
 - how can I capture repeated keystrokes? As in, when I want to move between splits, having to press <L><L>h/j/k/l is a pain. I'd rather press <L><L>hhh to move three splits to the left. Would I do that with a macro? function? or is there a proper method to capture it as a standard key mapping?
 - better/more obvious highlight of the active split? (add colour to the status bar maybe)
 - some sort of quick toggle for the active split to be larger than others?
 - deleting things and overwriting the contents of the active register is a huge pain in the ass. Disable that, or set up a keymapping, or something.
 - why can't I see the git branch I'm currently on in Vim? Maybe I haven't updated my dotfiles in a while and need to do that still.
+- add npm tools
+	- less
+	- sass
+	- coffeescript
