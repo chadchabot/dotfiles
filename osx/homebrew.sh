@@ -15,7 +15,7 @@ function install_brews() {
 
 function install_casks() {
   declare -a dev_essentials=("sublime-text" "google-chrome" "firefox" "iterm2" "spectacle" "spotify" "caffeine" "slack" "sequel-pro")
-  declare -a personal=("superduper" "vlc" "carbon-copy-cloner" "flux" "little-snitch" "xscope" "transmit" "evernote" "skype" "handbrake" "mou" "steam")
+  declare -a personal=("superduper" "vlc" "carbon-copy-cloner" "flux" "little-snitch" "xscope" "transmit" "evernote" "skype" "handbrake" "mou" "steam" "1Password")
 
   for package in "${dev_essentials[@]}"
   do
@@ -34,7 +34,8 @@ function install_brew_cask() {
   if cask_is_installed ${CASK_NAME}; then
     ok "${CASK_NAME} is already installed"
   else
-    brew cask install "${CASK_NAME}"
+    echo "trying to install ${CASK_NAME}"
+    brew cask install --appdir=/Applications $CASK_NAME
   fi
 }
 

@@ -8,6 +8,8 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+scutil --set ComputerName "ChadBook Pro"
+
 # Disable press-and-hold for keys in favour of key repeat.
 defaults write -g ApplePressAndHoldEnabled -bool false
 
@@ -38,7 +40,8 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 ###############################################################################
 # SSD-specific tweaks                                                         #
-# ###############################################################################
+###############################################################################
+echo "SSD tweaks"
 
 # Disable local Time Machine snapshots
 sudo tmutil disablelocal
@@ -58,7 +61,8 @@ sudo pmset -a sms 0
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
-# ###############################################################################
+###############################################################################
+echo "keyboard, mouse, trackpad, etc"
 
 # Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
@@ -97,6 +101,7 @@ defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
+echo "Screen saver stuff"
 
 # Require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
@@ -128,6 +133,7 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 ###############################################################################
 # Finder                                                                      #
 ###############################################################################
+echo "Finder stuff"
 
 # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
 defaults write com.apple.finder QuitMenuItem -bool true
@@ -242,6 +248,7 @@ defaults write NSGlobalDomain KeyRepeat -int 0
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
+echo "Dock, dashboard, and hot corners"
 
 # Enable highlight hover effect for the grid view of a stack (Dock)
 defaults write com.apple.dock mouse-over-hilite-stack -bool true

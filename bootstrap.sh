@@ -60,18 +60,23 @@ case $option in
     ;;
 esac
 
+#bash and command line setup
+
+# vim setup
 if [ ${tasks[0]} = 1 ]; then
   ./vim-setup.sh
-  ./term-setup.sh
 fi
 
+# os x setup
 if [ ${tasks[1]} = 1 ]; then
   bot "Setting up sensible OS X defaults"
   pushd osx >/dev/null 2>&1
   sudo ./set_defaults.sh
   popd >/dev/null 2>&1
+  ok "OS X defaults are finished\n\tYou will definitely need to restart for most of these to take effect."
 fi
 
+# application download and homebrew stuff
 if [ ${tasks[2]} = 1 ]; then
   # homebrew or apt-get (in a far off universe where I may possibly choose a Ubuntu machine again)
   PLATFORM="$(uname -s)"
