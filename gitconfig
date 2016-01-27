@@ -22,6 +22,7 @@
   type = cat-file -t
   dump = cat-file -p
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+  tree = log --color --graph --pretty=format: ''
 
 # push easily. http://stackoverflow.com/a/23918418/89484
 [push]
