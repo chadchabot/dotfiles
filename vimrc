@@ -1,3 +1,4 @@
+
 " requires pathogen to be installed, which is taken care of by vim-setup.sh
 filetype off
 execute pathogen#infect()
@@ -41,6 +42,9 @@ set title
 set shortmess=atI
 set showmatch
 set clipboard=unnamed
+"set paste "this is the preferred behaviour when actually pasting into vim,
+           "preventing all of those extraneous and incorrect newlines, buy it'd
+           "not helpful in other contexts.
 
 set backspace=indent,eol,start
 set hlsearch
@@ -250,6 +254,15 @@ nnoremap <leader>y +y
 nnoremap <leader>p "*y
 vnoremap <leader>y "*y
 vnoremap <leader>p "*p
+
+nnoremap <leader><leader>p :call TogglePaste()<cr>
+function TogglePaste()
+  if &paste
+    set nopaste
+  else
+    set paste
+  endif
+endfunction
 
 "an example of how autocommands can work
 "use it to set tabstop and other whitespace prefs on a per language basis
