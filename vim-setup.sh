@@ -75,3 +75,14 @@ action "Installing vim indent guide tool"
 declare -a indent_guide=("Vim Indent Guides" "https://github.com/nathanaelkane/vim-indent-guides.git")
 get_vim_bundle $BUNDLE_DIR "${indent_guide[0]}" "${indent_guide[1]}"
 
+action "Installing Auto-pairs tool"
+declare -a auto_pairs=("Auto-pairs", "git://github.com/jiangmiao/auto-pairs.git")
+get_vim_bundle $BUNDLE_DIR "${auto_pairs[0]}" "${auto_pairs[1]}"
+
+action "Installing Endwise"
+declare -a endwise=("Endwise", "git://github.com/tpope/vim-endwise.git")
+get_vim_bundle $BUNDLE_DIR "${endwise[0]}" "${endwise[1]}"
+
+#Future consideration
+#https://github.com/ctrlpvim/ctrlp.vim
+#https://github.com/tpope/vim-rails
