@@ -192,9 +192,6 @@ nnoremap TT gT
 " on the current line
 "inoremap <S-Enter> :$<Cr>
 
-nnoremap i A
-nnoremap A i
-
 " while in insert mode, jk is a quick way to back out
 inoremap jk <Esc>
 inoremap jj <Esc>
