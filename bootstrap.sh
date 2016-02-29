@@ -9,7 +9,7 @@ set -e
 
 bot "So what are we doing today?"
 echo "1) New system setup - install everything!"
-echo "2) Update dotfiles (vim, bash, etc)"
+echo "2) Update dotfiles (terminal, vim, bash, etc)"
 echo "3) Update OS X system prefs"
 echo "4) Update OS X applications (via Homebrew)"
 echo "5) Nuke it all from orbit"
@@ -65,6 +65,7 @@ esac
 # vim setup
 if [ ${tasks[0]} = 1 ]; then
   ./vim-setup.sh
+  ./term-setup.sh
 fi
 
 # os x setup
@@ -116,6 +117,6 @@ fi
 #bot "Setting up Sublime Text prefs, if you're in to that kind of thing"
 
 warn "You have one job to do manually.\nAdd \"[[ -r ~/.bashrc ]] && . ~/.bashrc\" to your ~/.bash_profile file in order to get all the alias and function goodies."
-echo '[[ -r ~/.bashrc  ]] && . ~/.bashrc' >> ~/.bash_profile
+echo '[[ -r ~/.bashrc ]] && . ~/.bashrc' >> ~/.bash_profile
 echo 'eval #$(rbenv init -)"' >> ~/.bash_profile
 bot "Everything is done! Congrats"

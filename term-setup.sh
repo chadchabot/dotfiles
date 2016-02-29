@@ -10,6 +10,7 @@ if [ -f ~/.gitconfig ]; then
 fi
 ln -s ${BASE_DIR}/gitconfig ~/.gitconfig
 ln -Fs ${BASE_DIR}/gitmessage ~/.gitmessage
+ln -Fs ${BASE_DIR}/gitignore ~/.gitignore
 ok "Finished setting up git prefs"
 
 #terminal prefs (what's the difference between input and bash_profile prefs?)
