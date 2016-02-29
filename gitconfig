@@ -5,6 +5,7 @@
   quotepath = false
   excludesfile = ~/.gitignore
   editor = /usr/bin/vim
+  autocrlf = true
 
 [commit]
   template = ~/.gitmessage

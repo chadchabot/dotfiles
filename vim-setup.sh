@@ -67,6 +67,9 @@ get_vim_bundle $BUNDLE_DIR "${arduino_syntax[0]}" "${arduino_syntax[1]}"
 declare -a less_syntax=("Less syntax package" "https://github.com/groenewege/vim-less.git")
 get_vim_bundle $BUNDLE_DIR "${less_syntax[0]}" "${less_syntax[1]}"
 
+declare -a slim_syntax=("Slim syntax package" "https://github.com/slim-template/vim-slim.git")
+get_vim_bundle $BUNDLE_DIR "${slim_syntax[0]}" "${slim_syntax[1]}"
+
 action "Installing vim-airline status bar tool"
 declare -a airline_tool=("Vim Airline status bar tool" "https://github.com/bling/vim-airline.git")
 get_vim_bundle $BUNDLE_DIR "${airline_tool[0]}" "${airline_tool[1]}"

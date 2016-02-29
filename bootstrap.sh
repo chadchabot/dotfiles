@@ -73,6 +73,7 @@ if [ ${tasks[1]} = 1 ]; then
   pushd osx >/dev/null 2>&1
   sudo ./set_defaults.sh
   popd >/dev/null 2>&1
+  #xcode-select --install install command line tools as part of dotfiles setup?
   ok "OS X defaults are finished\n\tYou will definitely need to restart for most of these to take effect."
 fi
 
@@ -115,5 +116,6 @@ fi
 #bot "Setting up Sublime Text prefs, if you're in to that kind of thing"
 
 warn "You have one job to do manually.\nAdd \"[[ -r ~/.bashrc ]] && . ~/.bashrc\" to your ~/.bash_profile file in order to get all the alias and function goodies."
-
+echo '[[ -r ~/.bashrc  ]] && . ~/.bashrc' >> ~/.bash_profile
+echo 'eval #$(rbenv init -)"' >> ~/.bash_profile
 bot "Everything is done! Congrats"
