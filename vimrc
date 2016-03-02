@@ -269,7 +269,7 @@ endfunction
 "  echo "You're working on a Ruby file!"
 "endfunction
 
-autocmd BufNewFile,BufRead Gemfile set filetype=ruby
+autocmd BufNewFile,BufRead Gemfile*,Guardfile* set filetype=ruby
 
 autocmd BufNewFile,BufRead *.slim set filetype=slim
 
