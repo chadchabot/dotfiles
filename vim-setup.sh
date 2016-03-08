@@ -89,3 +89,4 @@ get_vim_bundle $BUNDLE_DIR "${endwise[0]}" "${endwise[1]}"
 #Future consideration
 #https://github.com/ctrlpvim/ctrlp.vim
 #https://github.com/tpope/vim-rails
+#https://github.com/bronson/vim-trailing-whitespace

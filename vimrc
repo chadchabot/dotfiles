@@ -79,8 +79,8 @@ set noerrorbells
 set showmode
 set showcmd
 set hidden
-set wildmenu
 set wildmode=longest,list,full
+set wildmenu
 set laststatus=2
 
 " i think the visual selection mode keys are backwards
@@ -236,6 +236,8 @@ endfunction
 " easy open/close of NERDTree
 nnoremap <leader>n :NERDTree<Cr>
 nnoremap <leader><leader>n :NERDTreeClose<Cr>
+"nnoremap <leader>n :E<Cr> "I'm undecided whether I like having nerdtree stay
+"open or not.
 
 " easy add to git
 nnoremap <leader><leader>ga :!git add -p<Cr>
@@ -276,7 +278,16 @@ autocmd BufNewFile,BufRead *.slim set filetype=slim
 if executable('ag')
   set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
   set grepformat=%f:%l:%c:%m
+
+  " Use ag in CtrlP for listing files.
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
 endif
+
+" bind K to grep word under cursor
+nnoremap K :grep! "\b,C-R><C-W>\b"<CR>:cw<CR>
 
 "nmap <silent> <leader><leader>s :set spell!<CR>"not sure if I want spellcheck
 "on always, or toggled, so leave this here to decide on later
