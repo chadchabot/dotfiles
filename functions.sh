@@ -98,10 +98,10 @@ function popbr(){
 # TODO: make sure this works!
 function open_files_matching(){
   SEARCH_REGEX=$1
-  PATH=$2
+  SEARCH_PATH=$2
   #TODO: only open if there are matches, else give an error message
   #TODO: why is this failing on a "ag: command not found" error?
-  FILE_LIST=$(ag -l $SEARCH_REGEX $PATH)
+  FILE_LIST=$(ag -l $SEARCH_REGEX $SEARCH_PATH)
   echo $FILE_LIST
   #| xargs -o vim -p
 }
