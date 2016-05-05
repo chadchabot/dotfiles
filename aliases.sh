@@ -38,6 +38,7 @@ alias n="nvim" #maybe I want to always redirect to nvim from vim?
 alias j="jobs -l"
 alias f="fg"
 alias h="history"
+alias todo='$EDITOR ~/.todo'
 #what about a function where I type in a number and that job is brought to the foreground?
 # so typing `$ 2` would be equivalent to `$ fg 2`, but only if that job existed
 
