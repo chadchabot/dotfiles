@@ -5,7 +5,7 @@ function install_homebrew() {
 }
 
 function install_brews() {
-  declare -a brew_packages=("caskroom/cask/brew-cask" "the_silver_searcher" "tree" "httpie" "ffmpeg" "binutils" "valgrind")
+  declare -a brew_packages=("caskroom/cask/brew-cask" "the_silver_searcher" "tree" "httpie" "ffmpeg" "binutils" "valgrind" "libdvdcss")
   #screen, tmux
   for package in "${brew_packages[@]}"
   do
