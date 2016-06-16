@@ -13,6 +13,8 @@ ln -Fs ${BASE_DIR}/gitmessage ~/.gitmessage
 ln -Fs ${BASE_DIR}/gitignore ~/.gitignore
 ok "Finished setting up git prefs"
 
+ln -Fs ${BASE_DIR}/sqliterc ~/.sqliterc
+
 #terminal prefs (what's the difference between input and bash_profile prefs?)
 bot "Setting up terminal prefs"
 move_and_symlink ~/.inputrc ${BASE_DIR}/inputrc

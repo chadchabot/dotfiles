@@ -1,2 +1,5 @@
 # OS X Finder tmp files
 .DS_Store
+
+#python stuff
+*.py[cod]
