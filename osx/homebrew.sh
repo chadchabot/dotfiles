@@ -1,11 +1,13 @@
 #!/bin/bash
 
 function install_homebrew() {
+  #Of course I trust executable code from a random url that I have no control over...
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
+#Standard brews are CLI utility programs
 function install_brews() {
-  declare -a brew_packages=("caskroom/cask/brew-cask" "the_silver_searcher" "tree" "httpie" "ffmpeg" "binutils" "valgrind" "libdvdcss")
+  declare -a brew_packages=("caskroom/cask/brew-cask" "the_silver_searcher" "tree" "httpie" "ffmpeg" "binutils" "valgrind" "libdvdcss" "postgresql" "rbenv" "rbenv-vars")
   #screen, tmux
   for package in "${brew_packages[@]}"
   do
@@ -13,6 +15,7 @@ function install_brews() {
   done
 }
 
+#Casks are typically GUI applications that are installed as a nicety when setting up a new machine
 function install_casks() {
   declare -a dev_essentials=("sublime-text" "google-chrome" "firefox" "iterm2" "spectacle" "spotify" "caffeine" "slack" "sequel-pro" "dropbox" "sqlitebrowser")
   declare -a personal=("superduper" "vlc" "carbon-copy-cloner" "flux" "little-snitch" "xscope" "transmit" "evernote" "skype" "handbrake" "mou" "steam" "1password")
