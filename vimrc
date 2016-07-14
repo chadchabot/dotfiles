@@ -273,7 +273,7 @@ endfunction
 
 autocmd BufNewFile,BufRead Gemfile*,Guardfile* set filetype=ruby
 
-autocmd BufNewFile,BufRead *.slim set filetype=slim
+"autocmd BufNewFile,BufRead *.slim set filetype=slim
 
 if executable('ag')
   set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow

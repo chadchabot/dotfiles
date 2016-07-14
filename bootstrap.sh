@@ -89,7 +89,9 @@ if [ ${tasks[2]} = 1 ]; then
       # I know, I know. installing arbitrary stuff pulled via curl is bad news bears
       if test $(which brew)
       then
-        ok "Homebrew already installed"
+        ok "Homebrew already installed."
+        action "Updating homebrew"
+        brew update
       else
         action "Installing Homebrew now"
         echo "Soon this will install homebrew for you"
