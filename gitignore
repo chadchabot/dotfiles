@@ -3,3 +3,9 @@
 
 #python stuff
 *.py[cod]
+
+#ruby
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/
