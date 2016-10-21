@@ -114,6 +114,8 @@ if [ ${tasks[2]} = 1 ]; then
 fi
 
 #TODO: install good ruby gems/tools like rvm or rbenv (I forget which one is en vouge and the current golden child.
+
+
 # look at: http://zanshin.net/2012/08/03/adding-sublime-text-2-settings-themes-plugins-to-dotfiles/
 #sublime text prefs
 #bot "Setting up Sublime Text prefs, if you're in to that kind of thing"

@@ -20,5 +20,8 @@ export VISUAL=vim
 #I want apps installed via cash to be available to all users, don't I?
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home
+export PATH=/opt/apache-maven-3.3.9/bin:$PATH
+
 source ~/.functions
 source ~/.aliases

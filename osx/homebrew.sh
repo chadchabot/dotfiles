@@ -7,7 +7,7 @@ function install_homebrew() {
 
 #Standard brews are CLI utility programs
 function install_brews() {
-  declare -a brew_packages=("caskroom/cask/brew-cask" "the_silver_searcher" "tree" "httpie" "ffmpeg" "binutils" "valgrind" "libdvdcss" "postgresql" "rbenv" "rbenv-vars" "node")
+  declare -a brew_packages=("caskroom/cask/brew-cask" "the_silver_searcher" "tree" "httpie" "ffmpeg" "binutils" "valgrind" "libdvdcss" "postgresql" "rbenv" "rbenv-vars" "node" "mtr")
   #screen, tmux
   for package in "${brew_packages[@]}"
   do
@@ -17,7 +17,7 @@ function install_brews() {
 
 #Casks are typically GUI applications that are installed as a nicety when setting up a new machine
 function install_casks() {
-  declare -a dev_essentials=("sublime-text" "google-chrome" "firefox" "iterm2" "spectacle" "spotify" "caffeine" "slack" "sequel-pro" "dropbox" "sqlitebrowser")
+  declare -a dev_essentials=("sublime-text" "google-chrome" "firefox" "iterm2" "spectacle" "spotify" "caffeine" "slack" "sequel-pro" "dropbox" "sqlitebrowser" "macvim")
   declare -a personal=("superduper" "vlc" "carbon-copy-cloner" "flux" "little-snitch" "xscope" "transmit" "evernote" "skype" "handbrake" "mou" "steam" "1password")
 
   for package in "${dev_essentials[@]}"

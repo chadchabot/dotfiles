@@ -33,7 +33,8 @@ alias gcb="git checkout -b"
 alias gco="git checkout"
 alias glg="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit"
 
-alias v="vim"
+#alias v="vim"
+alias v="/usr/local/Cellar/macvim/7.4-104/MacVim.app/Contents/MacOS/Vim"
 alias n="nvim" #maybe I want to always redirect to nvim from vim?
 alias j="jobs -l"
 alias f="fg"
@@ -75,3 +76,5 @@ alias wifion="networksetup -setairportpower airport on"
 alias wifioff="networksetup -setairportpower airport off"
 
 alias ss="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
+
+alias netwtf="sudo /usr/local/Cellar/"
