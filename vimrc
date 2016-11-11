@@ -63,6 +63,7 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 set relativenumber
+set number
 set scrolloff=10
 set cursorline
 au WinLeave * setlocal nocursorline "maybe I like this, maybe I don't
