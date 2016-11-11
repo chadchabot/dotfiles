@@ -111,6 +111,9 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightC
 defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
 defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
 
+# Turn on three fingers for dragging
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+
 # Disable “natural” (Lion-style) scrolling
 #defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
