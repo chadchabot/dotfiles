@@ -1,10 +1,11 @@
+#!/bin/bash
 #create a new directory and enter it
 function md() {
   mkdir -p "$@" && cd "$@"
 }
 
 function pushd_quiet() {
-  pushd $1 >/dev/null 2>&1
+  pushd "$1" >/dev/null 2>&1
 }
 
 function popd_quiet() {
@@ -22,19 +23,19 @@ function clip() {
 #Arcpath-XXX-N littering your repos
 #delete them from your local repo with this
 function clean_arcpatch(){
-  if test ! $(which git)
+  if test ! "$(which git)"
   then
     echo "Git is not installed. What is wrong with you?"
     exit
   fi
   for ref in $(git for-each-ref --format='%(refname)' refs/heads/arcpatch*); do
-    branch_name=`echo $ref | cut -f 3 -d '/'`
+    branch_name=$(echo "$ref" | cut -f 3 -d '/')
     echo $(git branch -D $branch_name)
   done
 }
 
 function clean_hotfixes(){
-  if test ! $(which git)
+  if test ! "$(which git)"
   then
     echo "Git is not installed. What is wrong with you?"
     exit
@@ -42,15 +43,15 @@ function clean_hotfixes(){
   branches=$(git for-each-ref --format='%(refname)' refs/heads/hotfix*)
   branch_count=${#branches[@]}
   echo "There were ${branch_count} branches found."
-  echo ${branches[@]}
+  echo "${branches[@]}"
   #why is this returning an array of length 1, but the first entry is an empty string?
   echo "|${branches[0]}|"
   exit 1
   #TODO: count number of refs that match, and how many are deleted
   #TODO: if there are no branches matching the name/pattern, say so
   for ref in $branches; do
-    branch_name=`echo $ref | cut -f 3 -d '/'`
-    echo $(git branch -D $branch_name)
+    branch_name=$(echo "$ref" | cut -f 3 -d '/')
+    $(git branch -D "$branch_name")
   done
 }
 
@@ -101,8 +102,8 @@ function open_files_matching(){
   SEARCH_PATH=$2
   #TODO: only open if there are matches, else give an error message
   #TODO: why is this failing on a "ag: command not found" error?
-  FILE_LIST=$(ag -l $SEARCH_REGEX $SEARCH_PATH)
-  echo $FILE_LIST
+  FILE_LIST=$(ag -l "$SEARCH_REGEX" "$SEARCH_PATH")
+  echo "$FILE_LIST"
   #| xargs -o vim -p
 }
 
@@ -114,12 +115,12 @@ function open_files_matching(){
 # http://boredzo.org/blog/archives/2016-08-15/colorized-man-pages-understood-and-customized
 man() {
   env \
-    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-    LESS_TERMCAP_md=$(printf "\e[1;31m") \
-    LESS_TERMCAP_me=$(printf "\e[0m") \
-    LESS_TERMCAP_se=$(printf "\e[0m") \
-    LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-    LESS_TERMCAP_ue=$(printf "\e[0m") \
-    LESS_TERMCAP_us=$(printf "\e[1;32m") \
+    LESS_TERMCAP_mb="$(printf "\e[1;31m")" \
+    LESS_TERMCAP_md="$(printf "\e[1;31m")" \
+    LESS_TERMCAP_me="$(printf "\e[0m")" \
+    LESS_TERMCAP_se="$(printf "\e[0m")" \
+    LESS_TERMCAP_so="$(printf "\e[1;44;33m")" \
+    LESS_TERMCAP_ue="$(printf "\e[0m")" \
+    LESS_TERMCAP_us="$(printf "\e[1;32m")" \
       man "$@"
 }

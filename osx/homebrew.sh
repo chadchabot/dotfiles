@@ -7,7 +7,7 @@ function install_homebrew() {
 
 #Standard brews are CLI utility programs
 function install_brews() {
-  declare -a brew_packages=("caskroom/cask/brew-cask" "the_silver_searcher" "tree" "httpie" "ffmpeg" "binutils" "valgrind" "libdvdcss" "postgresql" "rbenv" "rbenv-vars" "node" "mtr")
+  declare -a brew_packages=("caskroom/cask/brew-cask" "the_silver_searcher" "tree" "httpie" "ffmpeg" "binutils" "valgrind" "libdvdcss" "postgresql" "rbenv" "rbenv-vars" "node" "mtr" "shellcheck")
   #screen, tmux
   for package in "${brew_packages[@]}"
   do
