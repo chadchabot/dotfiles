@@ -6,6 +6,7 @@ source ./lib.sh
 source ./osx/homebrew.sh
 
 set -e
+set -u
 
 bot "So what are we doing today?"
 echo "1) New system setup - install everything!"

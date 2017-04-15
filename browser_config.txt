@@ -1,0 +1,8 @@
+// Firefox
+
+ublock origin
+https everywhere
+vimfx
+1password
+evernote web clipper
+

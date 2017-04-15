@@ -1,0 +1,7 @@
+source 'https://rubygems.org'
+
+gem 'awesome_print'
+gem 'rails'
+gem 'bundler'
+gem 'foreman'
+gem 'money'

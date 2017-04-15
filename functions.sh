@@ -19,6 +19,15 @@ function clip() {
   [ -t 0 ] && pbpaste || pbcopy;
 }
 
+function is_sudo(){
+  if [$(id -u) -eq 0]
+  then
+    return 0
+  else
+    return 1
+  fi
+}
+
 #using arcanist? Then you may end up with a bunch of branches named
 #Arcpath-XXX-N littering your repos
 #delete them from your local repo with this
