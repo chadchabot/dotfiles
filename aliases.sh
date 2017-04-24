@@ -10,10 +10,10 @@ alias .....="cd ../../../.."
 
 #pretty ls output
 alias l.="ls -dG .*"
-alias ll="ls -lG"
-alias ls="ls -G"
+alias ll="ls -lhG"
+alias ls="ls -Gh"
 #list only directories
-alias lsd="ls -l | grep "^d""
+alias lsd="ls -lh | grep "^d""
 
 alias grep="grep --color"
 
