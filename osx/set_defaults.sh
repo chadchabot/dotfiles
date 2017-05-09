@@ -282,7 +282,8 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
    Privileges -bool true
 
 # Set a really fast key repeat.
-defaults write NSGlobalDomain KeyRepeat -int 0
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
+defaults write NSGlobalDomain KeyRepeat -int 2
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
