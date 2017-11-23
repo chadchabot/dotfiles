@@ -1,1 +1,0 @@
-/Users/chadchabot/.bash_terminal_colours
