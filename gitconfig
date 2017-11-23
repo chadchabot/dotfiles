@@ -11,19 +11,24 @@
   template = ~/.gitmessage
 
 [alias]
-  co = checkout
-  cb = checkout -b
-  ci = commit
-  st = status
-  br = branch
-  d  = branch -D
-  p  = pull
+  files = log --numstat --oneline
+  names = shortlog -sn
+  co    = checkout
+  cb    = checkout -b
+  ci    = commit
+  st    = status
+  br    = branch
+  d     = branch -D
+  p     = pull
   #TODO: this is broken. Figure out what the correct format string is.
   hist = log --pretty-format:\"%h %ad | %s%d [%an]\" --graph --date-short
   type = cat-file -t
   dump = cat-file -p
   lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
   tree = log --color --graph --pretty=format: ''
+  lga = log --graph --decorate --all
+  dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order'
+  cached = diff --cached
 
 # push easily. http://stackoverflow.com/a/23918418/89484
 [push]

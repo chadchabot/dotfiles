@@ -12,6 +12,12 @@ function popd_quiet() {
   popd >/dev/null 2>&1
 }
 
+function is_git_installed() {
+  if test ~ $(which git)
+  then return 0
+  else return 1
+  fi
+}
 #typing pbpaste & pbcopy is a pain.
 #I think what this does is checks if there's anything in the clipboard, and
 #paste it if it is, else copy what follows
@@ -32,10 +38,10 @@ function is_sudo(){
 #Arcpath-XXX-N littering your repos
 #delete them from your local repo with this
 function clean_arcpatch(){
-  if test ! "$(which git)"
+  if is_git_installed
   then
     echo "Git is not installed. What is wrong with you?"
-    exit
+    return 0
   fi
   for ref in $(git for-each-ref --format='%(refname)' refs/heads/arcpatch*); do
     branch_name=$(echo "$ref" | cut -f 3 -d '/')
@@ -44,10 +50,10 @@ function clean_arcpatch(){
 }
 
 function clean_hotfixes(){
-  if test ! "$(which git)"
+  if is_git_installed
   then
     echo "Git is not installed. What is wrong with you?"
-    exit
+    return 0
   fi
   branches=$(git for-each-ref --format='%(refname)' refs/heads/hotfix*)
   branch_count=${#branches[@]}
@@ -133,3 +139,14 @@ man() {
     LESS_TERMCAP_us="$(printf "\e[1;32m")" \
       man "$@"
 }
+
+function output_dot() {
+  FILEPATH=$1
+  FILENAME=${FILEPATH%.*}
+  `dot $FILEPATH -Tpng -o $FILENAME.png && open $FILENAME.png`
+}
+
+function 2leet() {
+  echo "$@" | tr [:upper:] [:lower:] | tr "lreasgtbo"
+}
+

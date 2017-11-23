@@ -7,13 +7,15 @@ alias cd..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+alias up="cd .. && ls"
 
 #pretty ls output
 alias l.="ls -dG .*"
+alias l="ls -G"
 alias ll="ls -lhG"
 alias ls="ls -Gh"
 #list only directories
-alias lsd="ls -lh | grep "^d""
+alias lsd="ls -1 -d -- */"
 
 alias grep="grep --color"
 
@@ -32,6 +34,7 @@ alias gb="git branch"
 alias gcb="git checkout -b"
 alias gco="git checkout"
 alias glg="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit"
+alias local-commits="git ref-list origin..HEAD"
 
 #alias v="vim"
 alias v="/usr/local/Cellar/macvim/7.4-104/MacVim.app/Contents/MacOS/Vim"
