@@ -1,5 +1,6 @@
 #!/bin/bash
-source bash_term_colours.sh
+
+source bash_terminal_colours.sh
 # some bits borrowed from https://github.com/atomantic/dotfiles/
 
 function ok() {

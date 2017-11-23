@@ -3,8 +3,7 @@ source ./lib.sh
 
 bot "Setting up your dotfiles for you, you handsome bastard."
 
-declare -r BASE_DIR
-BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+declare -r BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 declare -r BUNDLE_DIR="${BASE_DIR}/vim/bundle"
 BACKUP_DIR="${BASE_DIR}/vim/backup"
 AUTOLOAD_DIR="${BASE_DIR}/vim/autoload"

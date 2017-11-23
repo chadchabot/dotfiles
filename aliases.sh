@@ -28,6 +28,8 @@ alias plz="sudo !!"
 #TODO: add something to help list git aliases?
 #http://stackoverflow.com/questions/7066325/list-git-aliases#11613251
 
+alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
+
 #shortcuts
 alias g="git"
 alias gb="git branch"

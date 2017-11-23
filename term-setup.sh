@@ -23,5 +23,6 @@ move_and_symlink ~/.bashrc ${BASE_DIR}/bashrc
 bot "Setting up terminal extras"
 move_and_symlink ~/.functions ${BASE_DIR}/functions.sh
 move_and_symlink ~/.aliases ${BASE_DIR}/aliases.sh
+move_and_symlink ~/.bash_terminal_colours ${BASE_DIR}/bash_terminal_colours.sh
 
 ok "Finished with terminal prefs"
