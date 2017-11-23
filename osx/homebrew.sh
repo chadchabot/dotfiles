@@ -7,11 +7,11 @@ function install_homebrew() {
 
 #Standard brews are CLI utility programs
 function install_brews() {
-  declare -a brew_packages=("caskroom/cask/brew-cask" "the_silver_searcher" "tree" "httpie" "ffmpeg" "binutils" "valgrind" "libdvdcss" "postgresql" "rbenv" "rbenv-vars" "node" "mtr" "shellcheck" "imagemagick")
+  declare -a brew_packages=("the_silver_searcher" "tree" "httpie" "ffmpeg" "binutils" "valgrind" "libdvdcss" "postgresql" "rbenv" "rbenv-vars" "node" "mtr" "shellcheck" "imagemagick")
   #screen, tmux
   for package in "${brew_packages[@]}"
   do
-    install_brew_package $package
+    install_brew_package $package || continue
   done
 }
 
@@ -23,7 +23,7 @@ function install_casks() {
   # cool! You can iterate through elements in multiple arrays using this notation!
   for package in "${dev_essentials[@]}" "${personal[@]}"
   do
-    install_brew_cask "${package}"
+    install_brew_cask "${package}" || continue
   done
 
   #someday move to a more easily maintained list of applications in an external source file
