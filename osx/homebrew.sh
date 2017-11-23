@@ -25,6 +25,12 @@ function install_casks() {
   do
     install_brew_cask "${package}"
   done
+
+  #someday move to a more easily maintained list of applications in an external source file
+  #while IFS= read -r package
+  #do
+  #  echo "${package}"
+  #done < dev_apps.txt
 }
 
 function install_brew_cask() {
