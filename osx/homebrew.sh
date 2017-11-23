@@ -17,15 +17,11 @@ function install_brews() {
 
 #Casks are typically GUI applications that are installed as a nicety when setting up a new machine
 function install_casks() {
-  declare -a dev_essentials=("sublime-text" "google-chrome" "firefox" "iterm2" "spectacle" "spotify" "caffeine" "slack" "sequel-pro" "dropbox" "sqlitebrowser" "macvim" "appcleaner")
-  declare -a personal=("superduper" "vlc" "carbon-copy-cloner" "flux" "little-snitch" "xscope" "transmit" "evernote" "skype" "handbrake" "mou" "steam" "1password")
+  declare -a dev_essentials=("sublime-text" "google-chrome" "firefox" "iterm2" "spectacle" "spotify" "caffeine" "slack" "sequel-pro" "dropbox" "sqlitebrowser" "macvim" "appcleaner" "graphvix")
+  declare -a personal=("superduper" "vlc" "carbon-copy-cloner" "flux" "little-snitch" "xscope" "transmit" "evernote" "skype" "handbrake" "macdown" "steam" "1password")
 
-  for package in "${dev_essentials[@]}"
-  do
-    install_brew_cask "${package}"
-  done
-
-  for package in "${personal[@]}"
+  # cool! You can iterate through elements in multiple arrays using this notation!
+  for package in "${dev_essentials[@]}" "${personal[@]}"
   do
     install_brew_cask "${package}"
   done
