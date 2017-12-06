@@ -25,4 +25,4 @@ export PATH=/opt/apache-maven-3.3.9/bin:$PATH
 
 source ~/.functions
 source ~/.aliases
-source ~/.bash_term_colours
+source ~/.bash_terminal_colours
