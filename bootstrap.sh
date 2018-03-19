@@ -123,5 +123,5 @@ fi
 
 warn "You have one job to do manually.\nAdd \"[[ -r ~/.bashrc ]] && . ~/.bashrc\" to your ~/.bash_profile file in order to get all the alias and function goodies."
 echo '[[ -r ~/.bashrc ]] && . ~/.bashrc' >> ~/.bash_profile
-echo 'eval #$(rbenv init -)"' >> ~/.bash_profile
+echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
 bot "Everything is done! Congrats"
