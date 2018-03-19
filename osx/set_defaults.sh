@@ -285,6 +285,10 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 defaults write NSGlobalDomain KeyRepeat -int 2
 
+# Save screenshots somewhere that is not on the desktop
+mkdir ~/Pictures/screenshots
+defaults write com.apple.screencapture location ~/Pictures/screenshots
+
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
