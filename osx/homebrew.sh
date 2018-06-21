@@ -7,7 +7,7 @@ function install_homebrew() {
 
 #Standard brews are CLI utility programs
 function install_brews() {
-  declare -a brew_packages=("the_silver_searcher" "tree" "httpie" "ffmpeg" "binutils" "valgrind" "libdvdcss" "postgresql" "rbenv" "rbenv-vars" "node" "mtr" "shellcheck" "imagemagick")
+  declare -a brew_packages=("the_silver_searcher" "tree" "httpie" "ffmpeg" "binutils" "valgrind" "libdvdcss" "postgresql" "rbenv" "rbenv-vars" "node" "mtr" "shellcheck" "imagemagick" "graphviz")
   #screen, tmux
   for package in "${brew_packages[@]}"
   do
@@ -17,7 +17,7 @@ function install_brews() {
 
 #Casks are typically GUI applications that are installed as a nicety when setting up a new machine
 function install_casks() {
-  declare -a dev_essentials=("sublime-text" "google-chrome" "firefox" "iterm2" "spectacle" "spotify" "caffeine" "slack" "sequel-pro" "dropbox" "sqlitebrowser" "macvim" "appcleaner" "graphvix")
+  declare -a dev_essentials=("sublime-text" "google-chrome" "firefox" "iterm2" "spectacle" "spotify" "caffeine" "slack" "sequel-pro" "dropbox" "sqlitebrowser" "macvim" "appcleaner")
   declare -a personal=("polymail" "superduper" "vlc" "carbon-copy-cloner" "flux" "little-snitch" "xscope" "transmit" "evernote" "skype" "handbrake" "macdown" "steam" "1password")
 
   # cool! You can iterate through elements in multiple arrays using this notation!

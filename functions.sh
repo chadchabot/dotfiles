@@ -141,6 +141,10 @@ man() {
 }
 
 function output_dot() {
+  command -v dot >/dev/null 2>&1 || { echo >&2 "The Dot tool (Graphviz) is not installed. Install it and try again."; return 1;  }
+
+  #verify that the file has a .dot extension?
+  #verify that dot exists on this system?
   FILEPATH=$1
   FILENAME=${FILEPATH%.*}
   `dot $FILEPATH -Tpng -o $FILENAME.png && open $FILENAME.png`
@@ -150,3 +154,6 @@ function 2leet() {
   echo "$@" | tr [:upper:] [:lower:] | tr "lreasgtbo"
 }
 
+function network_connection_history(){
+  echo $(defaults read /Library/Preferences/SystemConfiguration/com.apple.airport.preferences)
+}

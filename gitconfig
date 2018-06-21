@@ -16,6 +16,7 @@
   co    = checkout
   cb    = checkout -b
   ci    = commit
+  cm    = commit -m
   st    = status
   br    = branch
   d     = branch -D

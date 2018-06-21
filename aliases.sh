@@ -9,6 +9,9 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias up="cd .. && ls"
 
+alias downloads="cd ~/Downloads"
+alias desktop="cd ~/Desktop"
+
 #pretty ls output
 alias l.="ls -dG .*"
 alias l="ls -G"
@@ -32,6 +35,7 @@ alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
 
 #shortcuts
 alias g="git"
+alias gcm="git commit -m"
 alias gb="git branch"
 alias gcb="git checkout -b"
 alias gco="git checkout"
@@ -64,12 +68,16 @@ alias ql="qlmanage -p"
 alias df="df -H"
 alias du="du -ch"
 
+alias pgstart="brew services start postgresql"
+alias pgstop="brew services stop postgresql"
+
 #typos
 alias gti=git
 alias brwe=brew
 alias where=which
 
-alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+alias ethdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+alias wifidump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 #IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -79,6 +87,7 @@ alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 alias airport="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s"
 alias wifion="networksetup -setairportpower airport on"
 alias wifioff="networksetup -setairportpower airport off"
+alias wifiip="ipconfig getifaddr en0"
 
 alias ss="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
 
