@@ -6,11 +6,13 @@
   excludesfile = ~/.gitignore
   editor = /usr/bin/vim
   autocrlf = input
+  pager = less -FMRiX #what does this do exactly?
 
 [commit]
   template = ~/.gitmessage
 
 [alias]
+  amend = commit --amend --no-edit
   files = log --numstat --oneline
   names = shortlog -sn
   co    = checkout
@@ -20,6 +22,7 @@
   st    = status
   br    = branch
   d     = branch -D
+  del   = branch -D
   p     = pull
   #TODO: this is broken. Figure out what the correct format string is.
   hist = log --pretty-format:\"%h %ad | %s%d [%an]\" --graph --date-short
@@ -30,6 +33,7 @@
   lga = log --graph --decorate --all
   dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order'
   cached = diff --cached
+  cached-files = diff --cached --name-only
 
 # push easily. http://stackoverflow.com/a/23918418/89484
 [push]
