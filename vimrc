@@ -237,6 +237,7 @@ endfunction
 " easy open/close of NERDTree
 nnoremap <leader>n :NERDTree<Cr>
 nnoremap <leader><leader>n :NERDTreeClose<Cr>
+"let NERDTreeShowHidden=1 "do you need to see hidden files all the time? It's a single "I" away from being visible at any point.
 "nnoremap <leader>n :E<Cr> "I'm undecided whether I like having nerdtree stay
 "open or not.
 
@@ -288,7 +289,7 @@ if executable('ag')
 endif
 
 " bind K to grep word under cursor
-nnoremap K :grep! "\b,C-R><C-W>\b"<CR>:cw<CR>
+"nnoremap K :grep! "\b,C-R><C-W>\b"<CR>:cw<CR>
 
 "nmap <silent> <leader><leader>s :set spell!<CR>"not sure if I want spellcheck
 "on always, or toggled, so leave this here to decide on later
@@ -306,3 +307,7 @@ autocmd Filetype markdown setlocal spell
 " Find all class selectors that have attributes on a single line
 "   Will also match on multiple attributes on one line
 autocmd Filetype less nnoremap <leader><leader>M :%s/{\n\?[0-9a-zA-Z:. -@]\+;\n\?}//gn<Cr>
+
+" convert file to binary/hex format
+noremap <leader>hh :% ! xxd<Cr>
+noremap <leader>HH :% ! xxd -r<Cr>"

@@ -42,6 +42,11 @@
 - deleting things and overwriting the contents of the active register is a huge pain in the ass. Disable that, or set up a keymapping, or something.
 - why can't I see the git branch I'm currently on in Vim? Maybe I haven't updated my dotfiles in a while and need to do that still.
 - add npm tools
-	- less
-	- sass
-	- coffeescript
+  - less
+  - sass
+  - coffeescript
+- change default application handler for types of files
+  - md: markdown app
+  - txt: sublime, atom, whatever
+- can I install package control for sublime/atom automatically?
+  - how about packages I use (pretty json, pretty ruby, etc)

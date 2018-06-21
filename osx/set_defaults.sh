@@ -281,7 +281,8 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
    OpenWith -bool true \
    Privileges -bool true
 
-# Set a really fast key repeat.
+# Set a really fast key repeat
+# # these keys seem correct, but setting these values doesn't have the effect I expected. Maybe there's been some changes between 10.9 & 10.11?.
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 defaults write NSGlobalDomain KeyRepeat -int 2
 
