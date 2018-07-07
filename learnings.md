@@ -5,8 +5,7 @@
 
 [Vimcasts - Spell Checking](http://vimcasts.org/episodes/spell-checking/)
 
-- Turn on the spell checker `set spell` which will add an underline (or highlight,
-	depending on your editor configuration) to any words that are misspelled.
+- Turn on the spell checker `set spell` which will add an underline (or highlight, depending on your editor configuration) to any words that are misspelled.
 - Change the spell checker language to your region `set spelllang=en_ca`
 - To move between misspelled words, press `[s` or `]s` to go to the previous or
   next misspelled word.

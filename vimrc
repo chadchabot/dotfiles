@@ -311,3 +311,15 @@ autocmd Filetype less nnoremap <leader><leader>M :%s/{\n\?[0-9a-zA-Z:. -@]\+;\n\
 " convert file to binary/hex format
 noremap <leader>hh :% ! xxd<Cr>
 noremap <leader>HH :% ! xxd -r<Cr>"
+
+" protect against lazy writing and anti-inclusive language
+" courtesy of Jess Telford @jesstelford
+highlight badWords ctermbg=red ctermfg=white
+
+fun! HiBadWords()
+  match badWords /\c\<\(obviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however\|so,\|easy\)\>/
+endfun
+
+" This may be useful files other than markdown.
+autocmd InsertEnter *.md call HiBadWords()
+autocmd InsertLeave *.md call HiBadWords()
