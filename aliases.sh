@@ -41,6 +41,10 @@ alias gcb="git checkout -b"
 alias gco="git checkout"
 alias glg="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit"
 alias local-commits="git ref-list origin..HEAD"
+#follow the changes of a specific file (or files?) by supplying the filename as
+#trailing arg
+alias gfollow="git log --follow -p"
+
 
 #alias v="vim"
 alias v="/usr/local/Cellar/macvim/7.4-104/MacVim.app/Contents/MacOS/Vim"
@@ -92,3 +96,9 @@ alias wifiip="ipconfig getifaddr en0"
 alias ss="open /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app"
 
 alias netwtf="sudo /usr/local/Cellar/"
+
+
+#helpers for working with heroku
+alias hpush="git push heroku master"
+alias hlogs="heroku logs -t"
+alias hcons="heroku console"
