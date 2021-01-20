@@ -72,3 +72,6 @@ export PATH="/usr/local/sbin:$PATH" #some tools installed by homebrew put things
 source ~/.functions
 source ~/.aliases
 source ~/.bash_terminal_colours
+
+# Created by `userpath` on 2020-06-27 04:30:03
+export PATH="$PATH:/Users/chadchabot/.local/bin"
