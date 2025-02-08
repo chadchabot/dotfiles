@@ -1,58 +1,68 @@
 #!/bin/bash
 
-if [ "$1" == "--help"  ] || [ "$1" == "-h"  ]; then
-  echo "Usage: list-differences-between /path/to/source /path/to/destination"
-  echo "This script compares two directories and shows:"
-  echo "- Number of files only in the source directory"
-  echo "- Number of files only in the destination directory"
-  echo "- Number of files that differ between the two"
-  exit 0
-fi
-
-# Check if two arguments (paths) are provided
-if [ "$#" -ne 2 ]; then
-  echo "Usage: list-differences-between /path/to/source /path/to/destination"
+# Ensure that source and destination paths are provided
+if [ $# -ne 2 ]; then
+  echo "Usage: $0 <source_directory> <destination_directory>"
   exit 1
 fi
 
-# Assign arguments to variables
 source_path="$1"
 dest_path="$2"
 
-# Run diff once and process output in single path rather than store in a var
+echo -e "Comparing file content differences between:\n\t$source_path\n\t$dest_path\n\n"
+
+# Initialize counts
 source_count=0
 dest_count=0
 diff_count=0
 total_checked=0
 
-echo -e "Comparing file content differences between:\n\t$source_path\n\t$dest_path\n\n"
-
+# Function to print progress
 print_progress() {
   echo -ne "\rFiles checked: $total_checked | Only in source: $source_count | Only in dest: $dest_count | Differing: $diff_count"
 }
 
-rsync -an --out-format="%P" "$source_path/" "$dest_path/" | while IFS= read -r line; do
+# Check if source directory exists
+if [ ! -d "$source_path" ]; then
+  echo "Source directory does not exist: $source_path"
+  exit 1
+fi
+
+# Check if destination directory exists
+if [ ! -d "$dest_path" ]; then
+  echo "Destination directory does not exist: $dest_path"
+  exit 1
+fi
+
+# Use rsync to get differences and handle output
+rsync -anr --itemize-changes "$source_path/" "$dest_path/" | while IFS= read -r line; do
   ((total_checked++))
 
-  if [[ $line == "Only in $source_path"* ]]; then
+  # Full path construction
+  full_source_path="$source_path/$(echo $line | sed 's/^[^ ]* //')"
+  full_dest_path="$dest_path/$(echo $line | sed 's/^[^ ]* //')"
+
+  # Output missing or differing files with full paths
+  if echo "$line" | grep -q '^<'; then
+    # File only in source
+    echo "Only in source: $full_source_path"
     ((source_count++))
-  elif [[ $line == "Only in $dest_path"* ]]; then
+  elif echo "$line" | grep -q '^>'; then
+    # File only in destination
+    echo "Only in destination: $full_dest_path"
     ((dest_count++))
-  elif [[ $line == *" differ" ]]; then
+  elif echo "$line" | grep -q 'diff'; then
+    # File differs between source and destination
+    echo "Differing file: $full_source_path"
     ((diff_count++))
   fi
 
+  # Print progress update
   print_progress
 done
 
+# Final output summary
 echo -e "\nComparison complete!"
-
-# double check output is correct.
-#print_progress
-#echo #add new line before summary
-
-# Output the results
 echo "Files only in source ($source_path): $source_count"
 echo "Files only in destination ($dest_path): $dest_count"
 echo "Differing files: $diff_count"
-
