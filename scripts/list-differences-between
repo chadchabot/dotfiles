@@ -42,36 +42,60 @@ else
     echo "Source directory is empty: $source_path"
 fi
 
-# Use rsync to get differences and handle output
-rsync -anr --itemize-changes "$source_path/" "$dest_path/" | while IFS= read -r line; do
-  ((total_checked++))
+# Check if destination directory is empty
+if [ "$(ls -A "$dest_path")" ]; then
+    dest_is_empty=false
+else
+    dest_is_empty=true
+    echo "Destination directory is empty: $dest_path"
+fi
 
-  # Full path construction
-  full_source_path="$source_path/$(echo "$line" | sed 's/^[^ ]* //')"
-  full_dest_path="$dest_path/$(echo "$line" | sed 's/^[^ ]* //')"
+# Function to compare files using rsync
+compare_directories() {
+    local dir1="$1"
+    local dir2="$2"
+    local dir1_name="$3"
+    local dir2_name="$4"
 
-  # Output missing or differing files with full paths
-  if echo "$line" | grep -q '^<'; then
-    # File only in source
-    echo "Only in source: $full_source_path"
-    ((source_count++))
-  elif echo "$line" | grep -q '^>'; then
-    # File only in destination
-    echo "Only in destination: $full_dest_path"
-    ((dest_count++))
-  elif echo "$line" | grep -q 'diff'; then
-    # File differs between source and destination
-    echo "Differing file: $full_source_path"
-    ((diff_count++))
-  fi
+    rsync -anr --itemize-changes "$dir1/" "$dir2/" | while IFS= read -r line; do
+        ((total_checked++))
 
-  # Print progress update
-  print_progress
-done
+        # Full path construction
+        full_dir1_path="$dir1/$(echo "$line" | sed 's/^[^ ]* //')"
+        full_dir2_path="$dir2/$(echo "$line" | sed 's/^[^ ]* //')"
+
+        # Output missing or differing files with full paths
+        if echo "$line" | grep -q '^<'; then
+            # File only in dir1
+            echo "Only in $dir1_name: $full_dir1_path"
+            ((source_count++))
+        elif echo "$line" | grep -q '^>'; then
+            # File only in dir2
+            echo "Only in $dir2_name: $full_dir2_path"
+            ((dest_count++))
+        elif echo "$line" | grep -q 'diff'; then
+            # File differs between dir1 and dir2
+            echo "Differing file: $full_dir1_path"
+            ((diff_count++))
+        fi
+
+        # Print progress update
+        print_progress
+    done
+}
+
+# Perform the comparison from source to destination
+compare_directories "$source_path" "$dest_path" "source" "destination"
+
+# Perform the comparison from destination to source (reverse)
+compare_directories "$dest_path" "$source_path" "destination" "source"
 
 # Output final directory comparison
 if [ "$source_is_empty" = true ]; then
   echo "Source directory is empty, no files to compare."
+fi
+if [ "$dest_is_empty" = true ]; then
+  echo "Destination directory is empty, no files to compare."
 fi
 
 # Final output summary
