@@ -1,69 +1,53 @@
 #!/bin/bash
 
-verbose=false
-
-# Parse options for verbose flag
-while getopts "v" opt; do
-    case $opt in
-        v) verbose=true ;;  # Enable verbose output
-        *) echo "Usage: $0 [-v] <source_path> <dest_path>"; exit 1 ;;
-    esac
-done
-
-# Shift the arguments so that $1 and $2 are the source and destination paths
-shift $((OPTIND - 1))
-
-source_path="$1"
-dest_path="$2"
-
-# Ensure source and destination paths are provided
-if [[ -z "$source_path" || -z "$dest_path" ]]; then
-    echo "Usage: $0 [-v] <source_path> <dest_path>"
-    exit 1
+# Check if verbose flag is passed
+VERBOSE=false
+if [[ "$1" == "-v" ]]; then
+    VERBOSE=true
+    shift
 fi
 
-# Ensure we are handling the trailing slash for correct directory comparison
-if [[ ! "$source_path" =~ /$ ]]; then
-    source_path="$source_path/"
-fi
-if [[ ! "$dest_path" =~ /$ ]]; then
-    dest_path="$dest_path/"
-fi
+# Assign source and destination directories
+SOURCE_DIR="$1"
+DEST_DIR="$2"
 
-# Initialize counts
-source_count=0
-dest_count=0
-diff_count=0
+# Initialize counters
+SOURCE_ONLY_COUNT=0
+DEST_ONLY_COUNT=0
+DIFFERING_COUNT=0
 
 echo "Comparing file content differences between:"
-echo -e "\t$source_path"
-echo -e "\t$dest_path"
+echo -e "\t$SOURCE_DIR"
+echo -e "\t$DEST_DIR"
 
-# Run rsync once, using -n to simulate the operation and --itemize-changes to show detailed output
-rsync -an --itemize-changes "$source_path" "$dest_path" | while IFS= read -r line; do
-    # Check if the line indicates a source-only file (starts with '>f')
+# Run rsync in dry-run mode with itemized changes
+rsync_output=$(rsync -an --itemize-changes "$SOURCE_DIR" "$DEST_DIR")
+
+# Process each line of rsync output
+echo "$rsync_output" | while read -r line; do
     if [[ "$line" =~ ^\>f ]]; then
-        ((source_count++))
-        if $verbose; then
-            echo "Source only: $line"
+        # Source-only files (exist in source but not in destination)
+        ((SOURCE_ONLY_COUNT++))
+        if [ "$VERBOSE" = true ]; then
+            echo "Source-only match: $line"
         fi
-    # Check if the line indicates a destination-only file (starts with '<f')
     elif [[ "$line" =~ ^\<f ]]; then
-        ((dest_count++))
-        if $verbose; then
-            echo "Destination only: $line"
+        # Destination-only files (exist in destination but not in source)
+        ((DEST_ONLY_COUNT++))
+        if [ "$VERBOSE" = true ]; then
+            echo "Destination-only match: $line"
         fi
-    # Check if the line indicates a differing file (starts with '*')
-    elif [[ "$line" =~ ^\* ]]; then
-        ((diff_count++))
-        if $verbose; then
-            echo "Differing: $line"
+    elif [[ "$line" =~ ^c ]]; then
+        # Differing files (exist in both but differ in content)
+        ((DIFFERING_COUNT++))
+        if [ "$VERBOSE" = true ]; then
+            echo "Differing file match: $line"
         fi
     fi
 done
 
-# Output the results
-echo -e "\nComparison complete!"
-echo "Files only in source ($source_path): $source_count"
-echo "Files only in destination ($dest_path): $dest_count"
-echo "Differing files: $diff_count"
+# Display summary
+echo "Comparison complete!"
+echo "Files only in source ($SOURCE_DIR): $SOURCE_ONLY_COUNT"
+echo "Files only in destination ($DEST_DIR): $DEST_ONLY_COUNT"
+echo "Differing files: $DIFFERING_COUNT"
