@@ -35,7 +35,7 @@ if [ ! -d "$dest_path" ]; then
 fi
 
 # Check if source directory is empty
-if [ "$(ls -A $source_path)" ]; then
+if [ "$(ls -A "$source_path")" ]; then
     source_is_empty=false
 else
     source_is_empty=true
@@ -47,8 +47,8 @@ rsync -anr --itemize-changes "$source_path/" "$dest_path/" | while IFS= read -r 
   ((total_checked++))
 
   # Full path construction
-  full_source_path="$source_path/$(echo $line | sed 's/^[^ ]* //')"
-  full_dest_path="$dest_path/$(echo $line | sed 's/^[^ ]* //')"
+  full_source_path="$source_path/$(echo "$line" | sed 's/^[^ ]* //')"
+  full_dest_path="$dest_path/$(echo "$line" | sed 's/^[^ ]* //')"
 
   # Output missing or differing files with full paths
   if echo "$line" | grep -q '^<'; then
@@ -77,4 +77,5 @@ fi
 # Final output summary
 echo -e "\nComparison complete!"
 echo "Files only in source ($source_path): $source_count"
-echo "Files only in destin
+echo "Files only in destination ($dest_path): $dest_count"
+echo "Differing files: $diff_count"
