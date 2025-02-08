@@ -31,8 +31,10 @@ print_progress() {
   echo -ne "\rFiles checked: $total_checked | Only in source: $source_count | Only in dest: $dest_count | Differing: $diff_count"
 }
 
-while read -r line; do
+
+diff -qr "$source_path" "$dest_path" | while IFS= read -r line; do
   ((total_checked++))
+
   if [[ $line == "Only in $source_path"* ]]; then
       ((source_count++))
   elif [[ $line == "Only in $dest_path"* ]]; then
@@ -41,14 +43,14 @@ while read -r line; do
     ((diff_count++))
   fi
 
-  if ((total_checked % 100 == 0)); then
-    print_progress
-  fi
-done < <(diff -qr "$source_path" "$dest_path")
+  echo -ne "Files processed: $total_checked\r"
+done
+
+echo -e "\nComparison complete!"
 
 # double check output is correct.
-print_progress
-echo #add new line before summary
+#print_progress
+#echo #add new line before summary
 
 # Output the results
 echo "Files only in source ($source_path): $source_count"
