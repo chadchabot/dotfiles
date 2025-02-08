@@ -34,6 +34,14 @@ if [ ! -d "$dest_path" ]; then
   exit 1
 fi
 
+# Check if source directory is empty
+if [ "$(ls -A $source_path)" ]; then
+    source_is_empty=false
+else
+    source_is_empty=true
+    echo "Source directory is empty: $source_path"
+fi
+
 # Use rsync to get differences and handle output
 rsync -anr --itemize-changes "$source_path/" "$dest_path/" | while IFS= read -r line; do
   ((total_checked++))
@@ -61,8 +69,12 @@ rsync -anr --itemize-changes "$source_path/" "$dest_path/" | while IFS= read -r 
   print_progress
 done
 
+# Output final directory comparison
+if [ "$source_is_empty" = true ]; then
+  echo "Source directory is empty, no files to compare."
+fi
+
 # Final output summary
 echo -e "\nComparison complete!"
 echo "Files only in source ($source_path): $source_count"
-echo "Files only in destination ($dest_path): $dest_count"
-echo "Differing files: $diff_count"
+echo "Files only in destin
