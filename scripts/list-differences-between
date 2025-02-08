@@ -31,11 +31,7 @@ print_progress() {
   echo -ne "\rFiles checked: $total_checked | Only in source: $source_count | Only in dest: $dest_count | Differing: $diff_count"
 }
 
-diff_output=$(diff -qr "$source_path" "$dest_path")
-
-echo "did we see some output?"
-
-while IFS= read -r line; do
+rsync -an --out-format="%n" "$source_path/" "$dest_path/" | while IFS= read -r line; do
   ((total_checked++))
 
   if [[ $line == "Only in $source_path"* ]]; then
@@ -47,8 +43,7 @@ while IFS= read -r line; do
   fi
 
   print_progress
-  sleep 0.01
-done <<< "$diff_output"
+done
 
 echo -e "\nComparison complete!"
 
