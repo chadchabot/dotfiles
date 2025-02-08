@@ -31,19 +31,23 @@ print_progress() {
   echo -ne "\rFiles checked: $total_checked | Only in source: $source_count | Only in dest: $dest_count | Differing: $diff_count"
 }
 
+diff -qr "$source_path" "$dest_path"
+
+echo "did we see some output?"
 
 diff -qr "$source_path" "$dest_path" | while IFS= read -r line; do
   ((total_checked++))
 
   if [[ $line == "Only in $source_path"* ]]; then
-      ((source_count++))
+    ((source_count++))
   elif [[ $line == "Only in $dest_path"* ]]; then
-      ((dest_count++))
+    ((dest_count++))
   elif [[ $line == *" differ" ]]; then
     ((diff_count++))
   fi
 
-  echo -ne "Files processed: $total_checked\r"
+  print_progress
+  sleep 0.01
 done
 
 echo -e "\nComparison complete!"
