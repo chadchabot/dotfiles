@@ -31,7 +31,7 @@ print_progress() {
   echo -ne "\rFiles checked: $total_checked | Only in source: $source_count | Only in dest: $dest_count | Differing: $diff_count"
 }
 
-rsync -an --out-format="%n" "$source_path/" "$dest_path/" | while IFS= read -r line; do
+rsync -an --out-format="%P" "$source_path/" "$dest_path/" | while IFS= read -r line; do
   ((total_checked++))
 
   if [[ $line == "Only in $source_path"* ]]; then
