@@ -24,7 +24,7 @@ echo -e "\t$DEST_DIR"
 rsync_output=$(rsync -an --itemize-changes "$SOURCE_DIR" "$DEST_DIR")
 
 # Process each line of rsync output
-echo "$rsync_output" | while read -r line; do
+while read -r line; do
     if [[ "$line" =~ ^\>f ]]; then
         # Source-only files (exist in source but not in destination)
         ((SOURCE_ONLY_COUNT++))
@@ -44,7 +44,7 @@ echo "$rsync_output" | while read -r line; do
             echo "Differing file match: $line"
         fi
     fi
-done
+done <<< "$rsync_output"
 
 # Display summary
 echo "Comparison complete!"
