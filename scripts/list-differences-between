@@ -1,19 +1,34 @@
 #!/bin/bash
 
-source_path="$1"
-dest_path="$2"
 verbose=false
 
-# Parse options
+# Parse options for verbose flag
 while getopts "v" opt; do
     case $opt in
-        v) verbose=true ;;
+        v) verbose=true ;;  # Enable verbose output
         *) echo "Usage: $0 [-v] <source_path> <dest_path>"; exit 1 ;;
     esac
 done
 
-# Shift arguments to remove the option
+# Shift the arguments so that $1 and $2 are the source and destination paths
 shift $((OPTIND - 1))
+
+source_path="$1"
+dest_path="$2"
+
+# Ensure source and destination paths are provided
+if [[ -z "$source_path" || -z "$dest_path" ]]; then
+    echo "Usage: $0 [-v] <source_path> <dest_path>"
+    exit 1
+fi
+
+# Ensure we are handling the trailing slash for correct directory comparison
+if [[ ! "$source_path" =~ /$ ]]; then
+    source_path="$source_path/"
+fi
+if [[ ! "$dest_path" =~ /$ ]]; then
+    dest_path="$dest_path/"
+fi
 
 # Initialize counts
 source_count=0
@@ -23,14 +38,6 @@ diff_count=0
 echo "Comparing file content differences between:"
 echo -e "\t$source_path"
 echo -e "\t$dest_path"
-
-# Ensure we are handling the trailing slash for correct directory comparison
-if [[ ! "$source_path" =~ /$ ]]; then
-    source_path="$source_path/"
-fi
-if [[ ! "$dest_path" =~ /$ ]]; then
-    dest_path="$dest_path/"
-fi
 
 # Run rsync once, using -n to simulate the operation and --itemize-changes to show detailed output
 rsync -an --itemize-changes "$source_path" "$dest_path" | while IFS= read -r line; do
