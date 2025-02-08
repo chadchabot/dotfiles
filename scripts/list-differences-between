@@ -1,22 +1,62 @@
 #!/bin/bash
 
-if [ "$#" -ne 2 ]; then
-  echo "Usage: $0 /path/to/source /path/to/destination"
-  exit 1
-fi
-
 source_path="$1"
 dest_path="$2"
+verbose=false
 
-# Generate checksums for all files in source directory
-find "$source_path" -type f -exec shasum {} \; | sort > source_files.txt
+# Parse options
+while getopts "v" opt; do
+    case $opt in
+        v) verbose=true ;;
+        *) echo "Usage: $0 [-v] <source_path> <dest_path>"; exit 1 ;;
+    esac
+done
 
-# Generate checksums for all files in destination directory
-find "$dest_path" -type f -exec shasum {} \; | sort > dest_files.txt
+# Shift arguments to remove the option
+shift $((OPTIND - 1))
 
-# Compare the checksums to see the differences
-echo "Comparing directories..."
-diff source_files.txt dest_files.txt
+# Initialize counts
+source_count=0
+dest_count=0
+diff_count=0
 
-# Clean up temporary files
-rm source_files.txt dest_files.txt
+echo "Comparing file content differences between:"
+echo -e "\t$source_path"
+echo -e "\t$dest_path"
+
+# Ensure we are handling the trailing slash for correct directory comparison
+if [[ ! "$source_path" =~ /$ ]]; then
+    source_path="$source_path/"
+fi
+if [[ ! "$dest_path" =~ /$ ]]; then
+    dest_path="$dest_path/"
+fi
+
+# Run rsync once, using -n to simulate the operation and --itemize-changes to show detailed output
+rsync -an --itemize-changes "$source_path" "$dest_path" | while IFS= read -r line; do
+    # Check if the line indicates a source-only file (starts with '>f')
+    if [[ "$line" =~ ^\>f ]]; then
+        ((source_count++))
+        if $verbose; then
+            echo "Source only: $line"
+        fi
+    # Check if the line indicates a destination-only file (starts with '<f')
+    elif [[ "$line" =~ ^\<f ]]; then
+        ((dest_count++))
+        if $verbose; then
+            echo "Destination only: $line"
+        fi
+    # Check if the line indicates a differing file (starts with '*')
+    elif [[ "$line" =~ ^\* ]]; then
+        ((diff_count++))
+        if $verbose; then
+            echo "Differing: $line"
+        fi
+    fi
+done
+
+# Output the results
+echo -e "\nComparison complete!"
+echo "Files only in source ($source_path): $source_count"
+echo "Files only in destination ($dest_path): $dest_count"
+echo "Differing files: $diff_count"
