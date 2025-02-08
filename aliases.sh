@@ -102,3 +102,7 @@ alias netwtf="sudo /usr/local/Cellar/"
 alias hpush="git push heroku master"
 alias hlogs="heroku logs -t"
 alias hcons="heroku console"
+
+#Fairly Frosted specific stuff
+alias routingTool="cd ~/Projects/fairly\ frosted/web\ stuff/tools/delivery_router"
+

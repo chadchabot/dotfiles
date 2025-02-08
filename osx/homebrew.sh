@@ -44,6 +44,11 @@ function install_brew_cask() {
   fi
 }
 
+function install_fonts() {
+  brew tap homebrew/cask-fonts
+  brew install font-incosolata
+  brew install font-inter
+}
 function cask_is_installed() {
   #TODO: look in both the installed brew casks as well as in
   #      the /Applications folder
