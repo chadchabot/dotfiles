@@ -25,10 +25,11 @@ dest_count=0
 diff_count=0
 total_checked=0
 
+echo -e "Comparing file content differences between:\n\t$source_path\n\t$dest_path\n\n"
+
 print_progress() {
   echo -ne "\rFiles checked: $total_checked | Only in source: $source_count | Only in dest: $dest_count | Differing: $diff_count"
 }
-echo -e "Comparing file content differnces between:\n\t$source_path\n\t$dest_path\n\n"
 
 while read -r line; do
   ((total_checked++))
