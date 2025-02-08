@@ -1,105 +1,22 @@
 #!/bin/bash
 
-# Ensure that source and destination paths are provided
-if [ $# -ne 2 ]; then
-  echo "Usage: $0 <source_directory> <destination_directory>"
+if [ "$#" -ne 2 ]; then
+  echo "Usage: $0 /path/to/source /path/to/destination"
   exit 1
 fi
 
 source_path="$1"
 dest_path="$2"
 
-echo -e "Comparing file content differences between:\n\t$source_path\n\t$dest_path\n\n"
+# Generate checksums for all files in source directory
+find "$source_path" -type f -exec shasum {} \; | sort > source_files.txt
 
-# Initialize counts
-source_count=0
-dest_count=0
-diff_count=0
-total_checked=0
+# Generate checksums for all files in destination directory
+find "$dest_path" -type f -exec shasum {} \; | sort > dest_files.txt
 
-# Function to print progress
-print_progress() {
-  echo -ne "\rFiles checked: $total_checked | Only in source: $source_count | Only in dest: $dest_count | Differing: $diff_count"
-}
+# Compare the checksums to see the differences
+echo "Comparing directories..."
+diff source_files.txt dest_files.txt
 
-# Check if source directory exists
-if [ ! -d "$source_path" ]; then
-  echo "Source directory does not exist: $source_path"
-  exit 1
-fi
-
-# Check if destination directory exists
-if [ ! -d "$dest_path" ]; then
-  echo "Destination directory does not exist: $dest_path"
-  exit 1
-fi
-
-# Check if source directory is empty
-if [ "$(ls -A "$source_path")" ]; then
-    source_is_empty=false
-else
-    source_is_empty=true
-    echo "Source directory is empty: $source_path"
-fi
-
-# Check if destination directory is empty
-if [ "$(ls -A "$dest_path")" ]; then
-    dest_is_empty=false
-else
-    dest_is_empty=true
-    echo "Destination directory is empty: $dest_path"
-fi
-
-# Function to compare files using rsync
-compare_directories() {
-    local dir1="$1"
-    local dir2="$2"
-    local dir1_name="$3"
-    local dir2_name="$4"
-
-    rsync -anr --itemize-changes "$dir1/" "$dir2/" | while IFS= read -r line; do
-        ((total_checked++))
-
-        # Full path construction
-        full_dir1_path="$dir1/$(echo "$line" | sed 's/^[^ ]* //')"
-        full_dir2_path="$dir2/$(echo "$line" | sed 's/^[^ ]* //')"
-
-        # Output missing or differing files with full paths
-        if echo "$line" | grep -q '^<'; then
-            # File only in dir1
-            echo "Only in $dir1_name: $full_dir1_path"
-            ((source_count++))
-        elif echo "$line" | grep -q '^>'; then
-            # File only in dir2
-            echo "Only in $dir2_name: $full_dir2_path"
-            ((dest_count++))
-        elif echo "$line" | grep -q 'diff'; then
-            # File differs between dir1 and dir2
-            echo "Differing file: $full_dir1_path"
-            ((diff_count++))
-        fi
-
-        # Print progress update
-        print_progress
-    done
-}
-
-# Perform the comparison from source to destination
-compare_directories "$source_path" "$dest_path" "source" "destination"
-
-# Perform the comparison from destination to source (reverse)
-compare_directories "$dest_path" "$source_path" "destination" "source"
-
-# Output final directory comparison
-if [ "$source_is_empty" = true ]; then
-  echo "Source directory is empty, no files to compare."
-fi
-if [ "$dest_is_empty" = true ]; then
-  echo "Destination directory is empty, no files to compare."
-fi
-
-# Final output summary
-echo -e "\nComparison complete!"
-echo "Files only in source ($source_path): $source_count"
-echo "Files only in destination ($dest_path): $dest_count"
-echo "Differing files: $diff_count"
+# Clean up temporary files
+rm source_files.txt dest_files.txt
