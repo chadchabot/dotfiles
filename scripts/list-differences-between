@@ -1,0 +1,56 @@
+#!/bin/bash
+
+if [ "$1" == "--help"  ] || [ "$1" == "-h"  ]; then
+  echo "Usage: list-differences-between /path/to/source /path/to/destination"
+  echo "This script compares two directories and shows:"
+  echo "- Number of files only in the source directory"
+  echo "- Number of files only in the destination directory"
+  echo "- Number of files that differ between the two"
+  exit 0
+fi
+
+# Check if two arguments (paths) are provided
+if [ "$#" -ne 2 ]; then
+  echo "Usage: list-differences-between /path/to/source /path/to/destination"
+  exit 1
+fi
+
+# Assign arguments to variables
+source_path="$1"
+dest_path="$2"
+
+# Run diff once and process output in single path rather than store in a var
+source_count=0
+dest_count=0
+diff_count=0
+total_checked=0
+
+print_progress() {
+  echo -ne "\rFiles checked: $total_checked | Only in source: $source_count | Only in dest: $dest_count | Differing: $diff_count"
+}
+echo -e "Comparing file content differnces between:\n\t$source_path\n\t$dest_path\n\n"
+
+while read -r line; do
+  ((total_checked++))
+  if [[ $line == "Only in $source_path"* ]]; then
+      ((source_count++))
+  elif [[ $line == "Only in $dest_path"* ]]; then
+      ((dest_count++))
+  elif [[ $line == *" differ" ]]; then
+    ((diff_count++))
+  fi
+
+  if ((total_checked % 100 == 0)); then
+    print_progress
+  fi
+done < <(diff -qr "$source_path" "$dest_path")
+
+# double check output is correct.
+print_progress
+echo #add new line before summary
+
+# Output the results
+echo "Files only in source ($source_path): $source_count"
+echo "Files only in destination ($dest_path): $dest_count"
+echo "Differing files: $diff_count"
+
