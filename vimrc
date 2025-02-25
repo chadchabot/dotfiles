@@ -323,3 +323,99 @@ endfun
 " This may be useful files other than markdown.
 autocmd InsertEnter *.md call HiBadWords()
 autocmd InsertLeave *.md call HiBadWords()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Some new stuff I added to make working with markdown files a little nicer.
+" I fully expect there are great plugins that would do this for me, but I'm all for trying weird stuff and learning
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set colorcolumn=85
+" What does the `q` do?
+"   this automatically reformats text to fit within the textwidth setting.
+"   in my case, this means text auto wraps when I reach the 80th column.
+" What does the `r` do?
+"   automatically insert the current comment leader after hitting enter in
+"   Insert mode
+" What does the `n` do?
+"   If a line starts with -, *, or 1. (a list item), Vim will automatically
+"   insert the same character on the new line.
+" What does the `1` do?
+"   do not break a line after a one-letter word, break before it, if possible.
+set formatoptions=qrn1
+" Tell vim what a list item character can look like.
+" List Characters and Regex Pattern for Format List
+" +--------------------+---------------------------+
+" | List Character     | Regex Pattern             |
+" +--------------------+---------------------------+
+" | -                  | ^\s*[-*+]\s               |
+" | *                  | ^\s*[-*+]\s               |
+" | +                  | ^\s*[-*+]\s               |
+" | 1.                 | ^\s*\d\+\.\\s             |
+" +--------------------+---------------------------+
+"set formatlistpat=^\\s*\\d\\+\\.\\s\\+\\|^\\s*[-*+]\\s\\+
+"set formatlistpat=^\s*[-*+]\s\+\|\s*\d\+\.\s\+
+set formatlistpat=^\s*[-*+]\s\+\|\s*\d\+\.\s\+
+
+
+" there is a default value for tabstop=4 for md files on my work machine.
+" I want to override that and have it use tabstop=2, like I have for most other
+" file types
+autocmd FileType markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+
+" Override formatlistpat for markdown files to detect list items
+autocmd FileType markdown setlocal formatlistpat=^\s*[-*+]\s\+\|\s*\d\+\.\s\+
+
+" Enables list continuation (e.g., pressing Enter continues the list)
+autocmd FileType markdown setlocal formatoptions-=q formatoptions-=r
+" prevent auto reformat of long lines in a markdown file. text will still softwrap
+autocmd FileType markdown setlocal textwidth=0
+" show where column 80 is visually
+autocmd FileType markdown setlocal colorcolumn=80
+autocmd FileType markdown highlight ColorColumn ctermbg=darkgray guibg=yellow
+
+function! GetNumberedListMarker()
+  let l:line = getline('.')
+
+  if l:line =~ '^\s*\d\+\.'
+    let l:number = matchstr(l:line, '^\s*\d\+')
+    return l:number
+  endif
+
+  return ''
+endfunction
+
+" Function to increment the number in a numbered list
+function! InsertNumberedListMarker(number)
+  let l:nextnum = str2nr(a:number) + 1
+  return "\<CR>" . l:nextnum . ". "
+endfunction
+
+function! GetPlainListMarker()
+  let l:listMarkers = '[-*+]'
+  let l:pattern = printf('^\s*\zs%s\+', l:listMarkers)
+  return matchstr(getline('.'), l:pattern)
+endfunction
+
+function! InsertPlainListMarker(marker)
+  return "\<CR>" . a:marker . " "
+endfunction
+
+" Function to detect the list marker and insert the next item
+function! InsertListItemMarker()
+  " Check if the current line starts with a plain list marker
+  let l:plainListMarker = GetPlainListMarker()
+  if l:plainListMarker != ''
+    return InsertPlainListMarker(l:plainListMarker)
+  endif
+
+  let l:numberedListMarker = GetNumberedListMarker()
+  if l:numberedListMarker != ''
+    return InsertNumberedListMarker(l:numberedListMarker)
+  endif
+
+  " If no list marker is found insert a normal line break
+  return "\<CR>"
+endfunction
+
+" Automatically trigger list insertion behavior in markdown files
+autocmd FileType markdown inoremap <expr> <CR> InsertListItemMarker()
