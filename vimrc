@@ -373,6 +373,12 @@ autocmd FileType markdown setlocal textwidth=0
 autocmd FileType markdown setlocal colorcolumn=80
 autocmd FileType markdown highlight ColorColumn ctermbg=darkgray guibg=yellow
 
+function! DefineIndentMappings()
+  if !exists('g:indentMap')
+    let g:indentMap = { -1: "\<C-d>", 0: "", 1: "\<C-t>" }
+  endif
+endfunction
+
 function! GetNumberedListMarker()
   let l:line = getline('.')
 
@@ -385,9 +391,13 @@ function! GetNumberedListMarker()
 endfunction
 
 " Function to increment the number in a numbered list
-function! InsertNumberedListMarker(number, addTab)
-  let l:nextnum = str2nr(a:number) + 1
-  let l:prefix = a:addTab ? "\t" : ""
+function! InsertNumberedListMarker(number, indent)
+  let l:prefix = get(g:indentMap, a:indent, "")
+
+  let l:resetNumber = a:indent
+  " if we are indenting, we need to reset the list item number to 1
+  " else increment
+  let l:nextnum = l:resetNumber ? 1 : str2nr(a:number) + 1
   return "\<CR>" . l:prefix . l:nextnum . ". "
 endfunction
 
@@ -397,8 +407,8 @@ function! GetPlainListMarker()
   return matchstr(getline('.'), l:pattern)
 endfunction
 
-function! InsertPlainListMarker(marker, addTab)
-  let l:prefix = a:addTab ? "\t" : ""
+function! InsertPlainListMarker(marker, indent)
+  let l:prefix = get(g:indentMap, a:indent, "")
   return "\<CR>" . l:prefix . a:marker . " "
 endfunction
 
@@ -420,16 +430,35 @@ function! InsertListItemMarker(addTab)
 endfunction
 
 function! InsertListItemMarkerNoTab()
-  let l:addTab = 0
-  return InsertListItemMarker(l:addTab)
+  let l:indent = 0
+  return InsertListItemMarker(l:indent)
 endfunction
 
-function! InsertListItemMarkerWithTab()
-  let l:addTab = 1
-  return InsertListItemMarker(l:addTab)
+function! InsertListItemMarkerIncreaseIndent()
+  let l:indent = 1
+  return InsertListItemMarker(l:indent)
+endfunction
+
+function! InsertListItemMarkerDecreaseIndent()
+  let l:indent = -1
+  return InsertListItemMarker(l:indent)
 endfunction
 
 " Automatically trigger list insertion behavior in markdown files
+autocmd FileType markdown call DefineIndentMappings()
 autocmd FileType markdown inoremap <expr> <CR> InsertListItemMarkerNoTab()
-autocmd FileType markdown inoremap <expr> <M-CR> InsertListItemMarkerWithTab()
+autocmd FileType markdown inoremap <expr> <M-CR> InsertListItemMarkerIncreaseIndent()
+autocmd FileType markdown inoremap <expr> <C-M-CR> InsertListItemMarkerDecreaseIndent()
 
+" add marker management when entering a md buffer
+autocmd BufEnter *.md call DefineIndentMappings()
+autocmd BufEnter *.md inoremap <expr> <CR> InsertListItemMarkerNoTab()
+autocmd BufEnter *.md inoremap <expr> <M-CR> InsertListItemMarkerIncreaseIndent()
+autocmd BufEnter *.md inoremap <expr> <C-M-CR> InsertListItemMarkerDecreaseIndent()
+
+" Remove all of the list marker management listeners when leaving a markdown
+" file
+autocmd BufLeave *.md iunmap <CR>
+autocmd BufLeave *.md iunmap <M-CR>
+autocmd BufLeave *.md iunmap <C-M-CR>
+autocmd BufLeave *.md unlet! g:indentMap
