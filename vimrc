@@ -385,9 +385,10 @@ function! GetNumberedListMarker()
 endfunction
 
 " Function to increment the number in a numbered list
-function! InsertNumberedListMarker(number)
+function! InsertNumberedListMarker(number, addTab)
   let l:nextnum = str2nr(a:number) + 1
-  return "\<CR>" . l:nextnum . ". "
+  let l:prefix = a:addTab ? "\t" : ""
+  return "\<CR>" . l:prefix . l:nextnum . ". "
 endfunction
 
 function! GetPlainListMarker()
@@ -396,26 +397,39 @@ function! GetPlainListMarker()
   return matchstr(getline('.'), l:pattern)
 endfunction
 
-function! InsertPlainListMarker(marker)
-  return "\<CR>" . a:marker . " "
+function! InsertPlainListMarker(marker, addTab)
+  let l:prefix = a:addTab ? "\t" : ""
+  return "\<CR>" . l:prefix . a:marker . " "
 endfunction
 
 " Function to detect the list marker and insert the next item
-function! InsertListItemMarker()
+function! InsertListItemMarker(addTab)
   " Check if the current line starts with a plain list marker
   let l:plainListMarker = GetPlainListMarker()
   if l:plainListMarker != ''
-    return InsertPlainListMarker(l:plainListMarker)
+    return InsertPlainListMarker(l:plainListMarker, a:addTab)
   endif
 
   let l:numberedListMarker = GetNumberedListMarker()
   if l:numberedListMarker != ''
-    return InsertNumberedListMarker(l:numberedListMarker)
+    return InsertNumberedListMarker(l:numberedListMarker, a:addTab)
   endif
 
   " If no list marker is found insert a normal line break
   return "\<CR>"
 endfunction
 
+function! InsertListItemMarkerNoTab()
+  let l:addTab = 0
+  return InsertListItemMarker(l:addTab)
+endfunction
+
+function! InsertListItemMarkerWithTab()
+  let l:addTab = 1
+  return InsertListItemMarker(l:addTab)
+endfunction
+
 " Automatically trigger list insertion behavior in markdown files
-autocmd FileType markdown inoremap <expr> <CR> InsertListItemMarker()
+autocmd FileType markdown inoremap <expr> <CR> InsertListItemMarkerNoTab()
+autocmd FileType markdown inoremap <expr> <M-CR> InsertListItemMarkerWithTab()
+
