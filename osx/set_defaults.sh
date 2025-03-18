@@ -452,3 +452,6 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 defaults write com.apple.BezelServices kDim -bool true
 # Turn off keyboard illumination when computer is not used for 5 minutes
 defaults write com.apple.BezelServices kDimTime -int 300
+
+# Cursor keyrepeat settings for no delay
+defaults write com.todesktop.230313mzl4w4u92 ApplePressAndHoldEnabled -bool false
