@@ -21,7 +21,7 @@ echo -e "\t$SOURCE_DIR"
 echo -e "\t$DEST_DIR"
 
 # Run rsync in dry-run mode with itemized changes
-rsync_output=$(rsync -an --itemize-changes "$SOURCE_DIR" "$DEST_DIR")
+rsync_output=$(rsync -anc --itemize-changes "$SOURCE_DIR" "$DEST_DIR")
 
 # Process each line of rsync output
 while read -r line; do
