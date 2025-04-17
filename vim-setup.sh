@@ -49,9 +49,9 @@ declare -a nerd_tree=("NERDTree file navigation" "https://github.com/scrooloose/
 get_vim_bundle "$BUNDLE_DIR" "${nerd_tree[0]}" "${nerd_tree[1]}"
 warn "Don't forget to run :Helptags when you first run vim!"
 
-action "Installing Fugitive"
-declare -a fugitive=("Fugitive Git plugin" "git://github.com/tpope/vim-fugitive.git")
-get_vim_bundle "$BUNDLE_DIR" "${fugitive[0]}" "${fugitive[1]}"
+#action "Installing Fugitive"
+#declare -a fugitive=("Fugitive Git plugin" "git://github.com/tpope/vim-fugitive.git")
+#get_vim_bundle "$BUNDLE_DIR" "${fugitive[0]}" "${fugitive[1]}"
 
 action "Installing Solarized theme"
 declare -a solarized_theme=("Solarized theme" "https://github.com/altercation/vim-colors-solarized.git")
@@ -76,11 +76,11 @@ declare -a indent_guide=("Vim Indent Guides" "https://github.com/nathanaelkane/v
 get_vim_bundle "$BUNDLE_DIR" "${indent_guide[0]}" "${indent_guide[1]}"
 
 action "Installing Auto-pairs tool"
-declare -a auto_pairs=("Auto-pairs" "git://github.com/jiangmiao/auto-pairs.git")
+declare -a auto_pairs=("Auto-pairs" "https://github.com/jiangmiao/auto-pairs.git")
 get_vim_bundle "$BUNDLE_DIR" "${auto_pairs[0]}" "${auto_pairs[1]}"
 
 action "Installing Endwise"
-declare -a endwise=("Endwise" "git://github.com/tpope/vim-endwise.git")
+declare -a endwise=("Endwise" "https://github.com/tpope/vim-endwise.git")
 get_vim_bundle "$BUNDLE_DIR" "${endwise[0]}" "${endwise[1]}"
 
 #Future consideration
